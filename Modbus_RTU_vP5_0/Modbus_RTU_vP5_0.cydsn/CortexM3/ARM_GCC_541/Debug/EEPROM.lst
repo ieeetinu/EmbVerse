@@ -1,0 +1,3833 @@
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"EEPROM.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.EEPROM_Enable,"ax",%progbits
+  20              		.align	2
+  21              		.global	EEPROM_Enable
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	EEPROM_Enable, %function
+  25              	EEPROM_Enable:
+  26              	.LFB0:
+  27              		.file 1 "Generated_Source\\PSoC5\\EEPROM.c"
+   1:Generated_Source\PSoC5/EEPROM.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/EEPROM.c **** * File Name: EEPROM.c
+   3:Generated_Source\PSoC5/EEPROM.c **** * Version 3.0
+   4:Generated_Source\PSoC5/EEPROM.c **** *
+   5:Generated_Source\PSoC5/EEPROM.c **** *  Description:
+   6:Generated_Source\PSoC5/EEPROM.c **** *   Provides the source code to the API for the EEPROM component.
+   7:Generated_Source\PSoC5/EEPROM.c **** *
+   8:Generated_Source\PSoC5/EEPROM.c **** ********************************************************************************
+   9:Generated_Source\PSoC5/EEPROM.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  10:Generated_Source\PSoC5/EEPROM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  11:Generated_Source\PSoC5/EEPROM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  12:Generated_Source\PSoC5/EEPROM.c **** * the software package with which this file was provided.
+  13:Generated_Source\PSoC5/EEPROM.c **** *******************************************************************************/
+  14:Generated_Source\PSoC5/EEPROM.c **** 
+  15:Generated_Source\PSoC5/EEPROM.c **** #include "EEPROM.h"
+  16:Generated_Source\PSoC5/EEPROM.c **** 
+  17:Generated_Source\PSoC5/EEPROM.c **** 
+  18:Generated_Source\PSoC5/EEPROM.c **** /*******************************************************************************
+  19:Generated_Source\PSoC5/EEPROM.c **** * Function Name: EEPROM_Enable
+  20:Generated_Source\PSoC5/EEPROM.c **** ********************************************************************************
+  21:Generated_Source\PSoC5/EEPROM.c **** *
+  22:Generated_Source\PSoC5/EEPROM.c **** * Summary:
+  23:Generated_Source\PSoC5/EEPROM.c **** *  Enable the EEPROM block. Also reads the temperature and stores it for
+  24:Generated_Source\PSoC5/EEPROM.c **** *  future writes.
+  25:Generated_Source\PSoC5/EEPROM.c **** *
+  26:Generated_Source\PSoC5/EEPROM.c **** * Parameters:
+  27:Generated_Source\PSoC5/EEPROM.c **** *  None
+  28:Generated_Source\PSoC5/EEPROM.c **** *
+  29:Generated_Source\PSoC5/EEPROM.c **** * Return:
+  30:Generated_Source\PSoC5/EEPROM.c **** *  None
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 2
+
+
+  31:Generated_Source\PSoC5/EEPROM.c **** *
+  32:Generated_Source\PSoC5/EEPROM.c **** *******************************************************************************/
+  33:Generated_Source\PSoC5/EEPROM.c **** void EEPROM_Enable(void) 
+  34:Generated_Source\PSoC5/EEPROM.c **** {
+  28              		.loc 1 34 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  35:Generated_Source\PSoC5/EEPROM.c ****     /* Read temperature value */
+  36:Generated_Source\PSoC5/EEPROM.c ****     (void)CySetTemp();
+  36              		.loc 1 36 0
+  37 0002 FFF7FEFF 		bl	CySetTemp
+  38              	.LVL0:
+  37:Generated_Source\PSoC5/EEPROM.c **** 
+  38:Generated_Source\PSoC5/EEPROM.c ****     /* Start EEPROM block */
+  39:Generated_Source\PSoC5/EEPROM.c ****     CyEEPROM_Start();
+  39              		.loc 1 39 0
+  40 0006 FFF7FEFF 		bl	CyEEPROM_Start
+  41              	.LVL1:
+  42 000a 08BD     		pop	{r3, pc}
+  43              		.cfi_endproc
+  44              	.LFE0:
+  45              		.size	EEPROM_Enable, .-EEPROM_Enable
+  46              		.section	.text.EEPROM_Start,"ax",%progbits
+  47              		.align	2
+  48              		.global	EEPROM_Start
+  49              		.thumb
+  50              		.thumb_func
+  51              		.type	EEPROM_Start, %function
+  52              	EEPROM_Start:
+  53              	.LFB1:
+  40:Generated_Source\PSoC5/EEPROM.c **** }
+  41:Generated_Source\PSoC5/EEPROM.c **** 
+  42:Generated_Source\PSoC5/EEPROM.c **** 
+  43:Generated_Source\PSoC5/EEPROM.c **** /*******************************************************************************
+  44:Generated_Source\PSoC5/EEPROM.c **** * Function Name: EEPROM_Start
+  45:Generated_Source\PSoC5/EEPROM.c **** ********************************************************************************
+  46:Generated_Source\PSoC5/EEPROM.c **** *
+  47:Generated_Source\PSoC5/EEPROM.c **** * Summary:
+  48:Generated_Source\PSoC5/EEPROM.c **** *  Starts EEPROM.
+  49:Generated_Source\PSoC5/EEPROM.c **** *
+  50:Generated_Source\PSoC5/EEPROM.c **** * Parameters:
+  51:Generated_Source\PSoC5/EEPROM.c **** *  None
+  52:Generated_Source\PSoC5/EEPROM.c **** *
+  53:Generated_Source\PSoC5/EEPROM.c **** * Return:
+  54:Generated_Source\PSoC5/EEPROM.c **** *  None
+  55:Generated_Source\PSoC5/EEPROM.c **** *
+  56:Generated_Source\PSoC5/EEPROM.c **** *******************************************************************************/
+  57:Generated_Source\PSoC5/EEPROM.c **** void EEPROM_Start(void) 
+  58:Generated_Source\PSoC5/EEPROM.c **** {
+  54              		.loc 1 58 0
+  55              		.cfi_startproc
+  56              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 3
+
+
+  57              		@ frame_needed = 0, uses_anonymous_args = 0
+  58 0000 08B5     		push	{r3, lr}
+  59              		.cfi_def_cfa_offset 8
+  60              		.cfi_offset 3, -8
+  61              		.cfi_offset 14, -4
+  59:Generated_Source\PSoC5/EEPROM.c ****     EEPROM_Enable();
+  62              		.loc 1 59 0
+  63 0002 FFF7FEFF 		bl	EEPROM_Enable
+  64              	.LVL2:
+  65 0006 08BD     		pop	{r3, pc}
+  66              		.cfi_endproc
+  67              	.LFE1:
+  68              		.size	EEPROM_Start, .-EEPROM_Start
+  69              		.section	.text.EEPROM_Stop,"ax",%progbits
+  70              		.align	2
+  71              		.global	EEPROM_Stop
+  72              		.thumb
+  73              		.thumb_func
+  74              		.type	EEPROM_Stop, %function
+  75              	EEPROM_Stop:
+  76              	.LFB2:
+  60:Generated_Source\PSoC5/EEPROM.c **** }
+  61:Generated_Source\PSoC5/EEPROM.c **** 
+  62:Generated_Source\PSoC5/EEPROM.c **** 
+  63:Generated_Source\PSoC5/EEPROM.c **** /*******************************************************************************
+  64:Generated_Source\PSoC5/EEPROM.c **** * Function Name: EEPROM_Stop
+  65:Generated_Source\PSoC5/EEPROM.c **** ********************************************************************************
+  66:Generated_Source\PSoC5/EEPROM.c **** *
+  67:Generated_Source\PSoC5/EEPROM.c **** * Summary:
+  68:Generated_Source\PSoC5/EEPROM.c **** *  Stops and powers down EEPROM.
+  69:Generated_Source\PSoC5/EEPROM.c **** *
+  70:Generated_Source\PSoC5/EEPROM.c **** * Parameters:
+  71:Generated_Source\PSoC5/EEPROM.c **** *  None
+  72:Generated_Source\PSoC5/EEPROM.c **** *
+  73:Generated_Source\PSoC5/EEPROM.c **** * Return:
+  74:Generated_Source\PSoC5/EEPROM.c **** *  None
+  75:Generated_Source\PSoC5/EEPROM.c **** *
+  76:Generated_Source\PSoC5/EEPROM.c **** *******************************************************************************/
+  77:Generated_Source\PSoC5/EEPROM.c **** void EEPROM_Stop (void) 
+  78:Generated_Source\PSoC5/EEPROM.c **** {
+  77              		.loc 1 78 0
+  78              		.cfi_startproc
+  79              		@ args = 0, pretend = 0, frame = 0
+  80              		@ frame_needed = 0, uses_anonymous_args = 0
+  81 0000 08B5     		push	{r3, lr}
+  82              		.cfi_def_cfa_offset 8
+  83              		.cfi_offset 3, -8
+  84              		.cfi_offset 14, -4
+  79:Generated_Source\PSoC5/EEPROM.c ****     /* Stop and power down EEPROM block */
+  80:Generated_Source\PSoC5/EEPROM.c ****     CyEEPROM_Stop();
+  85              		.loc 1 80 0
+  86 0002 FFF7FEFF 		bl	CyEEPROM_Stop
+  87              	.LVL3:
+  88 0006 08BD     		pop	{r3, pc}
+  89              		.cfi_endproc
+  90              	.LFE2:
+  91              		.size	EEPROM_Stop, .-EEPROM_Stop
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 4
+
+
+  92              		.section	.text.EEPROM_WriteByte,"ax",%progbits
+  93              		.align	2
+  94              		.global	EEPROM_WriteByte
+  95              		.thumb
+  96              		.thumb_func
+  97              		.type	EEPROM_WriteByte, %function
+  98              	EEPROM_WriteByte:
+  99              	.LFB3:
+  81:Generated_Source\PSoC5/EEPROM.c **** }
+  82:Generated_Source\PSoC5/EEPROM.c **** 
+  83:Generated_Source\PSoC5/EEPROM.c **** 
+  84:Generated_Source\PSoC5/EEPROM.c **** /*******************************************************************************
+  85:Generated_Source\PSoC5/EEPROM.c **** * Function Name: EEPROM_WriteByte
+  86:Generated_Source\PSoC5/EEPROM.c **** ********************************************************************************
+  87:Generated_Source\PSoC5/EEPROM.c **** *
+  88:Generated_Source\PSoC5/EEPROM.c **** * Summary:
+  89:Generated_Source\PSoC5/EEPROM.c **** *  Writes a byte of data to the EEPROM. This function blocks until
+  90:Generated_Source\PSoC5/EEPROM.c **** *  the function is complete. For a reliable write procedure to occur you should
+  91:Generated_Source\PSoC5/EEPROM.c **** *  call EEPROM_UpdateTemperature() function if the temperature of the
+  92:Generated_Source\PSoC5/EEPROM.c **** *  silicon has been changed for more than 10C since the component was started.
+  93:Generated_Source\PSoC5/EEPROM.c **** *
+  94:Generated_Source\PSoC5/EEPROM.c **** * Parameters:
+  95:Generated_Source\PSoC5/EEPROM.c **** *  dataByte:  The byte of data to write to the EEPROM
+  96:Generated_Source\PSoC5/EEPROM.c **** *  address:   The address of data to be written. The maximum address is dependent
+  97:Generated_Source\PSoC5/EEPROM.c **** *             on the EEPROM size.
+  98:Generated_Source\PSoC5/EEPROM.c **** *
+  99:Generated_Source\PSoC5/EEPROM.c **** * Return:
+ 100:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_SUCCESS, if the operation was successful.
+ 101:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_BAD_PARAM, if the parameter sectorNumber is out of range.
+ 102:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_LOCKED, if the SPC is being used.
+ 103:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_UNKNOWN, if there was an SPC error.
+ 104:Generated_Source\PSoC5/EEPROM.c **** *
+ 105:Generated_Source\PSoC5/EEPROM.c **** *******************************************************************************/
+ 106:Generated_Source\PSoC5/EEPROM.c **** cystatus EEPROM_WriteByte(uint8 dataByte, uint16 address) 
+ 107:Generated_Source\PSoC5/EEPROM.c **** {
+ 100              		.loc 1 107 0
+ 101              		.cfi_startproc
+ 102              		@ args = 0, pretend = 0, frame = 8
+ 103              		@ frame_needed = 0, uses_anonymous_args = 0
+ 104              	.LVL4:
+ 105 0000 30B5     		push	{r4, r5, lr}
+ 106              		.cfi_def_cfa_offset 12
+ 107              		.cfi_offset 4, -12
+ 108              		.cfi_offset 5, -8
+ 109              		.cfi_offset 14, -4
+ 110 0002 83B0     		sub	sp, sp, #12
+ 111              		.cfi_def_cfa_offset 24
+ 112 0004 0C46     		mov	r4, r1
+ 113 0006 8DF80700 		strb	r0, [sp, #7]
+ 108:Generated_Source\PSoC5/EEPROM.c ****     cystatus status;
+ 109:Generated_Source\PSoC5/EEPROM.c ****     uint16 rowNumber;
+ 110:Generated_Source\PSoC5/EEPROM.c ****     uint16 byteNumber;
+ 111:Generated_Source\PSoC5/EEPROM.c ****     
+ 112:Generated_Source\PSoC5/EEPROM.c ****     CySpcStart();
+ 114              		.loc 1 112 0
+ 115 000a FFF7FEFF 		bl	CySpcStart
+ 116              	.LVL5:
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 5
+
+
+ 113:Generated_Source\PSoC5/EEPROM.c **** 
+ 114:Generated_Source\PSoC5/EEPROM.c ****     if (address < CY_EEPROM_SIZE)
+ 117              		.loc 1 114 0
+ 118 000e B4F5006F 		cmp	r4, #2048
+ 119 0012 52D2     		bcs	.L14
+ 115:Generated_Source\PSoC5/EEPROM.c ****     {
+ 116:Generated_Source\PSoC5/EEPROM.c ****         rowNumber = address/(uint16)CY_EEPROM_SIZEOF_ROW;
+ 120              		.loc 1 116 0
+ 121 0014 2509     		lsrs	r5, r4, #4
+ 122              	.LVL6:
+ 117:Generated_Source\PSoC5/EEPROM.c ****         byteNumber = address - (rowNumber * ((uint16)CY_EEPROM_SIZEOF_ROW));
+ 123              		.loc 1 117 0
+ 124 0016 A4EB0514 		sub	r4, r4, r5, lsl #4
+ 125 001a A4B2     		uxth	r4, r4
+ 126              	.LVL7:
+ 118:Generated_Source\PSoC5/EEPROM.c ****         if(CYRET_SUCCESS == CySpcLock())
+ 127              		.loc 1 118 0
+ 128 001c FFF7FEFF 		bl	CySpcLock
+ 129              	.LVL8:
+ 130 0020 0028     		cmp	r0, #0
+ 131 0022 4CD1     		bne	.L15
+ 119:Generated_Source\PSoC5/EEPROM.c ****         {
+ 120:Generated_Source\PSoC5/EEPROM.c ****             status = CySpcLoadMultiByte(CY_SPC_FIRST_EE_ARRAYID, byteNumber, &dataByte, \
+ 132              		.loc 1 120 0
+ 133 0024 0123     		movs	r3, #1
+ 134 0026 0DF10702 		add	r2, sp, #7
+ 135              	.LVL9:
+ 136 002a 2146     		mov	r1, r4
+ 137 002c 4020     		movs	r0, #64
+ 138 002e FFF7FEFF 		bl	CySpcLoadMultiByte
+ 139              	.LVL10:
+ 140 0032 0446     		mov	r4, r0
+ 141              	.LVL11:
+ 121:Generated_Source\PSoC5/EEPROM.c ****                                                                     EEPROM_SPC_BYTE_WRITE_SIZE);
+ 122:Generated_Source\PSoC5/EEPROM.c ****             if (CYRET_STARTED == status)
+ 142              		.loc 1 122 0
+ 143 0034 0728     		cmp	r0, #7
+ 144 0036 2FD1     		bne	.L9
+ 145              	.L10:
+ 123:Generated_Source\PSoC5/EEPROM.c ****             {
+ 124:Generated_Source\PSoC5/EEPROM.c ****                 /* Plan for failure */
+ 125:Generated_Source\PSoC5/EEPROM.c ****                 status = CYRET_UNKNOWN;
+ 126:Generated_Source\PSoC5/EEPROM.c **** 
+ 127:Generated_Source\PSoC5/EEPROM.c ****                 while(CY_SPC_BUSY)
+ 146              		.loc 1 127 0 discriminator 1
+ 147 0038 234B     		ldr	r3, .L23
+ 148 003a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 149 003c 13F0020F 		tst	r3, #2
+ 150 0040 FAD0     		beq	.L10
+ 128:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 129:Generated_Source\PSoC5/EEPROM.c ****                     /* Wait until SPC becomes idle */
+ 130:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 131:Generated_Source\PSoC5/EEPROM.c **** 
+ 132:Generated_Source\PSoC5/EEPROM.c ****                 if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 151              		.loc 1 132 0
+ 152 0042 214B     		ldr	r3, .L23
+ 153 0044 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 6
+
+
+ 154 0046 13F0020F 		tst	r3, #2
+ 155 004a 06D0     		beq	.L16
+ 156              		.loc 1 132 0 is_stmt 0 discriminator 1
+ 157 004c 1E4B     		ldr	r3, .L23
+ 158 004e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 159 0050 9B08     		lsrs	r3, r3, #2
+ 160 0052 05D0     		beq	.L17
+ 125:Generated_Source\PSoC5/EEPROM.c **** 
+ 161              		.loc 1 125 0 is_stmt 1
+ 162 0054 4FF0FF34 		mov	r4, #-1
+ 163 0058 03E0     		b	.L11
+ 164              	.L16:
+ 165 005a 4FF0FF34 		mov	r4, #-1
+ 166 005e 00E0     		b	.L11
+ 167              	.L17:
+ 133:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 134:Generated_Source\PSoC5/EEPROM.c ****                     status = CYRET_SUCCESS;
+ 168              		.loc 1 134 0
+ 169 0060 0024     		movs	r4, #0
+ 170              	.L11:
+ 171              	.LVL12:
+ 135:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 136:Generated_Source\PSoC5/EEPROM.c ****                 /* Command to erase and program the row. */
+ 137:Generated_Source\PSoC5/EEPROM.c ****                 if(CYRET_SUCCESS == status)
+ 172              		.loc 1 137 0
+ 173 0062 E4B9     		cbnz	r4, .L18
+ 138:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 139:Generated_Source\PSoC5/EEPROM.c ****                     if(CySpcWriteRow(CY_SPC_FIRST_EE_ARRAYID, (uint16)rowNumber, dieTemperature[0u]
+ 174              		.loc 1 139 0
+ 175 0064 194A     		ldr	r2, .L23+4
+ 176 0066 5378     		ldrb	r3, [r2, #1]	@ zero_extendqisi2
+ 177 0068 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 178 006a 2946     		mov	r1, r5
+ 179 006c 4020     		movs	r0, #64
+ 180 006e FFF7FEFF 		bl	CySpcWriteRow
+ 181              	.LVL13:
+ 182 0072 0728     		cmp	r0, #7
+ 183 0074 16D1     		bne	.L19
+ 184              	.L13:
+ 140:Generated_Source\PSoC5/EEPROM.c ****                     dieTemperature[1u]) == CYRET_STARTED)
+ 141:Generated_Source\PSoC5/EEPROM.c ****                     {
+ 142:Generated_Source\PSoC5/EEPROM.c ****                         /* Plan for failure */
+ 143:Generated_Source\PSoC5/EEPROM.c ****                         status = CYRET_UNKNOWN;
+ 144:Generated_Source\PSoC5/EEPROM.c **** 
+ 145:Generated_Source\PSoC5/EEPROM.c ****                         while(CY_SPC_BUSY)
+ 185              		.loc 1 145 0 discriminator 1
+ 186 0076 144B     		ldr	r3, .L23
+ 187 0078 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 188 007a 13F0020F 		tst	r3, #2
+ 189 007e FAD0     		beq	.L13
+ 146:Generated_Source\PSoC5/EEPROM.c ****                         {
+ 147:Generated_Source\PSoC5/EEPROM.c ****                             /* Wait until SPC becomes idle */
+ 148:Generated_Source\PSoC5/EEPROM.c ****                         }
+ 149:Generated_Source\PSoC5/EEPROM.c **** 
+ 150:Generated_Source\PSoC5/EEPROM.c ****                         /* SPC is idle now */
+ 151:Generated_Source\PSoC5/EEPROM.c ****                         if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 190              		.loc 1 151 0
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 7
+
+
+ 191 0080 114B     		ldr	r3, .L23
+ 192 0082 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 193 0084 13F0020F 		tst	r3, #2
+ 194 0088 0FD0     		beq	.L20
+ 195              		.loc 1 151 0 is_stmt 0 discriminator 1
+ 196 008a 0F4B     		ldr	r3, .L23
+ 197 008c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 198 008e 9B08     		lsrs	r3, r3, #2
+ 199 0090 10D0     		beq	.L12
+ 143:Generated_Source\PSoC5/EEPROM.c **** 
+ 200              		.loc 1 143 0 is_stmt 1
+ 201 0092 4FF0FF34 		mov	r4, #-1
+ 202              	.LVL14:
+ 203 0096 0DE0     		b	.L12
+ 204              	.LVL15:
+ 205              	.L9:
+ 152:Generated_Source\PSoC5/EEPROM.c ****                         {
+ 153:Generated_Source\PSoC5/EEPROM.c ****                             status = CYRET_SUCCESS;
+ 154:Generated_Source\PSoC5/EEPROM.c ****                         }
+ 155:Generated_Source\PSoC5/EEPROM.c ****                     }
+ 156:Generated_Source\PSoC5/EEPROM.c ****                     else
+ 157:Generated_Source\PSoC5/EEPROM.c ****                     {
+ 158:Generated_Source\PSoC5/EEPROM.c ****                         status = CYRET_UNKNOWN;
+ 159:Generated_Source\PSoC5/EEPROM.c ****                     }
+ 160:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 161:Generated_Source\PSoC5/EEPROM.c ****                 else
+ 162:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 163:Generated_Source\PSoC5/EEPROM.c ****                     status = CYRET_UNKNOWN;
+ 164:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 165:Generated_Source\PSoC5/EEPROM.c ****             }
+ 166:Generated_Source\PSoC5/EEPROM.c ****             else
+ 167:Generated_Source\PSoC5/EEPROM.c ****             {
+ 168:Generated_Source\PSoC5/EEPROM.c ****                 if (CYRET_BAD_PARAM != status)
+ 206              		.loc 1 168 0
+ 207 0098 0128     		cmp	r0, #1
+ 208 009a 09D1     		bne	.L21
+ 209 009c 0AE0     		b	.L12
+ 210              	.LVL16:
+ 211              	.L18:
+ 163:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 212              		.loc 1 163 0
+ 213 009e 4FF0FF34 		mov	r4, #-1
+ 214              	.LVL17:
+ 215 00a2 07E0     		b	.L12
+ 216              	.LVL18:
+ 217              	.L19:
+ 158:Generated_Source\PSoC5/EEPROM.c ****                     }
+ 218              		.loc 1 158 0
+ 219 00a4 4FF0FF34 		mov	r4, #-1
+ 220              	.LVL19:
+ 221 00a8 04E0     		b	.L12
+ 222              	.LVL20:
+ 223              	.L20:
+ 143:Generated_Source\PSoC5/EEPROM.c **** 
+ 224              		.loc 1 143 0
+ 225 00aa 4FF0FF34 		mov	r4, #-1
+ 226              	.LVL21:
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 8
+
+
+ 227 00ae 01E0     		b	.L12
+ 228              	.LVL22:
+ 229              	.L21:
+ 169:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 170:Generated_Source\PSoC5/EEPROM.c ****                     status = CYRET_UNKNOWN;
+ 230              		.loc 1 170 0
+ 231 00b0 4FF0FF34 		mov	r4, #-1
+ 232              	.LVL23:
+ 233              	.L12:
+ 171:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 172:Generated_Source\PSoC5/EEPROM.c ****             }
+ 173:Generated_Source\PSoC5/EEPROM.c ****             CySpcUnlock();
+ 234              		.loc 1 173 0
+ 235 00b4 FFF7FEFF 		bl	CySpcUnlock
+ 236              	.LVL24:
+ 237 00b8 02E0     		b	.L8
+ 238              	.LVL25:
+ 239              	.L14:
+ 174:Generated_Source\PSoC5/EEPROM.c ****         }
+ 175:Generated_Source\PSoC5/EEPROM.c ****         else
+ 176:Generated_Source\PSoC5/EEPROM.c ****         {
+ 177:Generated_Source\PSoC5/EEPROM.c ****             status = CYRET_LOCKED;
+ 178:Generated_Source\PSoC5/EEPROM.c ****         }
+ 179:Generated_Source\PSoC5/EEPROM.c ****     }
+ 180:Generated_Source\PSoC5/EEPROM.c ****     else
+ 181:Generated_Source\PSoC5/EEPROM.c ****     {
+ 182:Generated_Source\PSoC5/EEPROM.c ****         status = CYRET_BAD_PARAM;
+ 240              		.loc 1 182 0
+ 241 00ba 0124     		movs	r4, #1
+ 242 00bc 00E0     		b	.L8
+ 243              	.LVL26:
+ 244              	.L15:
+ 177:Generated_Source\PSoC5/EEPROM.c ****         }
+ 245              		.loc 1 177 0
+ 246 00be 0424     		movs	r4, #4
+ 247              	.LVL27:
+ 248              	.L8:
+ 183:Generated_Source\PSoC5/EEPROM.c ****     }
+ 184:Generated_Source\PSoC5/EEPROM.c **** 
+ 185:Generated_Source\PSoC5/EEPROM.c **** 
+ 186:Generated_Source\PSoC5/EEPROM.c ****     return (status);
+ 187:Generated_Source\PSoC5/EEPROM.c **** }
+ 249              		.loc 1 187 0
+ 250 00c0 2046     		mov	r0, r4
+ 251 00c2 03B0     		add	sp, sp, #12
+ 252              		.cfi_def_cfa_offset 12
+ 253              		@ sp needed
+ 254 00c4 30BD     		pop	{r4, r5, pc}
+ 255              	.LVL28:
+ 256              	.L24:
+ 257 00c6 00BF     		.align	2
+ 258              	.L23:
+ 259 00c8 22470040 		.word	1073760034
+ 260 00cc 00000000 		.word	dieTemperature
+ 261              		.cfi_endproc
+ 262              	.LFE3:
+ 263              		.size	EEPROM_WriteByte, .-EEPROM_WriteByte
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 9
+
+
+ 264              		.section	.text.EEPROM_ReadByte,"ax",%progbits
+ 265              		.align	2
+ 266              		.global	EEPROM_ReadByte
+ 267              		.thumb
+ 268              		.thumb_func
+ 269              		.type	EEPROM_ReadByte, %function
+ 270              	EEPROM_ReadByte:
+ 271              	.LFB4:
+ 188:Generated_Source\PSoC5/EEPROM.c **** 
+ 189:Generated_Source\PSoC5/EEPROM.c **** 
+ 190:Generated_Source\PSoC5/EEPROM.c **** /*******************************************************************************
+ 191:Generated_Source\PSoC5/EEPROM.c **** * Function Name: EEPROM_ReadByte
+ 192:Generated_Source\PSoC5/EEPROM.c **** ********************************************************************************
+ 193:Generated_Source\PSoC5/EEPROM.c **** *
+ 194:Generated_Source\PSoC5/EEPROM.c **** * Summary:
+ 195:Generated_Source\PSoC5/EEPROM.c **** *  Reads and returns a byte of data from the on-chip EEPROM memory. Although
+ 196:Generated_Source\PSoC5/EEPROM.c **** *  the data is present in the CPU memory space, this function provides an
+ 197:Generated_Source\PSoC5/EEPROM.c **** *  intuitive user interface, addressing the EEPROM memory as a separate block with
+ 198:Generated_Source\PSoC5/EEPROM.c **** *  the first EERPOM byte address equal to 0x0000.
+ 199:Generated_Source\PSoC5/EEPROM.c **** *
+ 200:Generated_Source\PSoC5/EEPROM.c **** * Parameters:
+ 201:Generated_Source\PSoC5/EEPROM.c **** *  address:   The address of data to be read. The maximum address is limited by the
+ 202:Generated_Source\PSoC5/EEPROM.c **** *             size of the EEPROM array on a specific device.
+ 203:Generated_Source\PSoC5/EEPROM.c **** *
+ 204:Generated_Source\PSoC5/EEPROM.c **** * Return:
+ 205:Generated_Source\PSoC5/EEPROM.c **** *  Data located at an address.
+ 206:Generated_Source\PSoC5/EEPROM.c **** *
+ 207:Generated_Source\PSoC5/EEPROM.c **** *******************************************************************************/
+ 208:Generated_Source\PSoC5/EEPROM.c **** uint8 EEPROM_ReadByte(uint16 address) 
+ 209:Generated_Source\PSoC5/EEPROM.c **** {
+ 272              		.loc 1 209 0
+ 273              		.cfi_startproc
+ 274              		@ args = 0, pretend = 0, frame = 0
+ 275              		@ frame_needed = 0, uses_anonymous_args = 0
+ 276              	.LVL29:
+ 277 0000 38B5     		push	{r3, r4, r5, lr}
+ 278              		.cfi_def_cfa_offset 16
+ 279              		.cfi_offset 3, -16
+ 280              		.cfi_offset 4, -12
+ 281              		.cfi_offset 5, -8
+ 282              		.cfi_offset 14, -4
+ 283 0002 0446     		mov	r4, r0
+ 210:Generated_Source\PSoC5/EEPROM.c ****     uint8 retByte;
+ 211:Generated_Source\PSoC5/EEPROM.c ****     uint8 interruptState;
+ 212:Generated_Source\PSoC5/EEPROM.c **** 
+ 213:Generated_Source\PSoC5/EEPROM.c ****     interruptState = CyEnterCriticalSection();
+ 284              		.loc 1 213 0
+ 285 0004 FFF7FEFF 		bl	CyEnterCriticalSection
+ 286              	.LVL30:
+ 287 0008 0546     		mov	r5, r0
+ 288              	.LVL31:
+ 214:Generated_Source\PSoC5/EEPROM.c **** 
+ 215:Generated_Source\PSoC5/EEPROM.c ****     /* Request access to EEPROM for reading.
+ 216:Generated_Source\PSoC5/EEPROM.c ****     This is needed to reserve PHUB for read operation from EEPROM */
+ 217:Generated_Source\PSoC5/EEPROM.c ****     CyEEPROM_ReadReserve();
+ 289              		.loc 1 217 0
+ 290 000a FFF7FEFF 		bl	CyEEPROM_ReadReserve
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 10
+
+
+ 291              	.LVL32:
+ 218:Generated_Source\PSoC5/EEPROM.c ****     
+ 219:Generated_Source\PSoC5/EEPROM.c ****     retByte = *((reg8 *) (CYDEV_EE_BASE + address));
+ 292              		.loc 1 219 0
+ 293 000e 04F18040 		add	r0, r4, #1073741824
+ 294 0012 00F50040 		add	r0, r0, #32768
+ 295 0016 0478     		ldrb	r4, [r0]	@ zero_extendqisi2
+ 296 0018 E4B2     		uxtb	r4, r4
+ 297              	.LVL33:
+ 220:Generated_Source\PSoC5/EEPROM.c **** 
+ 221:Generated_Source\PSoC5/EEPROM.c ****     /* Release EEPROM array */
+ 222:Generated_Source\PSoC5/EEPROM.c ****     CyEEPROM_ReadRelease();
+ 298              		.loc 1 222 0
+ 299 001a FFF7FEFF 		bl	CyEEPROM_ReadRelease
+ 300              	.LVL34:
+ 223:Generated_Source\PSoC5/EEPROM.c ****     
+ 224:Generated_Source\PSoC5/EEPROM.c ****     CyExitCriticalSection(interruptState);
+ 301              		.loc 1 224 0
+ 302 001e 2846     		mov	r0, r5
+ 303 0020 FFF7FEFF 		bl	CyExitCriticalSection
+ 304              	.LVL35:
+ 225:Generated_Source\PSoC5/EEPROM.c **** 
+ 226:Generated_Source\PSoC5/EEPROM.c ****     return (retByte);
+ 227:Generated_Source\PSoC5/EEPROM.c **** }
+ 305              		.loc 1 227 0
+ 306 0024 2046     		mov	r0, r4
+ 307 0026 38BD     		pop	{r3, r4, r5, pc}
+ 308              		.cfi_endproc
+ 309              	.LFE4:
+ 310              		.size	EEPROM_ReadByte, .-EEPROM_ReadByte
+ 311              		.section	.text.EEPROM_UpdateTemperature,"ax",%progbits
+ 312              		.align	2
+ 313              		.global	EEPROM_UpdateTemperature
+ 314              		.thumb
+ 315              		.thumb_func
+ 316              		.type	EEPROM_UpdateTemperature, %function
+ 317              	EEPROM_UpdateTemperature:
+ 318              	.LFB5:
+ 228:Generated_Source\PSoC5/EEPROM.c **** 
+ 229:Generated_Source\PSoC5/EEPROM.c **** 
+ 230:Generated_Source\PSoC5/EEPROM.c **** /*******************************************************************************
+ 231:Generated_Source\PSoC5/EEPROM.c **** * Function Name: EEPROM_UpdateTemperature
+ 232:Generated_Source\PSoC5/EEPROM.c **** ********************************************************************************
+ 233:Generated_Source\PSoC5/EEPROM.c **** *
+ 234:Generated_Source\PSoC5/EEPROM.c **** * Summary:
+ 235:Generated_Source\PSoC5/EEPROM.c **** *  Updates and stores the temperature value. This function should be called
+ 236:Generated_Source\PSoC5/EEPROM.c **** *  before EEPROM writes if the temperature may have been changed by more than
+ 237:Generated_Source\PSoC5/EEPROM.c **** *  10 degrees Celsius.
+ 238:Generated_Source\PSoC5/EEPROM.c **** *
+ 239:Generated_Source\PSoC5/EEPROM.c **** * Parameters:
+ 240:Generated_Source\PSoC5/EEPROM.c **** *  None
+ 241:Generated_Source\PSoC5/EEPROM.c **** *
+ 242:Generated_Source\PSoC5/EEPROM.c **** * Return:
+ 243:Generated_Source\PSoC5/EEPROM.c **** *  Status of operation, 0 if operation complete, non-zero value if error
+ 244:Generated_Source\PSoC5/EEPROM.c **** *  was detected.
+ 245:Generated_Source\PSoC5/EEPROM.c **** *
+ 246:Generated_Source\PSoC5/EEPROM.c **** *******************************************************************************/
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 11
+
+
+ 247:Generated_Source\PSoC5/EEPROM.c **** uint8 EEPROM_UpdateTemperature(void) 
+ 248:Generated_Source\PSoC5/EEPROM.c **** {
+ 319              		.loc 1 248 0
+ 320              		.cfi_startproc
+ 321              		@ args = 0, pretend = 0, frame = 0
+ 322              		@ frame_needed = 0, uses_anonymous_args = 0
+ 323 0000 08B5     		push	{r3, lr}
+ 324              		.cfi_def_cfa_offset 8
+ 325              		.cfi_offset 3, -8
+ 326              		.cfi_offset 14, -4
+ 249:Generated_Source\PSoC5/EEPROM.c ****     return ((uint8)CySetTemp());
+ 327              		.loc 1 249 0
+ 328 0002 FFF7FEFF 		bl	CySetTemp
+ 329              	.LVL36:
+ 250:Generated_Source\PSoC5/EEPROM.c **** }
+ 330              		.loc 1 250 0
+ 331 0006 C0B2     		uxtb	r0, r0
+ 332 0008 08BD     		pop	{r3, pc}
+ 333              		.cfi_endproc
+ 334              	.LFE5:
+ 335              		.size	EEPROM_UpdateTemperature, .-EEPROM_UpdateTemperature
+ 336              		.section	.text.EEPROM_EraseSector,"ax",%progbits
+ 337              		.align	2
+ 338              		.global	EEPROM_EraseSector
+ 339              		.thumb
+ 340              		.thumb_func
+ 341              		.type	EEPROM_EraseSector, %function
+ 342              	EEPROM_EraseSector:
+ 343              	.LFB6:
+ 251:Generated_Source\PSoC5/EEPROM.c **** 
+ 252:Generated_Source\PSoC5/EEPROM.c **** 
+ 253:Generated_Source\PSoC5/EEPROM.c **** /*******************************************************************************
+ 254:Generated_Source\PSoC5/EEPROM.c **** * Function Name: EEPROM_EraseSector
+ 255:Generated_Source\PSoC5/EEPROM.c **** ********************************************************************************
+ 256:Generated_Source\PSoC5/EEPROM.c **** *
+ 257:Generated_Source\PSoC5/EEPROM.c **** * Summary:
+ 258:Generated_Source\PSoC5/EEPROM.c **** *  Erase an EEPROM sector (64 rows). This function blocks until the erase
+ 259:Generated_Source\PSoC5/EEPROM.c **** *  operation is complete. Using this API helps to erase the EEPROM sector at
+ 260:Generated_Source\PSoC5/EEPROM.c **** *  a time. This is faster than using individual writes but affects a cycle
+ 261:Generated_Source\PSoC5/EEPROM.c **** *  recourse of the whole EEPROM row.
+ 262:Generated_Source\PSoC5/EEPROM.c **** *
+ 263:Generated_Source\PSoC5/EEPROM.c **** * Parameters:
+ 264:Generated_Source\PSoC5/EEPROM.c **** *  sectorNumber:  The sector number to erase.
+ 265:Generated_Source\PSoC5/EEPROM.c **** *
+ 266:Generated_Source\PSoC5/EEPROM.c **** * Return:
+ 267:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_SUCCESS, if the operation was successful.
+ 268:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_BAD_PARAM, if the parameter sectorNumber is out of range.
+ 269:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_LOCKED, if the SPC is being used.
+ 270:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_UNKNOWN, if there was an SPC error.
+ 271:Generated_Source\PSoC5/EEPROM.c **** *
+ 272:Generated_Source\PSoC5/EEPROM.c **** *******************************************************************************/
+ 273:Generated_Source\PSoC5/EEPROM.c **** cystatus EEPROM_EraseSector(uint8 sectorNumber) 
+ 274:Generated_Source\PSoC5/EEPROM.c **** {
+ 344              		.loc 1 274 0
+ 345              		.cfi_startproc
+ 346              		@ args = 0, pretend = 0, frame = 0
+ 347              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 12
+
+
+ 348              	.LVL37:
+ 349 0000 10B5     		push	{r4, lr}
+ 350              		.cfi_def_cfa_offset 8
+ 351              		.cfi_offset 4, -8
+ 352              		.cfi_offset 14, -4
+ 353 0002 0446     		mov	r4, r0
+ 275:Generated_Source\PSoC5/EEPROM.c ****     cystatus status;
+ 276:Generated_Source\PSoC5/EEPROM.c ****     
+ 277:Generated_Source\PSoC5/EEPROM.c ****     CySpcStart();
+ 354              		.loc 1 277 0
+ 355 0004 FFF7FEFF 		bl	CySpcStart
+ 356              	.LVL38:
+ 278:Generated_Source\PSoC5/EEPROM.c **** 
+ 279:Generated_Source\PSoC5/EEPROM.c ****     if(sectorNumber < (uint8) EEPROM_SECTORS_NUMBER)
+ 357              		.loc 1 279 0
+ 358 0008 012C     		cmp	r4, #1
+ 359 000a 23D8     		bhi	.L33
+ 280:Generated_Source\PSoC5/EEPROM.c ****     {
+ 281:Generated_Source\PSoC5/EEPROM.c ****         /* See if we can get SPC. */
+ 282:Generated_Source\PSoC5/EEPROM.c ****         if(CySpcLock() == CYRET_SUCCESS)
+ 360              		.loc 1 282 0
+ 361 000c FFF7FEFF 		bl	CySpcLock
+ 362              	.LVL39:
+ 363 0010 10BB     		cbnz	r0, .L34
+ 283:Generated_Source\PSoC5/EEPROM.c ****         {
+ 284:Generated_Source\PSoC5/EEPROM.c ****             if(CySpcEraseSector(CY_SPC_FIRST_EE_ARRAYID, sectorNumber) == CYRET_STARTED)
+ 364              		.loc 1 284 0
+ 365 0012 2146     		mov	r1, r4
+ 366 0014 4020     		movs	r0, #64
+ 367 0016 FFF7FEFF 		bl	CySpcEraseSector
+ 368              	.LVL40:
+ 369 001a 0728     		cmp	r0, #7
+ 370 001c 10D1     		bne	.L35
+ 371              	.L32:
+ 285:Generated_Source\PSoC5/EEPROM.c ****             {
+ 286:Generated_Source\PSoC5/EEPROM.c ****                 /* Plan for failure */
+ 287:Generated_Source\PSoC5/EEPROM.c ****                 status = CYRET_UNKNOWN;
+ 288:Generated_Source\PSoC5/EEPROM.c **** 
+ 289:Generated_Source\PSoC5/EEPROM.c ****                 while(CY_SPC_BUSY)
+ 372              		.loc 1 289 0 discriminator 1
+ 373 001e 104B     		ldr	r3, .L39
+ 374 0020 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 375 0022 13F0020F 		tst	r3, #2
+ 376 0026 FAD0     		beq	.L32
+ 290:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 291:Generated_Source\PSoC5/EEPROM.c ****                     /* Wait until SPC becomes idle */
+ 292:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 293:Generated_Source\PSoC5/EEPROM.c **** 
+ 294:Generated_Source\PSoC5/EEPROM.c ****                 /* SPC is idle now */
+ 295:Generated_Source\PSoC5/EEPROM.c ****                 if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 377              		.loc 1 295 0
+ 378 0028 0D4B     		ldr	r3, .L39
+ 379 002a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 380 002c 13F0020F 		tst	r3, #2
+ 381 0030 09D0     		beq	.L36
+ 382              		.loc 1 295 0 is_stmt 0 discriminator 1
+ 383 0032 0B4B     		ldr	r3, .L39
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 13
+
+
+ 384 0034 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 385 0036 9B08     		lsrs	r3, r3, #2
+ 386 0038 08D0     		beq	.L37
+ 287:Generated_Source\PSoC5/EEPROM.c **** 
+ 387              		.loc 1 287 0 is_stmt 1
+ 388 003a 4FF0FF34 		mov	r4, #-1
+ 389 003e 06E0     		b	.L31
+ 390              	.L35:
+ 296:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 297:Generated_Source\PSoC5/EEPROM.c ****                     status = CYRET_SUCCESS;
+ 298:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 299:Generated_Source\PSoC5/EEPROM.c ****             }
+ 300:Generated_Source\PSoC5/EEPROM.c ****             else
+ 301:Generated_Source\PSoC5/EEPROM.c ****             {
+ 302:Generated_Source\PSoC5/EEPROM.c ****                 status = CYRET_UNKNOWN;
+ 391              		.loc 1 302 0
+ 392 0040 4FF0FF34 		mov	r4, #-1
+ 393 0044 03E0     		b	.L31
+ 394              	.L36:
+ 287:Generated_Source\PSoC5/EEPROM.c **** 
+ 395              		.loc 1 287 0
+ 396 0046 4FF0FF34 		mov	r4, #-1
+ 397 004a 00E0     		b	.L31
+ 398              	.L37:
+ 297:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 399              		.loc 1 297 0
+ 400 004c 0024     		movs	r4, #0
+ 401              	.L31:
+ 402              	.LVL41:
+ 303:Generated_Source\PSoC5/EEPROM.c ****             }
+ 304:Generated_Source\PSoC5/EEPROM.c **** 
+ 305:Generated_Source\PSoC5/EEPROM.c ****             /* Unlock SPC so that someone else can use it. */
+ 306:Generated_Source\PSoC5/EEPROM.c ****             CySpcUnlock();
+ 403              		.loc 1 306 0
+ 404 004e FFF7FEFF 		bl	CySpcUnlock
+ 405              	.LVL42:
+ 406 0052 02E0     		b	.L30
+ 407              	.LVL43:
+ 408              	.L33:
+ 307:Generated_Source\PSoC5/EEPROM.c ****         }
+ 308:Generated_Source\PSoC5/EEPROM.c ****         else
+ 309:Generated_Source\PSoC5/EEPROM.c ****         {
+ 310:Generated_Source\PSoC5/EEPROM.c ****             status = CYRET_LOCKED;
+ 311:Generated_Source\PSoC5/EEPROM.c ****         }
+ 312:Generated_Source\PSoC5/EEPROM.c ****     }
+ 313:Generated_Source\PSoC5/EEPROM.c ****     else
+ 314:Generated_Source\PSoC5/EEPROM.c ****     {
+ 315:Generated_Source\PSoC5/EEPROM.c ****         status = CYRET_BAD_PARAM;
+ 409              		.loc 1 315 0
+ 410 0054 0124     		movs	r4, #1
+ 411 0056 00E0     		b	.L30
+ 412              	.L34:
+ 310:Generated_Source\PSoC5/EEPROM.c ****         }
+ 413              		.loc 1 310 0
+ 414 0058 0424     		movs	r4, #4
+ 415              	.L30:
+ 416              	.LVL44:
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 14
+
+
+ 316:Generated_Source\PSoC5/EEPROM.c ****     }
+ 317:Generated_Source\PSoC5/EEPROM.c **** 
+ 318:Generated_Source\PSoC5/EEPROM.c ****     return(status);
+ 319:Generated_Source\PSoC5/EEPROM.c **** }
+ 417              		.loc 1 319 0
+ 418 005a 2046     		mov	r0, r4
+ 419 005c 10BD     		pop	{r4, pc}
+ 420              	.LVL45:
+ 421              	.L40:
+ 422 005e 00BF     		.align	2
+ 423              	.L39:
+ 424 0060 22470040 		.word	1073760034
+ 425              		.cfi_endproc
+ 426              	.LFE6:
+ 427              		.size	EEPROM_EraseSector, .-EEPROM_EraseSector
+ 428              		.section	.text.EEPROM_Write,"ax",%progbits
+ 429              		.align	2
+ 430              		.global	EEPROM_Write
+ 431              		.thumb
+ 432              		.thumb_func
+ 433              		.type	EEPROM_Write, %function
+ 434              	EEPROM_Write:
+ 435              	.LFB7:
+ 320:Generated_Source\PSoC5/EEPROM.c **** 
+ 321:Generated_Source\PSoC5/EEPROM.c **** 
+ 322:Generated_Source\PSoC5/EEPROM.c **** /*******************************************************************************
+ 323:Generated_Source\PSoC5/EEPROM.c **** * Function Name: EEPROM_Write
+ 324:Generated_Source\PSoC5/EEPROM.c **** ********************************************************************************
+ 325:Generated_Source\PSoC5/EEPROM.c **** *
+ 326:Generated_Source\PSoC5/EEPROM.c **** * Summary:
+ 327:Generated_Source\PSoC5/EEPROM.c **** *  Writes a row (16 bytes) of data to the EEPROM. This function blocks until
+ 328:Generated_Source\PSoC5/EEPROM.c **** *  the write operation is complete. Compared to functions that write one byte,
+ 329:Generated_Source\PSoC5/EEPROM.c **** *  this function allows writing a whole row (16 bytes) at a time. For
+ 330:Generated_Source\PSoC5/EEPROM.c **** *  a reliable write procedure to occur you should call the
+ 331:Generated_Source\PSoC5/EEPROM.c **** *  EEPROM_UpdateTemperature() function if the temperature of the
+ 332:Generated_Source\PSoC5/EEPROM.c **** *  silicon has changed for more than 10C since component was started.
+ 333:Generated_Source\PSoC5/EEPROM.c **** *
+ 334:Generated_Source\PSoC5/EEPROM.c **** * Parameters:
+ 335:Generated_Source\PSoC5/EEPROM.c **** *  rowData:    The address of the data to write to the EEPROM.
+ 336:Generated_Source\PSoC5/EEPROM.c **** *  rowNumber:  The row number to write.
+ 337:Generated_Source\PSoC5/EEPROM.c **** *
+ 338:Generated_Source\PSoC5/EEPROM.c **** * Return:
+ 339:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_SUCCESS, if the operation was successful.
+ 340:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_BAD_PARAM, if the parameter rowNumber is out of range.
+ 341:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_LOCKED, if the SPC is being used.
+ 342:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_UNKNOWN, if there was an SPC error.
+ 343:Generated_Source\PSoC5/EEPROM.c **** *
+ 344:Generated_Source\PSoC5/EEPROM.c **** *******************************************************************************/
+ 345:Generated_Source\PSoC5/EEPROM.c **** cystatus EEPROM_Write(const uint8 * rowData, uint8 rowNumber) 
+ 346:Generated_Source\PSoC5/EEPROM.c **** {
+ 436              		.loc 1 346 0
+ 437              		.cfi_startproc
+ 438              		@ args = 0, pretend = 0, frame = 0
+ 439              		@ frame_needed = 0, uses_anonymous_args = 0
+ 440              	.LVL46:
+ 441 0000 38B5     		push	{r3, r4, r5, lr}
+ 442              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 15
+
+
+ 443              		.cfi_offset 3, -16
+ 444              		.cfi_offset 4, -12
+ 445              		.cfi_offset 5, -8
+ 446              		.cfi_offset 14, -4
+ 447 0002 0446     		mov	r4, r0
+ 448 0004 0D46     		mov	r5, r1
+ 347:Generated_Source\PSoC5/EEPROM.c ****     cystatus status;
+ 348:Generated_Source\PSoC5/EEPROM.c ****     
+ 349:Generated_Source\PSoC5/EEPROM.c ****     CySpcStart();
+ 449              		.loc 1 349 0
+ 450 0006 FFF7FEFF 		bl	CySpcStart
+ 451              	.LVL47:
+ 350:Generated_Source\PSoC5/EEPROM.c **** 
+ 351:Generated_Source\PSoC5/EEPROM.c ****     if(rowNumber < (uint8) CY_EEPROM_NUMBER_ROWS)
+ 452              		.loc 1 351 0
+ 453 000a 15F0800F 		tst	r5, #128
+ 454 000e 48D1     		bne	.L47
+ 352:Generated_Source\PSoC5/EEPROM.c ****     {
+ 353:Generated_Source\PSoC5/EEPROM.c ****         /* See if we can get SPC. */
+ 354:Generated_Source\PSoC5/EEPROM.c ****         if(CySpcLock() == CYRET_SUCCESS)
+ 455              		.loc 1 354 0
+ 456 0010 FFF7FEFF 		bl	CySpcLock
+ 457              	.LVL48:
+ 458 0014 0028     		cmp	r0, #0
+ 459 0016 46D1     		bne	.L48
+ 460              	.LVL49:
+ 355:Generated_Source\PSoC5/EEPROM.c ****         {
+ 356:Generated_Source\PSoC5/EEPROM.c ****             /* Plan for failure */
+ 357:Generated_Source\PSoC5/EEPROM.c ****             status = CYRET_UNKNOWN;
+ 358:Generated_Source\PSoC5/EEPROM.c **** 
+ 359:Generated_Source\PSoC5/EEPROM.c ****             /* Command to load a row of data */
+ 360:Generated_Source\PSoC5/EEPROM.c ****             if(CySpcLoadRow(CY_SPC_FIRST_EE_ARRAYID, rowData, CYDEV_EEPROM_ROW_SIZE) == CYRET_START
+ 461              		.loc 1 360 0
+ 462 0018 1022     		movs	r2, #16
+ 463 001a 2146     		mov	r1, r4
+ 464 001c 4020     		movs	r0, #64
+ 465 001e FFF7FEFF 		bl	CySpcLoadRow
+ 466              	.LVL50:
+ 467 0022 0728     		cmp	r0, #7
+ 468 0024 2FD1     		bne	.L49
+ 469              	.L44:
+ 361:Generated_Source\PSoC5/EEPROM.c ****             {
+ 362:Generated_Source\PSoC5/EEPROM.c ****                 while(CY_SPC_BUSY)
+ 470              		.loc 1 362 0 discriminator 1
+ 471 0026 214B     		ldr	r3, .L56
+ 472 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 473 002a 13F0020F 		tst	r3, #2
+ 474 002e FAD0     		beq	.L44
+ 363:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 364:Generated_Source\PSoC5/EEPROM.c ****                     /* Wait until SPC becomes idle */
+ 365:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 366:Generated_Source\PSoC5/EEPROM.c **** 
+ 367:Generated_Source\PSoC5/EEPROM.c ****                 /* SPC is idle now */
+ 368:Generated_Source\PSoC5/EEPROM.c ****                 if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 475              		.loc 1 368 0
+ 476 0030 1E4B     		ldr	r3, .L56
+ 477 0032 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 16
+
+
+ 478 0034 13F0020F 		tst	r3, #2
+ 479 0038 06D0     		beq	.L50
+ 480              		.loc 1 368 0 is_stmt 0 discriminator 1
+ 481 003a 1C4B     		ldr	r3, .L56
+ 482 003c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 483 003e 9B08     		lsrs	r3, r3, #2
+ 484 0040 05D0     		beq	.L51
+ 357:Generated_Source\PSoC5/EEPROM.c **** 
+ 485              		.loc 1 357 0 is_stmt 1
+ 486 0042 4FF0FF34 		mov	r4, #-1
+ 487              	.LVL51:
+ 488 0046 03E0     		b	.L45
+ 489              	.LVL52:
+ 490              	.L50:
+ 491 0048 4FF0FF34 		mov	r4, #-1
+ 492              	.LVL53:
+ 493 004c 00E0     		b	.L45
+ 494              	.LVL54:
+ 495              	.L51:
+ 369:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 370:Generated_Source\PSoC5/EEPROM.c ****                     status = CYRET_SUCCESS;
+ 496              		.loc 1 370 0
+ 497 004e 0024     		movs	r4, #0
+ 498              	.LVL55:
+ 499              	.L45:
+ 371:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 372:Generated_Source\PSoC5/EEPROM.c **** 
+ 373:Generated_Source\PSoC5/EEPROM.c ****                 /* Command to erase and program the row. */
+ 374:Generated_Source\PSoC5/EEPROM.c ****                 if(status == CYRET_SUCCESS)
+ 500              		.loc 1 374 0
+ 501 0050 E4B9     		cbnz	r4, .L52
+ 375:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 376:Generated_Source\PSoC5/EEPROM.c ****                     if(CySpcWriteRow(CY_SPC_FIRST_EE_ARRAYID, (uint16)rowNumber, dieTemperature[0u]
+ 502              		.loc 1 376 0
+ 503 0052 174A     		ldr	r2, .L56+4
+ 504 0054 5378     		ldrb	r3, [r2, #1]	@ zero_extendqisi2
+ 505 0056 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 506 0058 2946     		mov	r1, r5
+ 507 005a 4020     		movs	r0, #64
+ 508 005c FFF7FEFF 		bl	CySpcWriteRow
+ 509              	.LVL56:
+ 510 0060 0728     		cmp	r0, #7
+ 511 0062 16D1     		bne	.L53
+ 512              	.L46:
+ 377:Generated_Source\PSoC5/EEPROM.c ****                     dieTemperature[1u]) == CYRET_STARTED)
+ 378:Generated_Source\PSoC5/EEPROM.c ****                     {
+ 379:Generated_Source\PSoC5/EEPROM.c ****                         /* Plan for failure */
+ 380:Generated_Source\PSoC5/EEPROM.c ****                         status = CYRET_UNKNOWN;
+ 381:Generated_Source\PSoC5/EEPROM.c **** 
+ 382:Generated_Source\PSoC5/EEPROM.c ****                         while(CY_SPC_BUSY)
+ 513              		.loc 1 382 0 discriminator 1
+ 514 0064 114B     		ldr	r3, .L56
+ 515 0066 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 516 0068 13F0020F 		tst	r3, #2
+ 517 006c FAD0     		beq	.L46
+ 383:Generated_Source\PSoC5/EEPROM.c ****                         {
+ 384:Generated_Source\PSoC5/EEPROM.c ****                             /* Wait until SPC becomes idle */
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 17
+
+
+ 385:Generated_Source\PSoC5/EEPROM.c ****                         }
+ 386:Generated_Source\PSoC5/EEPROM.c **** 
+ 387:Generated_Source\PSoC5/EEPROM.c ****                         /* SPC is idle now */
+ 388:Generated_Source\PSoC5/EEPROM.c ****                         if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 518              		.loc 1 388 0
+ 519 006e 0F4B     		ldr	r3, .L56
+ 520 0070 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 521 0072 13F0020F 		tst	r3, #2
+ 522 0076 0FD0     		beq	.L54
+ 523              		.loc 1 388 0 is_stmt 0 discriminator 1
+ 524 0078 0C4B     		ldr	r3, .L56
+ 525 007a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 526 007c 9B08     		lsrs	r3, r3, #2
+ 527 007e 0DD0     		beq	.L43
+ 380:Generated_Source\PSoC5/EEPROM.c **** 
+ 528              		.loc 1 380 0 is_stmt 1
+ 529 0080 4FF0FF34 		mov	r4, #-1
+ 530              	.LVL57:
+ 531 0084 0AE0     		b	.L43
+ 532              	.LVL58:
+ 533              	.L49:
+ 357:Generated_Source\PSoC5/EEPROM.c **** 
+ 534              		.loc 1 357 0
+ 535 0086 4FF0FF34 		mov	r4, #-1
+ 536              	.LVL59:
+ 537 008a 07E0     		b	.L43
+ 538              	.LVL60:
+ 539              	.L52:
+ 389:Generated_Source\PSoC5/EEPROM.c ****                         {
+ 390:Generated_Source\PSoC5/EEPROM.c ****                             status = CYRET_SUCCESS;
+ 391:Generated_Source\PSoC5/EEPROM.c ****                         }
+ 392:Generated_Source\PSoC5/EEPROM.c ****                     }
+ 393:Generated_Source\PSoC5/EEPROM.c ****                     else
+ 394:Generated_Source\PSoC5/EEPROM.c ****                     {
+ 395:Generated_Source\PSoC5/EEPROM.c ****                         status = CYRET_UNKNOWN;
+ 396:Generated_Source\PSoC5/EEPROM.c ****                     }
+ 397:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 398:Generated_Source\PSoC5/EEPROM.c ****                 else
+ 399:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 400:Generated_Source\PSoC5/EEPROM.c ****                     status = CYRET_UNKNOWN;
+ 540              		.loc 1 400 0
+ 541 008c 4FF0FF34 		mov	r4, #-1
+ 542              	.LVL61:
+ 543 0090 04E0     		b	.L43
+ 544              	.LVL62:
+ 545              	.L53:
+ 395:Generated_Source\PSoC5/EEPROM.c ****                     }
+ 546              		.loc 1 395 0
+ 547 0092 4FF0FF34 		mov	r4, #-1
+ 548              	.LVL63:
+ 549 0096 01E0     		b	.L43
+ 550              	.LVL64:
+ 551              	.L54:
+ 380:Generated_Source\PSoC5/EEPROM.c **** 
+ 552              		.loc 1 380 0
+ 553 0098 4FF0FF34 		mov	r4, #-1
+ 554              	.LVL65:
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 18
+
+
+ 555              	.L43:
+ 401:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 402:Generated_Source\PSoC5/EEPROM.c ****             }
+ 403:Generated_Source\PSoC5/EEPROM.c **** 
+ 404:Generated_Source\PSoC5/EEPROM.c ****             /* Unlock SPC so that someone else can use it. */
+ 405:Generated_Source\PSoC5/EEPROM.c ****             CySpcUnlock();
+ 556              		.loc 1 405 0
+ 557 009c FFF7FEFF 		bl	CySpcUnlock
+ 558              	.LVL66:
+ 559 00a0 02E0     		b	.L42
+ 560              	.LVL67:
+ 561              	.L47:
+ 406:Generated_Source\PSoC5/EEPROM.c ****         }
+ 407:Generated_Source\PSoC5/EEPROM.c ****         else
+ 408:Generated_Source\PSoC5/EEPROM.c ****         {
+ 409:Generated_Source\PSoC5/EEPROM.c ****             status = CYRET_LOCKED;
+ 410:Generated_Source\PSoC5/EEPROM.c ****         }
+ 411:Generated_Source\PSoC5/EEPROM.c ****     }
+ 412:Generated_Source\PSoC5/EEPROM.c ****     else
+ 413:Generated_Source\PSoC5/EEPROM.c ****     {
+ 414:Generated_Source\PSoC5/EEPROM.c ****         status = CYRET_BAD_PARAM;
+ 562              		.loc 1 414 0
+ 563 00a2 0124     		movs	r4, #1
+ 564              	.LVL68:
+ 565 00a4 00E0     		b	.L42
+ 566              	.LVL69:
+ 567              	.L48:
+ 409:Generated_Source\PSoC5/EEPROM.c ****         }
+ 568              		.loc 1 409 0
+ 569 00a6 0424     		movs	r4, #4
+ 570              	.LVL70:
+ 571              	.L42:
+ 415:Generated_Source\PSoC5/EEPROM.c ****     }
+ 416:Generated_Source\PSoC5/EEPROM.c **** 
+ 417:Generated_Source\PSoC5/EEPROM.c ****     return(status);
+ 418:Generated_Source\PSoC5/EEPROM.c **** }
+ 572              		.loc 1 418 0
+ 573 00a8 2046     		mov	r0, r4
+ 574 00aa 38BD     		pop	{r3, r4, r5, pc}
+ 575              	.LVL71:
+ 576              	.L57:
+ 577              		.align	2
+ 578              	.L56:
+ 579 00ac 22470040 		.word	1073760034
+ 580 00b0 00000000 		.word	dieTemperature
+ 581              		.cfi_endproc
+ 582              	.LFE7:
+ 583              		.size	EEPROM_Write, .-EEPROM_Write
+ 584              		.section	.text.EEPROM_StartWrite,"ax",%progbits
+ 585              		.align	2
+ 586              		.global	EEPROM_StartWrite
+ 587              		.thumb
+ 588              		.thumb_func
+ 589              		.type	EEPROM_StartWrite, %function
+ 590              	EEPROM_StartWrite:
+ 591              	.LFB8:
+ 419:Generated_Source\PSoC5/EEPROM.c **** 
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 19
+
+
+ 420:Generated_Source\PSoC5/EEPROM.c **** 
+ 421:Generated_Source\PSoC5/EEPROM.c **** /*******************************************************************************
+ 422:Generated_Source\PSoC5/EEPROM.c **** * Function Name: EEPROM_StartWrite
+ 423:Generated_Source\PSoC5/EEPROM.c **** ********************************************************************************
+ 424:Generated_Source\PSoC5/EEPROM.c **** *
+ 425:Generated_Source\PSoC5/EEPROM.c **** * Summary:
+ 426:Generated_Source\PSoC5/EEPROM.c **** *  Starts a write of a row (16 bytes) of data to the EEPROM.
+ 427:Generated_Source\PSoC5/EEPROM.c **** *  This function does not block. The function returns once the SPC has begun
+ 428:Generated_Source\PSoC5/EEPROM.c **** *  writing the data. This function must be used in combination with
+ 429:Generated_Source\PSoC5/EEPROM.c **** *  EEPROM_Query(). EEPROM_Query() must be called
+ 430:Generated_Source\PSoC5/EEPROM.c **** *  until it returns a status other than CYRET_STARTED. That indicates that the
+ 431:Generated_Source\PSoC5/EEPROM.c **** *  write has completed. Until EEPROM_Query() detects that
+ 432:Generated_Source\PSoC5/EEPROM.c **** *  the write is complete, the SPC is marked as locked to prevent another
+ 433:Generated_Source\PSoC5/EEPROM.c **** *  SPC operation from being performed. For a reliable write procedure to occur
+ 434:Generated_Source\PSoC5/EEPROM.c **** *  you should call EEPROM_UpdateTemperature() API if the temperature
+ 435:Generated_Source\PSoC5/EEPROM.c **** *  of the silicon has changed for more than 10C since component was started.
+ 436:Generated_Source\PSoC5/EEPROM.c **** *
+ 437:Generated_Source\PSoC5/EEPROM.c **** * Parameters:
+ 438:Generated_Source\PSoC5/EEPROM.c **** *  rowData:    The address of the data to write to the EEPROM.
+ 439:Generated_Source\PSoC5/EEPROM.c **** *  rowNumber:  The row number to write.
+ 440:Generated_Source\PSoC5/EEPROM.c **** *
+ 441:Generated_Source\PSoC5/EEPROM.c **** * Return:
+ 442:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_STARTED, if the SPC command to write was successfully started.
+ 443:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_BAD_PARAM, if the parameter rowNumber is out of range.
+ 444:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_LOCKED, if the SPC is being used.
+ 445:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_UNKNOWN, if there was an SPC error.
+ 446:Generated_Source\PSoC5/EEPROM.c **** *
+ 447:Generated_Source\PSoC5/EEPROM.c **** * Side effects:
+ 448:Generated_Source\PSoC5/EEPROM.c **** *  After calling this API, the device should not be powered down, reset or switched
+ 449:Generated_Source\PSoC5/EEPROM.c **** *  to low power modes until EEPROM operation is complete. 
+ 450:Generated_Source\PSoC5/EEPROM.c **** *  Ignoring this recommendation may lead to data corruption or silicon
+ 451:Generated_Source\PSoC5/EEPROM.c **** *  unexpected behavior.
+ 452:Generated_Source\PSoC5/EEPROM.c **** *
+ 453:Generated_Source\PSoC5/EEPROM.c **** *******************************************************************************/
+ 454:Generated_Source\PSoC5/EEPROM.c **** cystatus EEPROM_StartWrite(const uint8 * rowData, uint8 rowNumber) \
+ 455:Generated_Source\PSoC5/EEPROM.c **** 
+ 456:Generated_Source\PSoC5/EEPROM.c **** {
+ 592              		.loc 1 456 0
+ 593              		.cfi_startproc
+ 594              		@ args = 0, pretend = 0, frame = 0
+ 595              		@ frame_needed = 0, uses_anonymous_args = 0
+ 596              	.LVL72:
+ 597 0000 38B5     		push	{r3, r4, r5, lr}
+ 598              		.cfi_def_cfa_offset 16
+ 599              		.cfi_offset 3, -16
+ 600              		.cfi_offset 4, -12
+ 601              		.cfi_offset 5, -8
+ 602              		.cfi_offset 14, -4
+ 603 0002 0546     		mov	r5, r0
+ 604 0004 0C46     		mov	r4, r1
+ 457:Generated_Source\PSoC5/EEPROM.c ****     cystatus status;
+ 458:Generated_Source\PSoC5/EEPROM.c ****     
+ 459:Generated_Source\PSoC5/EEPROM.c ****     CySpcStart();
+ 605              		.loc 1 459 0
+ 606 0006 FFF7FEFF 		bl	CySpcStart
+ 607              	.LVL73:
+ 460:Generated_Source\PSoC5/EEPROM.c **** 
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 20
+
+
+ 461:Generated_Source\PSoC5/EEPROM.c ****     if(rowNumber < (uint8) CY_EEPROM_NUMBER_ROWS)
+ 608              		.loc 1 461 0
+ 609 000a 14F0800F 		tst	r4, #128
+ 610 000e 29D1     		bne	.L62
+ 462:Generated_Source\PSoC5/EEPROM.c ****     {
+ 463:Generated_Source\PSoC5/EEPROM.c ****         /* See if we can get SPC. */
+ 464:Generated_Source\PSoC5/EEPROM.c ****         if(CySpcLock() == CYRET_SUCCESS)
+ 611              		.loc 1 464 0
+ 612 0010 FFF7FEFF 		bl	CySpcLock
+ 613              	.LVL74:
+ 614 0014 40BB     		cbnz	r0, .L63
+ 615              	.LVL75:
+ 465:Generated_Source\PSoC5/EEPROM.c ****         {
+ 466:Generated_Source\PSoC5/EEPROM.c ****             /* Plan for failure */
+ 467:Generated_Source\PSoC5/EEPROM.c ****             status = CYRET_UNKNOWN;
+ 468:Generated_Source\PSoC5/EEPROM.c **** 
+ 469:Generated_Source\PSoC5/EEPROM.c ****             /* Command to load a row of data */
+ 470:Generated_Source\PSoC5/EEPROM.c ****             if(CySpcLoadRow(CY_SPC_FIRST_EE_ARRAYID, rowData, CYDEV_EEPROM_ROW_SIZE) == CYRET_START
+ 616              		.loc 1 470 0
+ 617 0016 1022     		movs	r2, #16
+ 618 0018 2946     		mov	r1, r5
+ 619 001a 4020     		movs	r0, #64
+ 620 001c FFF7FEFF 		bl	CySpcLoadRow
+ 621              	.LVL76:
+ 622 0020 0728     		cmp	r0, #7
+ 623 0022 23D1     		bne	.L64
+ 624              	.L60:
+ 471:Generated_Source\PSoC5/EEPROM.c ****             {
+ 472:Generated_Source\PSoC5/EEPROM.c ****                 while(CY_SPC_BUSY)
+ 625              		.loc 1 472 0 discriminator 1
+ 626 0024 164B     		ldr	r3, .L70
+ 627 0026 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 628 0028 13F0020F 		tst	r3, #2
+ 629 002c FAD0     		beq	.L60
+ 473:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 474:Generated_Source\PSoC5/EEPROM.c ****                     /* Wait until SPC becomes idle */
+ 475:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 476:Generated_Source\PSoC5/EEPROM.c **** 
+ 477:Generated_Source\PSoC5/EEPROM.c ****                 /* SPC is idle now */
+ 478:Generated_Source\PSoC5/EEPROM.c ****                 if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 630              		.loc 1 478 0
+ 631 002e 144B     		ldr	r3, .L70
+ 632 0030 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 633 0032 13F0020F 		tst	r3, #2
+ 634 0036 06D0     		beq	.L65
+ 635              		.loc 1 478 0 is_stmt 0 discriminator 1
+ 636 0038 114B     		ldr	r3, .L70
+ 637 003a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 638 003c 9B08     		lsrs	r3, r3, #2
+ 639 003e 05D0     		beq	.L66
+ 467:Generated_Source\PSoC5/EEPROM.c **** 
+ 640              		.loc 1 467 0 is_stmt 1
+ 641 0040 4FF0FF33 		mov	r3, #-1
+ 642 0044 03E0     		b	.L61
+ 643              	.L65:
+ 644 0046 4FF0FF33 		mov	r3, #-1
+ 645 004a 00E0     		b	.L61
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 21
+
+
+ 646              	.L66:
+ 479:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 480:Generated_Source\PSoC5/EEPROM.c ****                     status = CYRET_SUCCESS;
+ 647              		.loc 1 480 0
+ 648 004c 0023     		movs	r3, #0
+ 649              	.L61:
+ 650              	.LVL77:
+ 481:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 482:Generated_Source\PSoC5/EEPROM.c **** 
+ 483:Generated_Source\PSoC5/EEPROM.c ****                 /* Command to erase and program the row. */
+ 484:Generated_Source\PSoC5/EEPROM.c ****                 if(status == CYRET_SUCCESS)
+ 651              		.loc 1 484 0
+ 652 004e 83B9     		cbnz	r3, .L67
+ 485:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 486:Generated_Source\PSoC5/EEPROM.c ****                     if(CySpcWriteRow(CY_SPC_FIRST_EE_ARRAYID, (uint16)rowNumber, dieTemperature[0u]
+ 653              		.loc 1 486 0
+ 654 0050 0C4A     		ldr	r2, .L70+4
+ 655 0052 5378     		ldrb	r3, [r2, #1]	@ zero_extendqisi2
+ 656              	.LVL78:
+ 657 0054 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 658 0056 2146     		mov	r1, r4
+ 659 0058 4020     		movs	r0, #64
+ 660 005a FFF7FEFF 		bl	CySpcWriteRow
+ 661              	.LVL79:
+ 662 005e 0728     		cmp	r0, #7
+ 663 0060 0AD1     		bne	.L68
+ 664 0062 38BD     		pop	{r3, r4, r5, pc}
+ 665              	.LVL80:
+ 666              	.L62:
+ 487:Generated_Source\PSoC5/EEPROM.c ****                     dieTemperature[1u]) == CYRET_STARTED)
+ 488:Generated_Source\PSoC5/EEPROM.c ****                     {
+ 489:Generated_Source\PSoC5/EEPROM.c ****                         status = CYRET_STARTED;
+ 490:Generated_Source\PSoC5/EEPROM.c ****                     }
+ 491:Generated_Source\PSoC5/EEPROM.c ****                     else
+ 492:Generated_Source\PSoC5/EEPROM.c ****                     {
+ 493:Generated_Source\PSoC5/EEPROM.c ****                         status = CYRET_UNKNOWN;
+ 494:Generated_Source\PSoC5/EEPROM.c ****                     }
+ 495:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 496:Generated_Source\PSoC5/EEPROM.c ****                 else
+ 497:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 498:Generated_Source\PSoC5/EEPROM.c ****                     status = CYRET_UNKNOWN;
+ 499:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 500:Generated_Source\PSoC5/EEPROM.c ****             }
+ 501:Generated_Source\PSoC5/EEPROM.c ****         }
+ 502:Generated_Source\PSoC5/EEPROM.c ****         else
+ 503:Generated_Source\PSoC5/EEPROM.c ****         {
+ 504:Generated_Source\PSoC5/EEPROM.c ****             status = CYRET_LOCKED;
+ 505:Generated_Source\PSoC5/EEPROM.c ****         }
+ 506:Generated_Source\PSoC5/EEPROM.c ****     }
+ 507:Generated_Source\PSoC5/EEPROM.c ****     else
+ 508:Generated_Source\PSoC5/EEPROM.c ****     {
+ 509:Generated_Source\PSoC5/EEPROM.c ****         status = CYRET_BAD_PARAM;
+ 667              		.loc 1 509 0
+ 668 0064 0120     		movs	r0, #1
+ 669 0066 38BD     		pop	{r3, r4, r5, pc}
+ 670              	.LVL81:
+ 671              	.L63:
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 22
+
+
+ 504:Generated_Source\PSoC5/EEPROM.c ****         }
+ 672              		.loc 1 504 0
+ 673 0068 0420     		movs	r0, #4
+ 674 006a 38BD     		pop	{r3, r4, r5, pc}
+ 675              	.LVL82:
+ 676              	.L64:
+ 467:Generated_Source\PSoC5/EEPROM.c **** 
+ 677              		.loc 1 467 0
+ 678 006c 4FF0FF30 		mov	r0, #-1
+ 679 0070 38BD     		pop	{r3, r4, r5, pc}
+ 680              	.LVL83:
+ 681              	.L67:
+ 498:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 682              		.loc 1 498 0
+ 683 0072 4FF0FF30 		mov	r0, #-1
+ 684 0076 38BD     		pop	{r3, r4, r5, pc}
+ 685              	.LVL84:
+ 686              	.L68:
+ 493:Generated_Source\PSoC5/EEPROM.c ****                     }
+ 687              		.loc 1 493 0
+ 688 0078 4FF0FF30 		mov	r0, #-1
+ 689              	.LVL85:
+ 510:Generated_Source\PSoC5/EEPROM.c ****     }
+ 511:Generated_Source\PSoC5/EEPROM.c **** 
+ 512:Generated_Source\PSoC5/EEPROM.c ****     return(status);
+ 513:Generated_Source\PSoC5/EEPROM.c **** }
+ 690              		.loc 1 513 0
+ 691 007c 38BD     		pop	{r3, r4, r5, pc}
+ 692              	.LVL86:
+ 693              	.L71:
+ 694 007e 00BF     		.align	2
+ 695              	.L70:
+ 696 0080 22470040 		.word	1073760034
+ 697 0084 00000000 		.word	dieTemperature
+ 698              		.cfi_endproc
+ 699              	.LFE8:
+ 700              		.size	EEPROM_StartWrite, .-EEPROM_StartWrite
+ 701              		.section	.text.EEPROM_StartErase,"ax",%progbits
+ 702              		.align	2
+ 703              		.global	EEPROM_StartErase
+ 704              		.thumb
+ 705              		.thumb_func
+ 706              		.type	EEPROM_StartErase, %function
+ 707              	EEPROM_StartErase:
+ 708              	.LFB9:
+ 514:Generated_Source\PSoC5/EEPROM.c **** 
+ 515:Generated_Source\PSoC5/EEPROM.c **** 
+ 516:Generated_Source\PSoC5/EEPROM.c **** /*******************************************************************************
+ 517:Generated_Source\PSoC5/EEPROM.c **** * Function Name: EEPROM_StartErase
+ 518:Generated_Source\PSoC5/EEPROM.c **** ********************************************************************************
+ 519:Generated_Source\PSoC5/EEPROM.c **** *
+ 520:Generated_Source\PSoC5/EEPROM.c **** * Summary:
+ 521:Generated_Source\PSoC5/EEPROM.c **** *  Starts the EEPROM sector erase. This function does not block.
+ 522:Generated_Source\PSoC5/EEPROM.c **** *  The function returns once the SPC has begun writing the data. This function
+ 523:Generated_Source\PSoC5/EEPROM.c **** *  must be used in combination with EEPROM_Query().
+ 524:Generated_Source\PSoC5/EEPROM.c **** *  EEPROM_Query() must be called until it returns a status
+ 525:Generated_Source\PSoC5/EEPROM.c **** *  other than CYRET_STARTED. That indicates the erase has been completed.
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 23
+
+
+ 526:Generated_Source\PSoC5/EEPROM.c **** *  Until EEPROM_Query() detects that the erase is
+ 527:Generated_Source\PSoC5/EEPROM.c **** *  complete, the SPC is marked as locked to prevent another SPC operation
+ 528:Generated_Source\PSoC5/EEPROM.c **** *  from being performed.
+ 529:Generated_Source\PSoC5/EEPROM.c **** *
+ 530:Generated_Source\PSoC5/EEPROM.c **** * Parameters:
+ 531:Generated_Source\PSoC5/EEPROM.c **** *  sectorNumber:  The sector number to erase.
+ 532:Generated_Source\PSoC5/EEPROM.c **** *
+ 533:Generated_Source\PSoC5/EEPROM.c **** * Return:
+ 534:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_STARTED, if the SPC command to erase was successfully started.
+ 535:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_BAD_PARAM, if the parameter sectorNumber is out of range.
+ 536:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_LOCKED, if the SPC is being used.
+ 537:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_UNKNOWN, if there was an SPC error.
+ 538:Generated_Source\PSoC5/EEPROM.c **** *
+ 539:Generated_Source\PSoC5/EEPROM.c **** * Side effects:
+ 540:Generated_Source\PSoC5/EEPROM.c **** *  After calling this API, the device should not be powered down, reset or switched
+ 541:Generated_Source\PSoC5/EEPROM.c **** *  to low power modes until EEPROM operation is complete.
+ 542:Generated_Source\PSoC5/EEPROM.c **** *  Ignoring this recommendation may lead to data corruption or silicon
+ 543:Generated_Source\PSoC5/EEPROM.c **** *  unexpected behavior.
+ 544:Generated_Source\PSoC5/EEPROM.c **** *
+ 545:Generated_Source\PSoC5/EEPROM.c **** *******************************************************************************/
+ 546:Generated_Source\PSoC5/EEPROM.c **** cystatus EEPROM_StartErase(uint8 sectorNumber) 
+ 547:Generated_Source\PSoC5/EEPROM.c **** {
+ 709              		.loc 1 547 0
+ 710              		.cfi_startproc
+ 711              		@ args = 0, pretend = 0, frame = 0
+ 712              		@ frame_needed = 0, uses_anonymous_args = 0
+ 713              	.LVL87:
+ 714 0000 10B5     		push	{r4, lr}
+ 715              		.cfi_def_cfa_offset 8
+ 716              		.cfi_offset 4, -8
+ 717              		.cfi_offset 14, -4
+ 718 0002 0446     		mov	r4, r0
+ 548:Generated_Source\PSoC5/EEPROM.c ****     cystatus status;
+ 549:Generated_Source\PSoC5/EEPROM.c ****     
+ 550:Generated_Source\PSoC5/EEPROM.c ****     CySpcStart();
+ 719              		.loc 1 550 0
+ 720 0004 FFF7FEFF 		bl	CySpcStart
+ 721              	.LVL88:
+ 551:Generated_Source\PSoC5/EEPROM.c **** 
+ 552:Generated_Source\PSoC5/EEPROM.c ****     if(sectorNumber < (uint8) CY_EEPROM_NUMBER_ARRAYS)
+ 722              		.loc 1 552 0
+ 723 0008 5CB9     		cbnz	r4, .L74
+ 553:Generated_Source\PSoC5/EEPROM.c ****     {
+ 554:Generated_Source\PSoC5/EEPROM.c ****         /* See if we can get SPC. */
+ 555:Generated_Source\PSoC5/EEPROM.c ****         if(CySpcLock() == CYRET_SUCCESS)
+ 724              		.loc 1 555 0
+ 725 000a FFF7FEFF 		bl	CySpcLock
+ 726              	.LVL89:
+ 727 000e 50B9     		cbnz	r0, .L75
+ 728              	.LVL90:
+ 556:Generated_Source\PSoC5/EEPROM.c ****         {
+ 557:Generated_Source\PSoC5/EEPROM.c ****             /* Plan for failure */
+ 558:Generated_Source\PSoC5/EEPROM.c ****             status = CYRET_UNKNOWN;
+ 559:Generated_Source\PSoC5/EEPROM.c **** 
+ 560:Generated_Source\PSoC5/EEPROM.c ****             /* Command to load a row of data */
+ 561:Generated_Source\PSoC5/EEPROM.c ****             if(CySpcEraseSector(CY_SPC_FIRST_EE_ARRAYID, sectorNumber) == CYRET_STARTED)
+ 729              		.loc 1 561 0
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 24
+
+
+ 730 0010 2146     		mov	r1, r4
+ 731 0012 4020     		movs	r0, #64
+ 732 0014 FFF7FEFF 		bl	CySpcEraseSector
+ 733              	.LVL91:
+ 734 0018 0728     		cmp	r0, #7
+ 735 001a 06D0     		beq	.L76
+ 558:Generated_Source\PSoC5/EEPROM.c **** 
+ 736              		.loc 1 558 0
+ 737 001c 4FF0FF30 		mov	r0, #-1
+ 738 0020 10BD     		pop	{r4, pc}
+ 739              	.LVL92:
+ 740              	.L74:
+ 562:Generated_Source\PSoC5/EEPROM.c ****             {
+ 563:Generated_Source\PSoC5/EEPROM.c ****                 status = CYRET_SUCCESS;
+ 564:Generated_Source\PSoC5/EEPROM.c ****             }
+ 565:Generated_Source\PSoC5/EEPROM.c ****         }
+ 566:Generated_Source\PSoC5/EEPROM.c ****         else
+ 567:Generated_Source\PSoC5/EEPROM.c ****         {
+ 568:Generated_Source\PSoC5/EEPROM.c ****             status = CYRET_LOCKED;
+ 569:Generated_Source\PSoC5/EEPROM.c ****         }
+ 570:Generated_Source\PSoC5/EEPROM.c ****     }
+ 571:Generated_Source\PSoC5/EEPROM.c ****     else
+ 572:Generated_Source\PSoC5/EEPROM.c ****     {
+ 573:Generated_Source\PSoC5/EEPROM.c ****         status = CYRET_BAD_PARAM;
+ 741              		.loc 1 573 0
+ 742 0022 0120     		movs	r0, #1
+ 743 0024 10BD     		pop	{r4, pc}
+ 744              	.L75:
+ 568:Generated_Source\PSoC5/EEPROM.c ****         }
+ 745              		.loc 1 568 0
+ 746 0026 0420     		movs	r0, #4
+ 747 0028 10BD     		pop	{r4, pc}
+ 748              	.LVL93:
+ 749              	.L76:
+ 563:Generated_Source\PSoC5/EEPROM.c ****             }
+ 750              		.loc 1 563 0
+ 751 002a 0020     		movs	r0, #0
+ 752              	.LVL94:
+ 574:Generated_Source\PSoC5/EEPROM.c ****     }
+ 575:Generated_Source\PSoC5/EEPROM.c **** 
+ 576:Generated_Source\PSoC5/EEPROM.c ****     return(status);
+ 577:Generated_Source\PSoC5/EEPROM.c **** }
+ 753              		.loc 1 577 0
+ 754 002c 10BD     		pop	{r4, pc}
+ 755              		.cfi_endproc
+ 756              	.LFE9:
+ 757              		.size	EEPROM_StartErase, .-EEPROM_StartErase
+ 758 002e 00BF     		.section	.text.EEPROM_Query,"ax",%progbits
+ 759              		.align	2
+ 760              		.global	EEPROM_Query
+ 761              		.thumb
+ 762              		.thumb_func
+ 763              		.type	EEPROM_Query, %function
+ 764              	EEPROM_Query:
+ 765              	.LFB10:
+ 578:Generated_Source\PSoC5/EEPROM.c **** 
+ 579:Generated_Source\PSoC5/EEPROM.c **** 
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 25
+
+
+ 580:Generated_Source\PSoC5/EEPROM.c **** /*******************************************************************************
+ 581:Generated_Source\PSoC5/EEPROM.c **** * Function Name: EEPROM_Query
+ 582:Generated_Source\PSoC5/EEPROM.c **** ********************************************************************************
+ 583:Generated_Source\PSoC5/EEPROM.c **** *
+ 584:Generated_Source\PSoC5/EEPROM.c **** * Summary:
+ 585:Generated_Source\PSoC5/EEPROM.c **** *  Checks the status of an earlier call to EEPROM_StartWrite() or
+ 586:Generated_Source\PSoC5/EEPROM.c **** *  EEPROM_StartErase().
+ 587:Generated_Source\PSoC5/EEPROM.c **** *  This function must be called until it returns a value other than
+ 588:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_STARTED. Once that occurs, the write or erase has been completed and
+ 589:Generated_Source\PSoC5/EEPROM.c **** *  the SPC is unlocked.
+ 590:Generated_Source\PSoC5/EEPROM.c **** *
+ 591:Generated_Source\PSoC5/EEPROM.c **** * Parameters:
+ 592:Generated_Source\PSoC5/EEPROM.c **** *  None
+ 593:Generated_Source\PSoC5/EEPROM.c **** *
+ 594:Generated_Source\PSoC5/EEPROM.c **** * Return:
+ 595:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_STARTED, if the SPC command is still processing.
+ 596:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_SUCCESS, if the operation was completed successfully.
+ 597:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_UNKNOWN, if there was an SPC error.
+ 598:Generated_Source\PSoC5/EEPROM.c **** *
+ 599:Generated_Source\PSoC5/EEPROM.c **** *******************************************************************************/
+ 600:Generated_Source\PSoC5/EEPROM.c **** cystatus EEPROM_Query(void) 
+ 601:Generated_Source\PSoC5/EEPROM.c **** {
+ 766              		.loc 1 601 0
+ 767              		.cfi_startproc
+ 768              		@ args = 0, pretend = 0, frame = 0
+ 769              		@ frame_needed = 0, uses_anonymous_args = 0
+ 770 0000 10B5     		push	{r4, lr}
+ 771              		.cfi_def_cfa_offset 8
+ 772              		.cfi_offset 4, -8
+ 773              		.cfi_offset 14, -4
+ 602:Generated_Source\PSoC5/EEPROM.c ****     cystatus status;
+ 603:Generated_Source\PSoC5/EEPROM.c ****     
+ 604:Generated_Source\PSoC5/EEPROM.c ****     CySpcStart();
+ 774              		.loc 1 604 0
+ 775 0002 FFF7FEFF 		bl	CySpcStart
+ 776              	.LVL95:
+ 605:Generated_Source\PSoC5/EEPROM.c **** 
+ 606:Generated_Source\PSoC5/EEPROM.c ****     /* Check if SPC is idle */
+ 607:Generated_Source\PSoC5/EEPROM.c ****     if(CY_SPC_IDLE)
+ 777              		.loc 1 607 0
+ 778 0006 0D4B     		ldr	r3, .L85
+ 779 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 780 000a 13F0020F 		tst	r3, #2
+ 781 000e 12D0     		beq	.L81
+ 608:Generated_Source\PSoC5/EEPROM.c ****     {
+ 609:Generated_Source\PSoC5/EEPROM.c ****         /* SPC is idle now */
+ 610:Generated_Source\PSoC5/EEPROM.c ****         if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 782              		.loc 1 610 0
+ 783 0010 0A4B     		ldr	r3, .L85
+ 784 0012 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 785 0014 13F0020F 		tst	r3, #2
+ 786 0018 06D0     		beq	.L82
+ 787              		.loc 1 610 0 is_stmt 0 discriminator 1
+ 788 001a 084B     		ldr	r3, .L85
+ 789 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 790 001e 9B08     		lsrs	r3, r3, #2
+ 791 0020 05D0     		beq	.L83
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 26
+
+
+ 611:Generated_Source\PSoC5/EEPROM.c ****         {
+ 612:Generated_Source\PSoC5/EEPROM.c ****             status = CYRET_SUCCESS;
+ 613:Generated_Source\PSoC5/EEPROM.c ****         }
+ 614:Generated_Source\PSoC5/EEPROM.c ****         else
+ 615:Generated_Source\PSoC5/EEPROM.c ****         {
+ 616:Generated_Source\PSoC5/EEPROM.c ****             status = CYRET_UNKNOWN;
+ 792              		.loc 1 616 0 is_stmt 1
+ 793 0022 4FF0FF34 		mov	r4, #-1
+ 794 0026 03E0     		b	.L80
+ 795              	.L82:
+ 796 0028 4FF0FF34 		mov	r4, #-1
+ 797 002c 00E0     		b	.L80
+ 798              	.L83:
+ 612:Generated_Source\PSoC5/EEPROM.c ****         }
+ 799              		.loc 1 612 0
+ 800 002e 0024     		movs	r4, #0
+ 801              	.L80:
+ 802              	.LVL96:
+ 617:Generated_Source\PSoC5/EEPROM.c ****         }
+ 618:Generated_Source\PSoC5/EEPROM.c **** 
+ 619:Generated_Source\PSoC5/EEPROM.c ****         /* Unlock SPC so that someone else can use it. */
+ 620:Generated_Source\PSoC5/EEPROM.c ****         CySpcUnlock();
+ 803              		.loc 1 620 0
+ 804 0030 FFF7FEFF 		bl	CySpcUnlock
+ 805              	.LVL97:
+ 806 0034 00E0     		b	.L79
+ 807              	.LVL98:
+ 808              	.L81:
+ 621:Generated_Source\PSoC5/EEPROM.c ****     }
+ 622:Generated_Source\PSoC5/EEPROM.c ****     else
+ 623:Generated_Source\PSoC5/EEPROM.c ****     {
+ 624:Generated_Source\PSoC5/EEPROM.c ****         status = CYRET_STARTED;
+ 809              		.loc 1 624 0
+ 810 0036 0724     		movs	r4, #7
+ 811              	.L79:
+ 812              	.LVL99:
+ 625:Generated_Source\PSoC5/EEPROM.c ****     }
+ 626:Generated_Source\PSoC5/EEPROM.c **** 
+ 627:Generated_Source\PSoC5/EEPROM.c ****     return(status);
+ 628:Generated_Source\PSoC5/EEPROM.c **** }
+ 813              		.loc 1 628 0
+ 814 0038 2046     		mov	r0, r4
+ 815 003a 10BD     		pop	{r4, pc}
+ 816              	.LVL100:
+ 817              	.L86:
+ 818              		.align	2
+ 819              	.L85:
+ 820 003c 22470040 		.word	1073760034
+ 821              		.cfi_endproc
+ 822              	.LFE10:
+ 823              		.size	EEPROM_Query, .-EEPROM_Query
+ 824              		.section	.text.EEPROM_ByteWritePos,"ax",%progbits
+ 825              		.align	2
+ 826              		.global	EEPROM_ByteWritePos
+ 827              		.thumb
+ 828              		.thumb_func
+ 829              		.type	EEPROM_ByteWritePos, %function
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 27
+
+
+ 830              	EEPROM_ByteWritePos:
+ 831              	.LFB11:
+ 629:Generated_Source\PSoC5/EEPROM.c **** 
+ 630:Generated_Source\PSoC5/EEPROM.c **** 
+ 631:Generated_Source\PSoC5/EEPROM.c **** /*******************************************************************************
+ 632:Generated_Source\PSoC5/EEPROM.c **** * Function Name: EEPROM_ByteWritePos
+ 633:Generated_Source\PSoC5/EEPROM.c **** ********************************************************************************
+ 634:Generated_Source\PSoC5/EEPROM.c **** *
+ 635:Generated_Source\PSoC5/EEPROM.c **** * Summary:
+ 636:Generated_Source\PSoC5/EEPROM.c **** *  Writes a byte of data to the EEPROM. This is a blocking call. It will not
+ 637:Generated_Source\PSoC5/EEPROM.c **** *  return until the write operation succeeds or fails.
+ 638:Generated_Source\PSoC5/EEPROM.c **** *
+ 639:Generated_Source\PSoC5/EEPROM.c **** * Parameters:
+ 640:Generated_Source\PSoC5/EEPROM.c **** *  dataByte:   The byte of data to write to the EEPROM.
+ 641:Generated_Source\PSoC5/EEPROM.c **** *  rowNumber:  The EEPROM row number to program.
+ 642:Generated_Source\PSoC5/EEPROM.c **** *  byteNumber: The byte number within the row to program.
+ 643:Generated_Source\PSoC5/EEPROM.c **** *
+ 644:Generated_Source\PSoC5/EEPROM.c **** * Return:
+ 645:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_SUCCESS, if the operation was successful.
+ 646:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_BAD_PARAM, if the parameter rowNumber or byteNumber is out of range.
+ 647:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_LOCKED, if the SPC is being used.
+ 648:Generated_Source\PSoC5/EEPROM.c **** *  CYRET_UNKNOWN, if there was an SPC error.
+ 649:Generated_Source\PSoC5/EEPROM.c **** *
+ 650:Generated_Source\PSoC5/EEPROM.c **** *******************************************************************************/
+ 651:Generated_Source\PSoC5/EEPROM.c **** cystatus EEPROM_ByteWritePos(uint8 dataByte, uint8 rowNumber, uint8 byteNumber) \
+ 652:Generated_Source\PSoC5/EEPROM.c **** 
+ 653:Generated_Source\PSoC5/EEPROM.c **** {
+ 832              		.loc 1 653 0
+ 833              		.cfi_startproc
+ 834              		@ args = 0, pretend = 0, frame = 8
+ 835              		@ frame_needed = 0, uses_anonymous_args = 0
+ 836              	.LVL101:
+ 837 0000 30B5     		push	{r4, r5, lr}
+ 838              		.cfi_def_cfa_offset 12
+ 839              		.cfi_offset 4, -12
+ 840              		.cfi_offset 5, -8
+ 841              		.cfi_offset 14, -4
+ 842 0002 83B0     		sub	sp, sp, #12
+ 843              		.cfi_def_cfa_offset 24
+ 844 0004 0D46     		mov	r5, r1
+ 845 0006 1446     		mov	r4, r2
+ 846 0008 8DF80700 		strb	r0, [sp, #7]
+ 654:Generated_Source\PSoC5/EEPROM.c ****     cystatus status;
+ 655:Generated_Source\PSoC5/EEPROM.c **** 
+ 656:Generated_Source\PSoC5/EEPROM.c ****     /* Start SPC */
+ 657:Generated_Source\PSoC5/EEPROM.c ****     CySpcStart();
+ 847              		.loc 1 657 0
+ 848 000c FFF7FEFF 		bl	CySpcStart
+ 849              	.LVL102:
+ 658:Generated_Source\PSoC5/EEPROM.c **** 
+ 659:Generated_Source\PSoC5/EEPROM.c ****     if((rowNumber < (uint8) CY_EEPROM_NUMBER_ROWS) && (byteNumber < (uint8) SIZEOF_EEPROM_ROW))
+ 850              		.loc 1 659 0
+ 851 0010 15F0800F 		tst	r5, #128
+ 852 0014 4CD1     		bne	.L93
+ 853              		.loc 1 659 0 is_stmt 0 discriminator 1
+ 854 0016 0F2C     		cmp	r4, #15
+ 855 0018 4CD8     		bhi	.L94
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 28
+
+
+ 660:Generated_Source\PSoC5/EEPROM.c ****     {
+ 661:Generated_Source\PSoC5/EEPROM.c ****         /* See if we can get SPC. */
+ 662:Generated_Source\PSoC5/EEPROM.c ****         if(CySpcLock() == CYRET_SUCCESS)
+ 856              		.loc 1 662 0 is_stmt 1
+ 857 001a FFF7FEFF 		bl	CySpcLock
+ 858              	.LVL103:
+ 859 001e 0028     		cmp	r0, #0
+ 860 0020 4AD1     		bne	.L95
+ 861              	.LVL104:
+ 663:Generated_Source\PSoC5/EEPROM.c ****         {
+ 664:Generated_Source\PSoC5/EEPROM.c ****             /* Plan for failure */
+ 665:Generated_Source\PSoC5/EEPROM.c ****             status = CYRET_UNKNOWN;
+ 666:Generated_Source\PSoC5/EEPROM.c **** 
+ 667:Generated_Source\PSoC5/EEPROM.c ****             /* Command to load byte of data */
+ 668:Generated_Source\PSoC5/EEPROM.c ****             if(CySpcLoadMultiByte(CY_SPC_FIRST_EE_ARRAYID, (uint16)byteNumber, &dataByte,\
+ 862              		.loc 1 668 0
+ 863 0022 0123     		movs	r3, #1
+ 864 0024 0DF10702 		add	r2, sp, #7
+ 865              	.LVL105:
+ 866 0028 2146     		mov	r1, r4
+ 867 002a 4020     		movs	r0, #64
+ 868 002c FFF7FEFF 		bl	CySpcLoadMultiByte
+ 869              	.LVL106:
+ 870 0030 0728     		cmp	r0, #7
+ 871 0032 2FD1     		bne	.L96
+ 872              	.L90:
+ 669:Generated_Source\PSoC5/EEPROM.c ****                                                                 EEPROM_SPC_BYTE_WRITE_SIZE) == CYRE
+ 670:Generated_Source\PSoC5/EEPROM.c ****             {
+ 671:Generated_Source\PSoC5/EEPROM.c ****                 while(CY_SPC_BUSY)
+ 873              		.loc 1 671 0 discriminator 1
+ 874 0034 224B     		ldr	r3, .L103
+ 875 0036 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 876 0038 13F0020F 		tst	r3, #2
+ 877 003c FAD0     		beq	.L90
+ 672:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 673:Generated_Source\PSoC5/EEPROM.c ****                     /* Wait until SPC becomes idle */
+ 674:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 675:Generated_Source\PSoC5/EEPROM.c **** 
+ 676:Generated_Source\PSoC5/EEPROM.c ****                 /* SPC is idle now */
+ 677:Generated_Source\PSoC5/EEPROM.c ****                 if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 878              		.loc 1 677 0
+ 879 003e 204B     		ldr	r3, .L103
+ 880 0040 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 881 0042 13F0020F 		tst	r3, #2
+ 882 0046 06D0     		beq	.L97
+ 883              		.loc 1 677 0 is_stmt 0 discriminator 1
+ 884 0048 1D4B     		ldr	r3, .L103
+ 885 004a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 886 004c 9B08     		lsrs	r3, r3, #2
+ 887 004e 05D0     		beq	.L98
+ 665:Generated_Source\PSoC5/EEPROM.c **** 
+ 888              		.loc 1 665 0 is_stmt 1
+ 889 0050 4FF0FF34 		mov	r4, #-1
+ 890 0054 03E0     		b	.L91
+ 891              	.L97:
+ 892 0056 4FF0FF34 		mov	r4, #-1
+ 893 005a 00E0     		b	.L91
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 29
+
+
+ 894              	.L98:
+ 678:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 679:Generated_Source\PSoC5/EEPROM.c ****                     status = CYRET_SUCCESS;
+ 895              		.loc 1 679 0
+ 896 005c 0024     		movs	r4, #0
+ 897              	.L91:
+ 898              	.LVL107:
+ 680:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 681:Generated_Source\PSoC5/EEPROM.c **** 
+ 682:Generated_Source\PSoC5/EEPROM.c ****                 /* Command to erase and program the row. */
+ 683:Generated_Source\PSoC5/EEPROM.c ****                 if(status == CYRET_SUCCESS)
+ 899              		.loc 1 683 0
+ 900 005e E4B9     		cbnz	r4, .L99
+ 684:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 685:Generated_Source\PSoC5/EEPROM.c ****                     if(CySpcWriteRow(CY_SPC_FIRST_EE_ARRAYID, (uint16)rowNumber, dieTemperature[0u]
+ 901              		.loc 1 685 0
+ 902 0060 184A     		ldr	r2, .L103+4
+ 903 0062 5378     		ldrb	r3, [r2, #1]	@ zero_extendqisi2
+ 904 0064 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 905 0066 2946     		mov	r1, r5
+ 906 0068 4020     		movs	r0, #64
+ 907 006a FFF7FEFF 		bl	CySpcWriteRow
+ 908              	.LVL108:
+ 909 006e 0728     		cmp	r0, #7
+ 910 0070 16D1     		bne	.L100
+ 911              	.L92:
+ 686:Generated_Source\PSoC5/EEPROM.c ****                     dieTemperature[1u]) == CYRET_STARTED)
+ 687:Generated_Source\PSoC5/EEPROM.c ****                     {
+ 688:Generated_Source\PSoC5/EEPROM.c ****                         /* Plan for failure */
+ 689:Generated_Source\PSoC5/EEPROM.c ****                         status = CYRET_UNKNOWN;
+ 690:Generated_Source\PSoC5/EEPROM.c **** 
+ 691:Generated_Source\PSoC5/EEPROM.c ****                         while(CY_SPC_BUSY)
+ 912              		.loc 1 691 0 discriminator 1
+ 913 0072 134B     		ldr	r3, .L103
+ 914 0074 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 915 0076 13F0020F 		tst	r3, #2
+ 916 007a FAD0     		beq	.L92
+ 692:Generated_Source\PSoC5/EEPROM.c ****                         {
+ 693:Generated_Source\PSoC5/EEPROM.c ****                             /* Wait until SPC becomes idle */
+ 694:Generated_Source\PSoC5/EEPROM.c ****                         }
+ 695:Generated_Source\PSoC5/EEPROM.c **** 
+ 696:Generated_Source\PSoC5/EEPROM.c ****                         /* SPC is idle now */
+ 697:Generated_Source\PSoC5/EEPROM.c ****                         if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 917              		.loc 1 697 0
+ 918 007c 104B     		ldr	r3, .L103
+ 919 007e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 920 0080 13F0020F 		tst	r3, #2
+ 921 0084 0FD0     		beq	.L101
+ 922              		.loc 1 697 0 is_stmt 0 discriminator 1
+ 923 0086 0E4B     		ldr	r3, .L103
+ 924 0088 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 925 008a 9B08     		lsrs	r3, r3, #2
+ 926 008c 0DD0     		beq	.L89
+ 689:Generated_Source\PSoC5/EEPROM.c **** 
+ 927              		.loc 1 689 0 is_stmt 1
+ 928 008e 4FF0FF34 		mov	r4, #-1
+ 929              	.LVL109:
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 30
+
+
+ 930 0092 0AE0     		b	.L89
+ 931              	.LVL110:
+ 932              	.L96:
+ 665:Generated_Source\PSoC5/EEPROM.c **** 
+ 933              		.loc 1 665 0
+ 934 0094 4FF0FF34 		mov	r4, #-1
+ 935 0098 07E0     		b	.L89
+ 936              	.LVL111:
+ 937              	.L99:
+ 698:Generated_Source\PSoC5/EEPROM.c ****                         {
+ 699:Generated_Source\PSoC5/EEPROM.c ****                             status = CYRET_SUCCESS;
+ 700:Generated_Source\PSoC5/EEPROM.c ****                         }
+ 701:Generated_Source\PSoC5/EEPROM.c ****                     }
+ 702:Generated_Source\PSoC5/EEPROM.c ****                     else
+ 703:Generated_Source\PSoC5/EEPROM.c ****                     {
+ 704:Generated_Source\PSoC5/EEPROM.c ****                         status = CYRET_UNKNOWN;
+ 705:Generated_Source\PSoC5/EEPROM.c ****                     }
+ 706:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 707:Generated_Source\PSoC5/EEPROM.c ****                 else
+ 708:Generated_Source\PSoC5/EEPROM.c ****                 {
+ 709:Generated_Source\PSoC5/EEPROM.c ****                     status = CYRET_UNKNOWN;
+ 938              		.loc 1 709 0
+ 939 009a 4FF0FF34 		mov	r4, #-1
+ 940              	.LVL112:
+ 941 009e 04E0     		b	.L89
+ 942              	.LVL113:
+ 943              	.L100:
+ 704:Generated_Source\PSoC5/EEPROM.c ****                     }
+ 944              		.loc 1 704 0
+ 945 00a0 4FF0FF34 		mov	r4, #-1
+ 946              	.LVL114:
+ 947 00a4 01E0     		b	.L89
+ 948              	.LVL115:
+ 949              	.L101:
+ 689:Generated_Source\PSoC5/EEPROM.c **** 
+ 950              		.loc 1 689 0
+ 951 00a6 4FF0FF34 		mov	r4, #-1
+ 952              	.LVL116:
+ 953              	.L89:
+ 710:Generated_Source\PSoC5/EEPROM.c ****                 }
+ 711:Generated_Source\PSoC5/EEPROM.c ****             }
+ 712:Generated_Source\PSoC5/EEPROM.c **** 
+ 713:Generated_Source\PSoC5/EEPROM.c ****             /* Unlock SPC so that someone else can use it. */
+ 714:Generated_Source\PSoC5/EEPROM.c ****             CySpcUnlock();
+ 954              		.loc 1 714 0
+ 955 00aa FFF7FEFF 		bl	CySpcUnlock
+ 956              	.LVL117:
+ 957 00ae 04E0     		b	.L88
+ 958              	.LVL118:
+ 959              	.L93:
+ 715:Generated_Source\PSoC5/EEPROM.c ****         }
+ 716:Generated_Source\PSoC5/EEPROM.c ****         else
+ 717:Generated_Source\PSoC5/EEPROM.c ****         {
+ 718:Generated_Source\PSoC5/EEPROM.c ****             status = CYRET_LOCKED;
+ 719:Generated_Source\PSoC5/EEPROM.c ****         }
+ 720:Generated_Source\PSoC5/EEPROM.c ****     }
+ 721:Generated_Source\PSoC5/EEPROM.c ****     else
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 31
+
+
+ 722:Generated_Source\PSoC5/EEPROM.c ****     {
+ 723:Generated_Source\PSoC5/EEPROM.c ****         status = CYRET_BAD_PARAM;
+ 960              		.loc 1 723 0
+ 961 00b0 0124     		movs	r4, #1
+ 962 00b2 02E0     		b	.L88
+ 963              	.L94:
+ 964 00b4 0124     		movs	r4, #1
+ 965 00b6 00E0     		b	.L88
+ 966              	.L95:
+ 718:Generated_Source\PSoC5/EEPROM.c ****         }
+ 967              		.loc 1 718 0
+ 968 00b8 0424     		movs	r4, #4
+ 969              	.L88:
+ 970              	.LVL119:
+ 724:Generated_Source\PSoC5/EEPROM.c ****     }
+ 725:Generated_Source\PSoC5/EEPROM.c **** 
+ 726:Generated_Source\PSoC5/EEPROM.c ****     return(status);
+ 727:Generated_Source\PSoC5/EEPROM.c **** }
+ 971              		.loc 1 727 0
+ 972 00ba 2046     		mov	r0, r4
+ 973 00bc 03B0     		add	sp, sp, #12
+ 974              		.cfi_def_cfa_offset 12
+ 975              		@ sp needed
+ 976 00be 30BD     		pop	{r4, r5, pc}
+ 977              	.LVL120:
+ 978              	.L104:
+ 979              		.align	2
+ 980              	.L103:
+ 981 00c0 22470040 		.word	1073760034
+ 982 00c4 00000000 		.word	dieTemperature
+ 983              		.cfi_endproc
+ 984              	.LFE11:
+ 985              		.size	EEPROM_ByteWritePos, .-EEPROM_ByteWritePos
+ 986              		.text
+ 987              	.Letext0:
+ 988              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 989              		.file 3 "Generated_Source\\PSoC5\\CyFlash.h"
+ 990              		.file 4 "Generated_Source\\PSoC5\\CySpc.h"
+ 991              		.file 5 "Generated_Source\\PSoC5\\CyLib.h"
+ 992              		.section	.debug_info,"",%progbits
+ 993              	.Ldebug_info0:
+ 994 0000 2C060000 		.4byte	0x62c
+ 995 0004 0400     		.2byte	0x4
+ 996 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 997 000a 04       		.byte	0x4
+ 998 000b 01       		.uleb128 0x1
+ 999 000c 0E000000 		.4byte	.LASF53
+ 1000 0010 0C       		.byte	0xc
+ 1001 0011 B5000000 		.4byte	.LASF54
+ 1002 0015 1B030000 		.4byte	.LASF55
+ 1003 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 1004 001d 00000000 		.4byte	0
+ 1005 0021 00000000 		.4byte	.Ldebug_line0
+ 1006 0025 02       		.uleb128 0x2
+ 1007 0026 01       		.byte	0x1
+ 1008 0027 06       		.byte	0x6
+ 1009 0028 89030000 		.4byte	.LASF0
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 32
+
+
+ 1010 002c 02       		.uleb128 0x2
+ 1011 002d 01       		.byte	0x1
+ 1012 002e 08       		.byte	0x8
+ 1013 002f C7010000 		.4byte	.LASF1
+ 1014 0033 02       		.uleb128 0x2
+ 1015 0034 02       		.byte	0x2
+ 1016 0035 05       		.byte	0x5
+ 1017 0036 11030000 		.4byte	.LASF2
+ 1018 003a 02       		.uleb128 0x2
+ 1019 003b 02       		.byte	0x2
+ 1020 003c 07       		.byte	0x7
+ 1021 003d 0A010000 		.4byte	.LASF3
+ 1022 0041 02       		.uleb128 0x2
+ 1023 0042 04       		.byte	0x4
+ 1024 0043 05       		.byte	0x5
+ 1025 0044 65030000 		.4byte	.LASF4
+ 1026 0048 02       		.uleb128 0x2
+ 1027 0049 04       		.byte	0x4
+ 1028 004a 07       		.byte	0x7
+ 1029 004b 97010000 		.4byte	.LASF5
+ 1030 004f 02       		.uleb128 0x2
+ 1031 0050 08       		.byte	0x8
+ 1032 0051 05       		.byte	0x5
+ 1033 0052 EA020000 		.4byte	.LASF6
+ 1034 0056 02       		.uleb128 0x2
+ 1035 0057 08       		.byte	0x8
+ 1036 0058 07       		.byte	0x7
+ 1037 0059 2F010000 		.4byte	.LASF7
+ 1038 005d 03       		.uleb128 0x3
+ 1039 005e 04       		.byte	0x4
+ 1040 005f 05       		.byte	0x5
+ 1041 0060 696E7400 		.ascii	"int\000"
+ 1042 0064 02       		.uleb128 0x2
+ 1043 0065 04       		.byte	0x4
+ 1044 0066 07       		.byte	0x7
+ 1045 0067 3D020000 		.4byte	.LASF8
+ 1046 006b 04       		.uleb128 0x4
+ 1047 006c A9010000 		.4byte	.LASF9
+ 1048 0070 02       		.byte	0x2
+ 1049 0071 E801     		.2byte	0x1e8
+ 1050 0073 2C000000 		.4byte	0x2c
+ 1051 0077 04       		.uleb128 0x4
+ 1052 0078 15020000 		.4byte	.LASF10
+ 1053 007c 02       		.byte	0x2
+ 1054 007d E901     		.2byte	0x1e9
+ 1055 007f 3A000000 		.4byte	0x3a
+ 1056 0083 02       		.uleb128 0x2
+ 1057 0084 04       		.byte	0x4
+ 1058 0085 04       		.byte	0x4
+ 1059 0086 E3000000 		.4byte	.LASF11
+ 1060 008a 02       		.uleb128 0x2
+ 1061 008b 08       		.byte	0x8
+ 1062 008c 04       		.byte	0x4
+ 1063 008d E5010000 		.4byte	.LASF12
+ 1064 0091 02       		.uleb128 0x2
+ 1065 0092 01       		.byte	0x1
+ 1066 0093 08       		.byte	0x8
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 33
+
+
+ 1067 0094 6E030000 		.4byte	.LASF13
+ 1068 0098 04       		.uleb128 0x4
+ 1069 0099 00000000 		.4byte	.LASF14
+ 1070 009d 02       		.byte	0x2
+ 1071 009e 8A02     		.2byte	0x28a
+ 1072 00a0 48000000 		.4byte	0x48
+ 1073 00a4 04       		.uleb128 0x4
+ 1074 00a5 09000000 		.4byte	.LASF15
+ 1075 00a9 02       		.byte	0x2
+ 1076 00aa 9202     		.2byte	0x292
+ 1077 00ac B0000000 		.4byte	0xb0
+ 1078 00b0 05       		.uleb128 0x5
+ 1079 00b1 6B000000 		.4byte	0x6b
+ 1080 00b5 02       		.uleb128 0x2
+ 1081 00b6 08       		.byte	0x8
+ 1082 00b7 04       		.byte	0x4
+ 1083 00b8 7D030000 		.4byte	.LASF16
+ 1084 00bc 02       		.uleb128 0x2
+ 1085 00bd 04       		.byte	0x4
+ 1086 00be 07       		.byte	0x7
+ 1087 00bf C6020000 		.4byte	.LASF17
+ 1088 00c3 06       		.uleb128 0x6
+ 1089 00c4 E9000000 		.4byte	.LASF18
+ 1090 00c8 01       		.byte	0x1
+ 1091 00c9 21       		.byte	0x21
+ 1092 00ca 00000000 		.4byte	.LFB0
+ 1093 00ce 0C000000 		.4byte	.LFE0-.LFB0
+ 1094 00d2 01       		.uleb128 0x1
+ 1095 00d3 9C       		.byte	0x9c
+ 1096 00d4 EB000000 		.4byte	0xeb
+ 1097 00d8 07       		.uleb128 0x7
+ 1098 00d9 06000000 		.4byte	.LVL0
+ 1099 00dd 95050000 		.4byte	0x595
+ 1100 00e1 07       		.uleb128 0x7
+ 1101 00e2 0A000000 		.4byte	.LVL1
+ 1102 00e6 A0050000 		.4byte	0x5a0
+ 1103 00ea 00       		.byte	0
+ 1104 00eb 06       		.uleb128 0x6
+ 1105 00ec 46010000 		.4byte	.LASF19
+ 1106 00f0 01       		.byte	0x1
+ 1107 00f1 39       		.byte	0x39
+ 1108 00f2 00000000 		.4byte	.LFB1
+ 1109 00f6 08000000 		.4byte	.LFE1-.LFB1
+ 1110 00fa 01       		.uleb128 0x1
+ 1111 00fb 9C       		.byte	0x9c
+ 1112 00fc 0A010000 		.4byte	0x10a
+ 1113 0100 07       		.uleb128 0x7
+ 1114 0101 06000000 		.4byte	.LVL2
+ 1115 0105 C3000000 		.4byte	0xc3
+ 1116 0109 00       		.byte	0
+ 1117 010a 06       		.uleb128 0x6
+ 1118 010b 05030000 		.4byte	.LASF20
+ 1119 010f 01       		.byte	0x1
+ 1120 0110 4D       		.byte	0x4d
+ 1121 0111 00000000 		.4byte	.LFB2
+ 1122 0115 08000000 		.4byte	.LFE2-.LFB2
+ 1123 0119 01       		.uleb128 0x1
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 34
+
+
+ 1124 011a 9C       		.byte	0x9c
+ 1125 011b 29010000 		.4byte	0x129
+ 1126 011f 07       		.uleb128 0x7
+ 1127 0120 06000000 		.4byte	.LVL3
+ 1128 0124 AB050000 		.4byte	0x5ab
+ 1129 0128 00       		.byte	0
+ 1130 0129 08       		.uleb128 0x8
+ 1131 012a 7A020000 		.4byte	.LASF26
+ 1132 012e 01       		.byte	0x1
+ 1133 012f 6A       		.byte	0x6a
+ 1134 0130 98000000 		.4byte	0x98
+ 1135 0134 00000000 		.4byte	.LFB3
+ 1136 0138 D0000000 		.4byte	.LFE3-.LFB3
+ 1137 013c 01       		.uleb128 0x1
+ 1138 013d 9C       		.byte	0x9c
+ 1139 013e E8010000 		.4byte	0x1e8
+ 1140 0142 09       		.uleb128 0x9
+ 1141 0143 BE010000 		.4byte	.LASF21
+ 1142 0147 01       		.byte	0x1
+ 1143 0148 6A       		.byte	0x6a
+ 1144 0149 6B000000 		.4byte	0x6b
+ 1145 014d 00000000 		.4byte	.LLST0
+ 1146 0151 09       		.uleb128 0x9
+ 1147 0152 4A020000 		.4byte	.LASF22
+ 1148 0156 01       		.byte	0x1
+ 1149 0157 6A       		.byte	0x6a
+ 1150 0158 77000000 		.4byte	0x77
+ 1151 015c 43000000 		.4byte	.LLST1
+ 1152 0160 0A       		.uleb128 0xa
+ 1153 0161 1D010000 		.4byte	.LASF23
+ 1154 0165 01       		.byte	0x1
+ 1155 0166 6C       		.byte	0x6c
+ 1156 0167 98000000 		.4byte	0x98
+ 1157 016b 64000000 		.4byte	.LLST2
+ 1158 016f 0A       		.uleb128 0xa
+ 1159 0170 73030000 		.4byte	.LASF24
+ 1160 0174 01       		.byte	0x1
+ 1161 0175 6D       		.byte	0x6d
+ 1162 0176 77000000 		.4byte	0x77
+ 1163 017a DA000000 		.4byte	.LLST3
+ 1164 017e 0A       		.uleb128 0xa
+ 1165 017f 24010000 		.4byte	.LASF25
+ 1166 0183 01       		.byte	0x1
+ 1167 0184 6E       		.byte	0x6e
+ 1168 0185 77000000 		.4byte	0x77
+ 1169 0189 F8000000 		.4byte	.LLST4
+ 1170 018d 07       		.uleb128 0x7
+ 1171 018e 0E000000 		.4byte	.LVL5
+ 1172 0192 B6050000 		.4byte	0x5b6
+ 1173 0196 07       		.uleb128 0x7
+ 1174 0197 20000000 		.4byte	.LVL8
+ 1175 019b C1050000 		.4byte	0x5c1
+ 1176 019f 0B       		.uleb128 0xb
+ 1177 01a0 32000000 		.4byte	.LVL10
+ 1178 01a4 CC050000 		.4byte	0x5cc
+ 1179 01a8 C4010000 		.4byte	0x1c4
+ 1180 01ac 0C       		.uleb128 0xc
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 35
+
+
+ 1181 01ad 01       		.uleb128 0x1
+ 1182 01ae 50       		.byte	0x50
+ 1183 01af 02       		.uleb128 0x2
+ 1184 01b0 08       		.byte	0x8
+ 1185 01b1 40       		.byte	0x40
+ 1186 01b2 0C       		.uleb128 0xc
+ 1187 01b3 01       		.uleb128 0x1
+ 1188 01b4 51       		.byte	0x51
+ 1189 01b5 02       		.uleb128 0x2
+ 1190 01b6 74       		.byte	0x74
+ 1191 01b7 00       		.sleb128 0
+ 1192 01b8 0C       		.uleb128 0xc
+ 1193 01b9 01       		.uleb128 0x1
+ 1194 01ba 52       		.byte	0x52
+ 1195 01bb 02       		.uleb128 0x2
+ 1196 01bc 91       		.byte	0x91
+ 1197 01bd 6F       		.sleb128 -17
+ 1198 01be 0C       		.uleb128 0xc
+ 1199 01bf 01       		.uleb128 0x1
+ 1200 01c0 53       		.byte	0x53
+ 1201 01c1 01       		.uleb128 0x1
+ 1202 01c2 31       		.byte	0x31
+ 1203 01c3 00       		.byte	0
+ 1204 01c4 0B       		.uleb128 0xb
+ 1205 01c5 72000000 		.4byte	.LVL13
+ 1206 01c9 D7050000 		.4byte	0x5d7
+ 1207 01cd DE010000 		.4byte	0x1de
+ 1208 01d1 0C       		.uleb128 0xc
+ 1209 01d2 01       		.uleb128 0x1
+ 1210 01d3 50       		.byte	0x50
+ 1211 01d4 02       		.uleb128 0x2
+ 1212 01d5 08       		.byte	0x8
+ 1213 01d6 40       		.byte	0x40
+ 1214 01d7 0C       		.uleb128 0xc
+ 1215 01d8 01       		.uleb128 0x1
+ 1216 01d9 51       		.byte	0x51
+ 1217 01da 02       		.uleb128 0x2
+ 1218 01db 75       		.byte	0x75
+ 1219 01dc 00       		.sleb128 0
+ 1220 01dd 00       		.byte	0
+ 1221 01de 07       		.uleb128 0x7
+ 1222 01df B8000000 		.4byte	.LVL24
+ 1223 01e3 E2050000 		.4byte	0x5e2
+ 1224 01e7 00       		.byte	0
+ 1225 01e8 08       		.uleb128 0x8
+ 1226 01e9 D5010000 		.4byte	.LASF27
+ 1227 01ed 01       		.byte	0x1
+ 1228 01ee D0       		.byte	0xd0
+ 1229 01ef 6B000000 		.4byte	0x6b
+ 1230 01f3 00000000 		.4byte	.LFB4
+ 1231 01f7 28000000 		.4byte	.LFE4-.LFB4
+ 1232 01fb 01       		.uleb128 0x1
+ 1233 01fc 9C       		.byte	0x9c
+ 1234 01fd 56020000 		.4byte	0x256
+ 1235 0201 09       		.uleb128 0x9
+ 1236 0202 4A020000 		.4byte	.LASF22
+ 1237 0206 01       		.byte	0x1
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 36
+
+
+ 1238 0207 D0       		.byte	0xd0
+ 1239 0208 77000000 		.4byte	0x77
+ 1240 020c 16010000 		.4byte	.LLST5
+ 1241 0210 0D       		.uleb128 0xd
+ 1242 0211 A8030000 		.4byte	.LASF28
+ 1243 0215 01       		.byte	0x1
+ 1244 0216 D2       		.byte	0xd2
+ 1245 0217 6B000000 		.4byte	0x6b
+ 1246 021b 01       		.uleb128 0x1
+ 1247 021c 54       		.byte	0x54
+ 1248 021d 0D       		.uleb128 0xd
+ 1249 021e 88010000 		.4byte	.LASF29
+ 1250 0222 01       		.byte	0x1
+ 1251 0223 D3       		.byte	0xd3
+ 1252 0224 6B000000 		.4byte	0x6b
+ 1253 0228 01       		.uleb128 0x1
+ 1254 0229 55       		.byte	0x55
+ 1255 022a 07       		.uleb128 0x7
+ 1256 022b 08000000 		.4byte	.LVL30
+ 1257 022f ED050000 		.4byte	0x5ed
+ 1258 0233 07       		.uleb128 0x7
+ 1259 0234 0E000000 		.4byte	.LVL32
+ 1260 0238 F8050000 		.4byte	0x5f8
+ 1261 023c 07       		.uleb128 0x7
+ 1262 023d 1E000000 		.4byte	.LVL34
+ 1263 0241 03060000 		.4byte	0x603
+ 1264 0245 0E       		.uleb128 0xe
+ 1265 0246 24000000 		.4byte	.LVL35
+ 1266 024a 0E060000 		.4byte	0x60e
+ 1267 024e 0C       		.uleb128 0xc
+ 1268 024f 01       		.uleb128 0x1
+ 1269 0250 50       		.byte	0x50
+ 1270 0251 02       		.uleb128 0x2
+ 1271 0252 75       		.byte	0x75
+ 1272 0253 00       		.sleb128 0
+ 1273 0254 00       		.byte	0
+ 1274 0255 00       		.byte	0
+ 1275 0256 08       		.uleb128 0x8
+ 1276 0257 8B020000 		.4byte	.LASF30
+ 1277 025b 01       		.byte	0x1
+ 1278 025c F7       		.byte	0xf7
+ 1279 025d 6B000000 		.4byte	0x6b
+ 1280 0261 00000000 		.4byte	.LFB5
+ 1281 0265 0A000000 		.4byte	.LFE5-.LFB5
+ 1282 0269 01       		.uleb128 0x1
+ 1283 026a 9C       		.byte	0x9c
+ 1284 026b 79020000 		.4byte	0x279
+ 1285 026f 07       		.uleb128 0x7
+ 1286 0270 06000000 		.4byte	.LVL36
+ 1287 0274 95050000 		.4byte	0x595
+ 1288 0278 00       		.byte	0
+ 1289 0279 0F       		.uleb128 0xf
+ 1290 027a 95030000 		.4byte	.LASF31
+ 1291 027e 01       		.byte	0x1
+ 1292 027f 1101     		.2byte	0x111
+ 1293 0281 98000000 		.4byte	0x98
+ 1294 0285 00000000 		.4byte	.LFB6
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 37
+
+
+ 1295 0289 64000000 		.4byte	.LFE6-.LFB6
+ 1296 028d 01       		.uleb128 0x1
+ 1297 028e 9C       		.byte	0x9c
+ 1298 028f E9020000 		.4byte	0x2e9
+ 1299 0293 10       		.uleb128 0x10
+ 1300 0294 4B030000 		.4byte	.LASF32
+ 1301 0298 01       		.byte	0x1
+ 1302 0299 1101     		.2byte	0x111
+ 1303 029b 6B000000 		.4byte	0x6b
+ 1304 029f 37010000 		.4byte	.LLST6
+ 1305 02a3 11       		.uleb128 0x11
+ 1306 02a4 1D010000 		.4byte	.LASF23
+ 1307 02a8 01       		.byte	0x1
+ 1308 02a9 1301     		.2byte	0x113
+ 1309 02ab 98000000 		.4byte	0x98
+ 1310 02af 58010000 		.4byte	.LLST7
+ 1311 02b3 07       		.uleb128 0x7
+ 1312 02b4 08000000 		.4byte	.LVL38
+ 1313 02b8 B6050000 		.4byte	0x5b6
+ 1314 02bc 07       		.uleb128 0x7
+ 1315 02bd 10000000 		.4byte	.LVL39
+ 1316 02c1 C1050000 		.4byte	0x5c1
+ 1317 02c5 0B       		.uleb128 0xb
+ 1318 02c6 1A000000 		.4byte	.LVL40
+ 1319 02ca 19060000 		.4byte	0x619
+ 1320 02ce DF020000 		.4byte	0x2df
+ 1321 02d2 0C       		.uleb128 0xc
+ 1322 02d3 01       		.uleb128 0x1
+ 1323 02d4 50       		.byte	0x50
+ 1324 02d5 02       		.uleb128 0x2
+ 1325 02d6 08       		.byte	0x8
+ 1326 02d7 40       		.byte	0x40
+ 1327 02d8 0C       		.uleb128 0xc
+ 1328 02d9 01       		.uleb128 0x1
+ 1329 02da 51       		.byte	0x51
+ 1330 02db 02       		.uleb128 0x2
+ 1331 02dc 74       		.byte	0x74
+ 1332 02dd 00       		.sleb128 0
+ 1333 02de 00       		.byte	0
+ 1334 02df 07       		.uleb128 0x7
+ 1335 02e0 52000000 		.4byte	.LVL42
+ 1336 02e4 E2050000 		.4byte	0x5e2
+ 1337 02e8 00       		.byte	0
+ 1338 02e9 0F       		.uleb128 0xf
+ 1339 02ea 58030000 		.4byte	.LASF33
+ 1340 02ee 01       		.byte	0x1
+ 1341 02ef 5901     		.2byte	0x159
+ 1342 02f1 98000000 		.4byte	0x98
+ 1343 02f5 00000000 		.4byte	.LFB7
+ 1344 02f9 B4000000 		.4byte	.LFE7-.LFB7
+ 1345 02fd 01       		.uleb128 0x1
+ 1346 02fe 9C       		.byte	0x9c
+ 1347 02ff 88030000 		.4byte	0x388
+ 1348 0303 10       		.uleb128 0x10
+ 1349 0304 71010000 		.4byte	.LASF34
+ 1350 0308 01       		.byte	0x1
+ 1351 0309 5901     		.2byte	0x159
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 38
+
+
+ 1352 030b 88030000 		.4byte	0x388
+ 1353 030f 81010000 		.4byte	.LLST8
+ 1354 0313 10       		.uleb128 0x10
+ 1355 0314 73030000 		.4byte	.LASF24
+ 1356 0318 01       		.byte	0x1
+ 1357 0319 5901     		.2byte	0x159
+ 1358 031b 6B000000 		.4byte	0x6b
+ 1359 031f 2A020000 		.4byte	.LLST9
+ 1360 0323 11       		.uleb128 0x11
+ 1361 0324 1D010000 		.4byte	.LASF23
+ 1362 0328 01       		.byte	0x1
+ 1363 0329 5B01     		.2byte	0x15b
+ 1364 032b 98000000 		.4byte	0x98
+ 1365 032f 4B020000 		.4byte	.LLST10
+ 1366 0333 07       		.uleb128 0x7
+ 1367 0334 0A000000 		.4byte	.LVL47
+ 1368 0338 B6050000 		.4byte	0x5b6
+ 1369 033c 07       		.uleb128 0x7
+ 1370 033d 14000000 		.4byte	.LVL48
+ 1371 0341 C1050000 		.4byte	0x5c1
+ 1372 0345 0B       		.uleb128 0xb
+ 1373 0346 22000000 		.4byte	.LVL50
+ 1374 034a 24060000 		.4byte	0x624
+ 1375 034e 64030000 		.4byte	0x364
+ 1376 0352 0C       		.uleb128 0xc
+ 1377 0353 01       		.uleb128 0x1
+ 1378 0354 50       		.byte	0x50
+ 1379 0355 02       		.uleb128 0x2
+ 1380 0356 08       		.byte	0x8
+ 1381 0357 40       		.byte	0x40
+ 1382 0358 0C       		.uleb128 0xc
+ 1383 0359 01       		.uleb128 0x1
+ 1384 035a 51       		.byte	0x51
+ 1385 035b 02       		.uleb128 0x2
+ 1386 035c 74       		.byte	0x74
+ 1387 035d 00       		.sleb128 0
+ 1388 035e 0C       		.uleb128 0xc
+ 1389 035f 01       		.uleb128 0x1
+ 1390 0360 52       		.byte	0x52
+ 1391 0361 01       		.uleb128 0x1
+ 1392 0362 40       		.byte	0x40
+ 1393 0363 00       		.byte	0
+ 1394 0364 0B       		.uleb128 0xb
+ 1395 0365 60000000 		.4byte	.LVL56
+ 1396 0369 D7050000 		.4byte	0x5d7
+ 1397 036d 7E030000 		.4byte	0x37e
+ 1398 0371 0C       		.uleb128 0xc
+ 1399 0372 01       		.uleb128 0x1
+ 1400 0373 50       		.byte	0x50
+ 1401 0374 02       		.uleb128 0x2
+ 1402 0375 08       		.byte	0x8
+ 1403 0376 40       		.byte	0x40
+ 1404 0377 0C       		.uleb128 0xc
+ 1405 0378 01       		.uleb128 0x1
+ 1406 0379 51       		.byte	0x51
+ 1407 037a 02       		.uleb128 0x2
+ 1408 037b 75       		.byte	0x75
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 39
+
+
+ 1409 037c 00       		.sleb128 0
+ 1410 037d 00       		.byte	0
+ 1411 037e 07       		.uleb128 0x7
+ 1412 037f A0000000 		.4byte	.LVL66
+ 1413 0383 E2050000 		.4byte	0x5e2
+ 1414 0387 00       		.byte	0
+ 1415 0388 12       		.uleb128 0x12
+ 1416 0389 04       		.byte	0x4
+ 1417 038a 8E030000 		.4byte	0x38e
+ 1418 038e 13       		.uleb128 0x13
+ 1419 038f 6B000000 		.4byte	0x6b
+ 1420 0393 0F       		.uleb128 0xf
+ 1421 0394 5F010000 		.4byte	.LASF35
+ 1422 0398 01       		.byte	0x1
+ 1423 0399 C601     		.2byte	0x1c6
+ 1424 039b 98000000 		.4byte	0x98
+ 1425 039f 00000000 		.4byte	.LFB8
+ 1426 03a3 88000000 		.4byte	.LFE8-.LFB8
+ 1427 03a7 01       		.uleb128 0x1
+ 1428 03a8 9C       		.byte	0x9c
+ 1429 03a9 25040000 		.4byte	0x425
+ 1430 03ad 10       		.uleb128 0x10
+ 1431 03ae 71010000 		.4byte	.LASF34
+ 1432 03b2 01       		.byte	0x1
+ 1433 03b3 C601     		.2byte	0x1c6
+ 1434 03b5 88030000 		.4byte	0x388
+ 1435 03b9 AF020000 		.4byte	.LLST11
+ 1436 03bd 10       		.uleb128 0x10
+ 1437 03be 73030000 		.4byte	.LASF24
+ 1438 03c2 01       		.byte	0x1
+ 1439 03c3 C601     		.2byte	0x1c6
+ 1440 03c5 6B000000 		.4byte	0x6b
+ 1441 03c9 DB020000 		.4byte	.LLST12
+ 1442 03cd 11       		.uleb128 0x11
+ 1443 03ce 1D010000 		.4byte	.LASF23
+ 1444 03d2 01       		.byte	0x1
+ 1445 03d3 C901     		.2byte	0x1c9
+ 1446 03d5 98000000 		.4byte	0x98
+ 1447 03d9 FC020000 		.4byte	.LLST13
+ 1448 03dd 07       		.uleb128 0x7
+ 1449 03de 0A000000 		.4byte	.LVL73
+ 1450 03e2 B6050000 		.4byte	0x5b6
+ 1451 03e6 07       		.uleb128 0x7
+ 1452 03e7 14000000 		.4byte	.LVL74
+ 1453 03eb C1050000 		.4byte	0x5c1
+ 1454 03ef 0B       		.uleb128 0xb
+ 1455 03f0 20000000 		.4byte	.LVL76
+ 1456 03f4 24060000 		.4byte	0x624
+ 1457 03f8 0E040000 		.4byte	0x40e
+ 1458 03fc 0C       		.uleb128 0xc
+ 1459 03fd 01       		.uleb128 0x1
+ 1460 03fe 50       		.byte	0x50
+ 1461 03ff 02       		.uleb128 0x2
+ 1462 0400 08       		.byte	0x8
+ 1463 0401 40       		.byte	0x40
+ 1464 0402 0C       		.uleb128 0xc
+ 1465 0403 01       		.uleb128 0x1
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 40
+
+
+ 1466 0404 51       		.byte	0x51
+ 1467 0405 02       		.uleb128 0x2
+ 1468 0406 75       		.byte	0x75
+ 1469 0407 00       		.sleb128 0
+ 1470 0408 0C       		.uleb128 0xc
+ 1471 0409 01       		.uleb128 0x1
+ 1472 040a 52       		.byte	0x52
+ 1473 040b 01       		.uleb128 0x1
+ 1474 040c 40       		.byte	0x40
+ 1475 040d 00       		.byte	0
+ 1476 040e 0E       		.uleb128 0xe
+ 1477 040f 5E000000 		.4byte	.LVL79
+ 1478 0413 D7050000 		.4byte	0x5d7
+ 1479 0417 0C       		.uleb128 0xc
+ 1480 0418 01       		.uleb128 0x1
+ 1481 0419 50       		.byte	0x50
+ 1482 041a 02       		.uleb128 0x2
+ 1483 041b 08       		.byte	0x8
+ 1484 041c 40       		.byte	0x40
+ 1485 041d 0C       		.uleb128 0xc
+ 1486 041e 01       		.uleb128 0x1
+ 1487 041f 51       		.byte	0x51
+ 1488 0420 02       		.uleb128 0x2
+ 1489 0421 74       		.byte	0x74
+ 1490 0422 00       		.sleb128 0
+ 1491 0423 00       		.byte	0
+ 1492 0424 00       		.byte	0
+ 1493 0425 0F       		.uleb128 0xf
+ 1494 0426 68020000 		.4byte	.LASF36
+ 1495 042a 01       		.byte	0x1
+ 1496 042b 2202     		.2byte	0x222
+ 1497 042d 98000000 		.4byte	0x98
+ 1498 0431 00000000 		.4byte	.LFB9
+ 1499 0435 2E000000 		.4byte	.LFE9-.LFB9
+ 1500 0439 01       		.uleb128 0x1
+ 1501 043a 9C       		.byte	0x9c
+ 1502 043b 88040000 		.4byte	0x488
+ 1503 043f 10       		.uleb128 0x10
+ 1504 0440 4B030000 		.4byte	.LASF32
+ 1505 0444 01       		.byte	0x1
+ 1506 0445 2202     		.2byte	0x222
+ 1507 0447 6B000000 		.4byte	0x6b
+ 1508 044b 3F030000 		.4byte	.LLST14
+ 1509 044f 11       		.uleb128 0x11
+ 1510 0450 1D010000 		.4byte	.LASF23
+ 1511 0454 01       		.byte	0x1
+ 1512 0455 2402     		.2byte	0x224
+ 1513 0457 98000000 		.4byte	0x98
+ 1514 045b 60030000 		.4byte	.LLST15
+ 1515 045f 07       		.uleb128 0x7
+ 1516 0460 08000000 		.4byte	.LVL88
+ 1517 0464 B6050000 		.4byte	0x5b6
+ 1518 0468 07       		.uleb128 0x7
+ 1519 0469 0E000000 		.4byte	.LVL89
+ 1520 046d C1050000 		.4byte	0x5c1
+ 1521 0471 0E       		.uleb128 0xe
+ 1522 0472 18000000 		.4byte	.LVL91
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 41
+
+
+ 1523 0476 19060000 		.4byte	0x619
+ 1524 047a 0C       		.uleb128 0xc
+ 1525 047b 01       		.uleb128 0x1
+ 1526 047c 50       		.byte	0x50
+ 1527 047d 02       		.uleb128 0x2
+ 1528 047e 08       		.byte	0x8
+ 1529 047f 40       		.byte	0x40
+ 1530 0480 0C       		.uleb128 0xc
+ 1531 0481 01       		.uleb128 0x1
+ 1532 0482 51       		.byte	0x51
+ 1533 0483 02       		.uleb128 0x2
+ 1534 0484 74       		.byte	0x74
+ 1535 0485 00       		.sleb128 0
+ 1536 0486 00       		.byte	0
+ 1537 0487 00       		.byte	0
+ 1538 0488 0F       		.uleb128 0xf
+ 1539 0489 F8020000 		.4byte	.LASF37
+ 1540 048d 01       		.byte	0x1
+ 1541 048e 5802     		.2byte	0x258
+ 1542 0490 98000000 		.4byte	0x98
+ 1543 0494 00000000 		.4byte	.LFB10
+ 1544 0498 40000000 		.4byte	.LFE10-.LFB10
+ 1545 049c 01       		.uleb128 0x1
+ 1546 049d 9C       		.byte	0x9c
+ 1547 049e C5040000 		.4byte	0x4c5
+ 1548 04a2 11       		.uleb128 0x11
+ 1549 04a3 1D010000 		.4byte	.LASF23
+ 1550 04a7 01       		.byte	0x1
+ 1551 04a8 5A02     		.2byte	0x25a
+ 1552 04aa 98000000 		.4byte	0x98
+ 1553 04ae 8D030000 		.4byte	.LLST16
+ 1554 04b2 07       		.uleb128 0x7
+ 1555 04b3 06000000 		.4byte	.LVL95
+ 1556 04b7 B6050000 		.4byte	0x5b6
+ 1557 04bb 07       		.uleb128 0x7
+ 1558 04bc 34000000 		.4byte	.LVL97
+ 1559 04c0 E2050000 		.4byte	0x5e2
+ 1560 04c4 00       		.byte	0
+ 1561 04c5 0F       		.uleb128 0xf
+ 1562 04c6 EC010000 		.4byte	.LASF38
+ 1563 04ca 01       		.byte	0x1
+ 1564 04cb 8B02     		.2byte	0x28b
+ 1565 04cd 98000000 		.4byte	0x98
+ 1566 04d1 00000000 		.4byte	.LFB11
+ 1567 04d5 C8000000 		.4byte	.LFE11-.LFB11
+ 1568 04d9 01       		.uleb128 0x1
+ 1569 04da 9C       		.byte	0x9c
+ 1570 04db 7A050000 		.4byte	0x57a
+ 1571 04df 10       		.uleb128 0x10
+ 1572 04e0 BE010000 		.4byte	.LASF21
+ 1573 04e4 01       		.byte	0x1
+ 1574 04e5 8B02     		.2byte	0x28b
+ 1575 04e7 6B000000 		.4byte	0x6b
+ 1576 04eb B6030000 		.4byte	.LLST17
+ 1577 04ef 10       		.uleb128 0x10
+ 1578 04f0 73030000 		.4byte	.LASF24
+ 1579 04f4 01       		.byte	0x1
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 42
+
+
+ 1580 04f5 8B02     		.2byte	0x28b
+ 1581 04f7 6B000000 		.4byte	0x6b
+ 1582 04fb F9030000 		.4byte	.LLST18
+ 1583 04ff 10       		.uleb128 0x10
+ 1584 0500 24010000 		.4byte	.LASF25
+ 1585 0504 01       		.byte	0x1
+ 1586 0505 8B02     		.2byte	0x28b
+ 1587 0507 6B000000 		.4byte	0x6b
+ 1588 050b 1A040000 		.4byte	.LLST19
+ 1589 050f 11       		.uleb128 0x11
+ 1590 0510 1D010000 		.4byte	.LASF23
+ 1591 0514 01       		.byte	0x1
+ 1592 0515 8E02     		.2byte	0x28e
+ 1593 0517 98000000 		.4byte	0x98
+ 1594 051b 3B040000 		.4byte	.LLST20
+ 1595 051f 07       		.uleb128 0x7
+ 1596 0520 10000000 		.4byte	.LVL102
+ 1597 0524 B6050000 		.4byte	0x5b6
+ 1598 0528 07       		.uleb128 0x7
+ 1599 0529 1E000000 		.4byte	.LVL103
+ 1600 052d C1050000 		.4byte	0x5c1
+ 1601 0531 0B       		.uleb128 0xb
+ 1602 0532 30000000 		.4byte	.LVL106
+ 1603 0536 CC050000 		.4byte	0x5cc
+ 1604 053a 56050000 		.4byte	0x556
+ 1605 053e 0C       		.uleb128 0xc
+ 1606 053f 01       		.uleb128 0x1
+ 1607 0540 50       		.byte	0x50
+ 1608 0541 02       		.uleb128 0x2
+ 1609 0542 08       		.byte	0x8
+ 1610 0543 40       		.byte	0x40
+ 1611 0544 0C       		.uleb128 0xc
+ 1612 0545 01       		.uleb128 0x1
+ 1613 0546 51       		.byte	0x51
+ 1614 0547 02       		.uleb128 0x2
+ 1615 0548 74       		.byte	0x74
+ 1616 0549 00       		.sleb128 0
+ 1617 054a 0C       		.uleb128 0xc
+ 1618 054b 01       		.uleb128 0x1
+ 1619 054c 52       		.byte	0x52
+ 1620 054d 02       		.uleb128 0x2
+ 1621 054e 91       		.byte	0x91
+ 1622 054f 6F       		.sleb128 -17
+ 1623 0550 0C       		.uleb128 0xc
+ 1624 0551 01       		.uleb128 0x1
+ 1625 0552 53       		.byte	0x53
+ 1626 0553 01       		.uleb128 0x1
+ 1627 0554 31       		.byte	0x31
+ 1628 0555 00       		.byte	0
+ 1629 0556 0B       		.uleb128 0xb
+ 1630 0557 6E000000 		.4byte	.LVL108
+ 1631 055b D7050000 		.4byte	0x5d7
+ 1632 055f 70050000 		.4byte	0x570
+ 1633 0563 0C       		.uleb128 0xc
+ 1634 0564 01       		.uleb128 0x1
+ 1635 0565 50       		.byte	0x50
+ 1636 0566 02       		.uleb128 0x2
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 43
+
+
+ 1637 0567 08       		.byte	0x8
+ 1638 0568 40       		.byte	0x40
+ 1639 0569 0C       		.uleb128 0xc
+ 1640 056a 01       		.uleb128 0x1
+ 1641 056b 51       		.byte	0x51
+ 1642 056c 02       		.uleb128 0x2
+ 1643 056d 75       		.byte	0x75
+ 1644 056e 00       		.sleb128 0
+ 1645 056f 00       		.byte	0
+ 1646 0570 07       		.uleb128 0x7
+ 1647 0571 AE000000 		.4byte	.LVL117
+ 1648 0575 E2050000 		.4byte	0x5e2
+ 1649 0579 00       		.byte	0
+ 1650 057a 14       		.uleb128 0x14
+ 1651 057b 6B000000 		.4byte	0x6b
+ 1652 057f 8A050000 		.4byte	0x58a
+ 1653 0583 15       		.uleb128 0x15
+ 1654 0584 BC000000 		.4byte	0xbc
+ 1655 0588 01       		.byte	0x1
+ 1656 0589 00       		.byte	0
+ 1657 058a 16       		.uleb128 0x16
+ 1658 058b AF010000 		.4byte	.LASF56
+ 1659 058f 03       		.byte	0x3
+ 1660 0590 1C       		.byte	0x1c
+ 1661 0591 7A050000 		.4byte	0x57a
+ 1662 0595 17       		.uleb128 0x17
+ 1663 0596 CF020000 		.4byte	.LASF39
+ 1664 059a CF020000 		.4byte	.LASF39
+ 1665 059e 03       		.byte	0x3
+ 1666 059f 46       		.byte	0x46
+ 1667 05a0 17       		.uleb128 0x17
+ 1668 05a1 79010000 		.4byte	.LASF40
+ 1669 05a5 79010000 		.4byte	.LASF40
+ 1670 05a9 03       		.byte	0x3
+ 1671 05aa 55       		.byte	0x55
+ 1672 05ab 17       		.uleb128 0x17
+ 1673 05ac 9C000000 		.4byte	.LASF41
+ 1674 05b0 9C000000 		.4byte	.LASF41
+ 1675 05b4 03       		.byte	0x3
+ 1676 05b5 56       		.byte	0x56
+ 1677 05b6 17       		.uleb128 0x17
+ 1678 05b7 AA000000 		.4byte	.LASF42
+ 1679 05bb AA000000 		.4byte	.LASF42
+ 1680 05bf 04       		.byte	0x4
+ 1681 05c0 22       		.byte	0x22
+ 1682 05c1 17       		.uleb128 0x17
+ 1683 05c2 1C020000 		.4byte	.LASF43
+ 1684 05c6 1C020000 		.4byte	.LASF43
+ 1685 05ca 04       		.byte	0x4
+ 1686 05cb 31       		.byte	0x31
+ 1687 05cc 17       		.uleb128 0x17
+ 1688 05cd F7000000 		.4byte	.LASF44
+ 1689 05d1 F7000000 		.4byte	.LASF44
+ 1690 05d5 04       		.byte	0x4
+ 1691 05d6 25       		.byte	0x25
+ 1692 05d7 17       		.uleb128 0x17
+ 1693 05d8 D5000000 		.4byte	.LASF45
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 44
+
+
+ 1694 05dc D5000000 		.4byte	.LASF45
+ 1695 05e0 04       		.byte	0x4
+ 1696 05e1 2A       		.byte	0x2a
+ 1697 05e2 17       		.uleb128 0x17
+ 1698 05e3 53010000 		.4byte	.LASF46
+ 1699 05e7 53010000 		.4byte	.LASF46
+ 1700 05eb 04       		.byte	0x4
+ 1701 05ec 32       		.byte	0x32
+ 1702 05ed 17       		.uleb128 0x17
+ 1703 05ee 26020000 		.4byte	.LASF47
+ 1704 05f2 26020000 		.4byte	.LASF47
+ 1705 05f6 05       		.byte	0x5
+ 1706 05f7 7D       		.byte	0x7d
+ 1707 05f8 17       		.uleb128 0x17
+ 1708 05f9 A4020000 		.4byte	.LASF48
+ 1709 05fd A4020000 		.4byte	.LASF48
+ 1710 0601 03       		.byte	0x3
+ 1711 0602 58       		.byte	0x58
+ 1712 0603 17       		.uleb128 0x17
+ 1713 0604 00020000 		.4byte	.LASF49
+ 1714 0608 00020000 		.4byte	.LASF49
+ 1715 060c 03       		.byte	0x3
+ 1716 060d 59       		.byte	0x59
+ 1717 060e 17       		.uleb128 0x17
+ 1718 060f 52020000 		.4byte	.LASF50
+ 1719 0613 52020000 		.4byte	.LASF50
+ 1720 0617 05       		.byte	0x5
+ 1721 0618 7E       		.byte	0x7e
+ 1722 0619 17       		.uleb128 0x17
+ 1723 061a D9020000 		.4byte	.LASF51
+ 1724 061e D9020000 		.4byte	.LASF51
+ 1725 0622 04       		.byte	0x4
+ 1726 0623 2C       		.byte	0x2c
+ 1727 0624 17       		.uleb128 0x17
+ 1728 0625 B9020000 		.4byte	.LASF52
+ 1729 0629 B9020000 		.4byte	.LASF52
+ 1730 062d 04       		.byte	0x4
+ 1731 062e 27       		.byte	0x27
+ 1732 062f 00       		.byte	0
+ 1733              		.section	.debug_abbrev,"",%progbits
+ 1734              	.Ldebug_abbrev0:
+ 1735 0000 01       		.uleb128 0x1
+ 1736 0001 11       		.uleb128 0x11
+ 1737 0002 01       		.byte	0x1
+ 1738 0003 25       		.uleb128 0x25
+ 1739 0004 0E       		.uleb128 0xe
+ 1740 0005 13       		.uleb128 0x13
+ 1741 0006 0B       		.uleb128 0xb
+ 1742 0007 03       		.uleb128 0x3
+ 1743 0008 0E       		.uleb128 0xe
+ 1744 0009 1B       		.uleb128 0x1b
+ 1745 000a 0E       		.uleb128 0xe
+ 1746 000b 55       		.uleb128 0x55
+ 1747 000c 17       		.uleb128 0x17
+ 1748 000d 11       		.uleb128 0x11
+ 1749 000e 01       		.uleb128 0x1
+ 1750 000f 10       		.uleb128 0x10
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 45
+
+
+ 1751 0010 17       		.uleb128 0x17
+ 1752 0011 00       		.byte	0
+ 1753 0012 00       		.byte	0
+ 1754 0013 02       		.uleb128 0x2
+ 1755 0014 24       		.uleb128 0x24
+ 1756 0015 00       		.byte	0
+ 1757 0016 0B       		.uleb128 0xb
+ 1758 0017 0B       		.uleb128 0xb
+ 1759 0018 3E       		.uleb128 0x3e
+ 1760 0019 0B       		.uleb128 0xb
+ 1761 001a 03       		.uleb128 0x3
+ 1762 001b 0E       		.uleb128 0xe
+ 1763 001c 00       		.byte	0
+ 1764 001d 00       		.byte	0
+ 1765 001e 03       		.uleb128 0x3
+ 1766 001f 24       		.uleb128 0x24
+ 1767 0020 00       		.byte	0
+ 1768 0021 0B       		.uleb128 0xb
+ 1769 0022 0B       		.uleb128 0xb
+ 1770 0023 3E       		.uleb128 0x3e
+ 1771 0024 0B       		.uleb128 0xb
+ 1772 0025 03       		.uleb128 0x3
+ 1773 0026 08       		.uleb128 0x8
+ 1774 0027 00       		.byte	0
+ 1775 0028 00       		.byte	0
+ 1776 0029 04       		.uleb128 0x4
+ 1777 002a 16       		.uleb128 0x16
+ 1778 002b 00       		.byte	0
+ 1779 002c 03       		.uleb128 0x3
+ 1780 002d 0E       		.uleb128 0xe
+ 1781 002e 3A       		.uleb128 0x3a
+ 1782 002f 0B       		.uleb128 0xb
+ 1783 0030 3B       		.uleb128 0x3b
+ 1784 0031 05       		.uleb128 0x5
+ 1785 0032 49       		.uleb128 0x49
+ 1786 0033 13       		.uleb128 0x13
+ 1787 0034 00       		.byte	0
+ 1788 0035 00       		.byte	0
+ 1789 0036 05       		.uleb128 0x5
+ 1790 0037 35       		.uleb128 0x35
+ 1791 0038 00       		.byte	0
+ 1792 0039 49       		.uleb128 0x49
+ 1793 003a 13       		.uleb128 0x13
+ 1794 003b 00       		.byte	0
+ 1795 003c 00       		.byte	0
+ 1796 003d 06       		.uleb128 0x6
+ 1797 003e 2E       		.uleb128 0x2e
+ 1798 003f 01       		.byte	0x1
+ 1799 0040 3F       		.uleb128 0x3f
+ 1800 0041 19       		.uleb128 0x19
+ 1801 0042 03       		.uleb128 0x3
+ 1802 0043 0E       		.uleb128 0xe
+ 1803 0044 3A       		.uleb128 0x3a
+ 1804 0045 0B       		.uleb128 0xb
+ 1805 0046 3B       		.uleb128 0x3b
+ 1806 0047 0B       		.uleb128 0xb
+ 1807 0048 27       		.uleb128 0x27
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 46
+
+
+ 1808 0049 19       		.uleb128 0x19
+ 1809 004a 11       		.uleb128 0x11
+ 1810 004b 01       		.uleb128 0x1
+ 1811 004c 12       		.uleb128 0x12
+ 1812 004d 06       		.uleb128 0x6
+ 1813 004e 40       		.uleb128 0x40
+ 1814 004f 18       		.uleb128 0x18
+ 1815 0050 9742     		.uleb128 0x2117
+ 1816 0052 19       		.uleb128 0x19
+ 1817 0053 01       		.uleb128 0x1
+ 1818 0054 13       		.uleb128 0x13
+ 1819 0055 00       		.byte	0
+ 1820 0056 00       		.byte	0
+ 1821 0057 07       		.uleb128 0x7
+ 1822 0058 898201   		.uleb128 0x4109
+ 1823 005b 00       		.byte	0
+ 1824 005c 11       		.uleb128 0x11
+ 1825 005d 01       		.uleb128 0x1
+ 1826 005e 31       		.uleb128 0x31
+ 1827 005f 13       		.uleb128 0x13
+ 1828 0060 00       		.byte	0
+ 1829 0061 00       		.byte	0
+ 1830 0062 08       		.uleb128 0x8
+ 1831 0063 2E       		.uleb128 0x2e
+ 1832 0064 01       		.byte	0x1
+ 1833 0065 3F       		.uleb128 0x3f
+ 1834 0066 19       		.uleb128 0x19
+ 1835 0067 03       		.uleb128 0x3
+ 1836 0068 0E       		.uleb128 0xe
+ 1837 0069 3A       		.uleb128 0x3a
+ 1838 006a 0B       		.uleb128 0xb
+ 1839 006b 3B       		.uleb128 0x3b
+ 1840 006c 0B       		.uleb128 0xb
+ 1841 006d 27       		.uleb128 0x27
+ 1842 006e 19       		.uleb128 0x19
+ 1843 006f 49       		.uleb128 0x49
+ 1844 0070 13       		.uleb128 0x13
+ 1845 0071 11       		.uleb128 0x11
+ 1846 0072 01       		.uleb128 0x1
+ 1847 0073 12       		.uleb128 0x12
+ 1848 0074 06       		.uleb128 0x6
+ 1849 0075 40       		.uleb128 0x40
+ 1850 0076 18       		.uleb128 0x18
+ 1851 0077 9742     		.uleb128 0x2117
+ 1852 0079 19       		.uleb128 0x19
+ 1853 007a 01       		.uleb128 0x1
+ 1854 007b 13       		.uleb128 0x13
+ 1855 007c 00       		.byte	0
+ 1856 007d 00       		.byte	0
+ 1857 007e 09       		.uleb128 0x9
+ 1858 007f 05       		.uleb128 0x5
+ 1859 0080 00       		.byte	0
+ 1860 0081 03       		.uleb128 0x3
+ 1861 0082 0E       		.uleb128 0xe
+ 1862 0083 3A       		.uleb128 0x3a
+ 1863 0084 0B       		.uleb128 0xb
+ 1864 0085 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 47
+
+
+ 1865 0086 0B       		.uleb128 0xb
+ 1866 0087 49       		.uleb128 0x49
+ 1867 0088 13       		.uleb128 0x13
+ 1868 0089 02       		.uleb128 0x2
+ 1869 008a 17       		.uleb128 0x17
+ 1870 008b 00       		.byte	0
+ 1871 008c 00       		.byte	0
+ 1872 008d 0A       		.uleb128 0xa
+ 1873 008e 34       		.uleb128 0x34
+ 1874 008f 00       		.byte	0
+ 1875 0090 03       		.uleb128 0x3
+ 1876 0091 0E       		.uleb128 0xe
+ 1877 0092 3A       		.uleb128 0x3a
+ 1878 0093 0B       		.uleb128 0xb
+ 1879 0094 3B       		.uleb128 0x3b
+ 1880 0095 0B       		.uleb128 0xb
+ 1881 0096 49       		.uleb128 0x49
+ 1882 0097 13       		.uleb128 0x13
+ 1883 0098 02       		.uleb128 0x2
+ 1884 0099 17       		.uleb128 0x17
+ 1885 009a 00       		.byte	0
+ 1886 009b 00       		.byte	0
+ 1887 009c 0B       		.uleb128 0xb
+ 1888 009d 898201   		.uleb128 0x4109
+ 1889 00a0 01       		.byte	0x1
+ 1890 00a1 11       		.uleb128 0x11
+ 1891 00a2 01       		.uleb128 0x1
+ 1892 00a3 31       		.uleb128 0x31
+ 1893 00a4 13       		.uleb128 0x13
+ 1894 00a5 01       		.uleb128 0x1
+ 1895 00a6 13       		.uleb128 0x13
+ 1896 00a7 00       		.byte	0
+ 1897 00a8 00       		.byte	0
+ 1898 00a9 0C       		.uleb128 0xc
+ 1899 00aa 8A8201   		.uleb128 0x410a
+ 1900 00ad 00       		.byte	0
+ 1901 00ae 02       		.uleb128 0x2
+ 1902 00af 18       		.uleb128 0x18
+ 1903 00b0 9142     		.uleb128 0x2111
+ 1904 00b2 18       		.uleb128 0x18
+ 1905 00b3 00       		.byte	0
+ 1906 00b4 00       		.byte	0
+ 1907 00b5 0D       		.uleb128 0xd
+ 1908 00b6 34       		.uleb128 0x34
+ 1909 00b7 00       		.byte	0
+ 1910 00b8 03       		.uleb128 0x3
+ 1911 00b9 0E       		.uleb128 0xe
+ 1912 00ba 3A       		.uleb128 0x3a
+ 1913 00bb 0B       		.uleb128 0xb
+ 1914 00bc 3B       		.uleb128 0x3b
+ 1915 00bd 0B       		.uleb128 0xb
+ 1916 00be 49       		.uleb128 0x49
+ 1917 00bf 13       		.uleb128 0x13
+ 1918 00c0 02       		.uleb128 0x2
+ 1919 00c1 18       		.uleb128 0x18
+ 1920 00c2 00       		.byte	0
+ 1921 00c3 00       		.byte	0
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 48
+
+
+ 1922 00c4 0E       		.uleb128 0xe
+ 1923 00c5 898201   		.uleb128 0x4109
+ 1924 00c8 01       		.byte	0x1
+ 1925 00c9 11       		.uleb128 0x11
+ 1926 00ca 01       		.uleb128 0x1
+ 1927 00cb 31       		.uleb128 0x31
+ 1928 00cc 13       		.uleb128 0x13
+ 1929 00cd 00       		.byte	0
+ 1930 00ce 00       		.byte	0
+ 1931 00cf 0F       		.uleb128 0xf
+ 1932 00d0 2E       		.uleb128 0x2e
+ 1933 00d1 01       		.byte	0x1
+ 1934 00d2 3F       		.uleb128 0x3f
+ 1935 00d3 19       		.uleb128 0x19
+ 1936 00d4 03       		.uleb128 0x3
+ 1937 00d5 0E       		.uleb128 0xe
+ 1938 00d6 3A       		.uleb128 0x3a
+ 1939 00d7 0B       		.uleb128 0xb
+ 1940 00d8 3B       		.uleb128 0x3b
+ 1941 00d9 05       		.uleb128 0x5
+ 1942 00da 27       		.uleb128 0x27
+ 1943 00db 19       		.uleb128 0x19
+ 1944 00dc 49       		.uleb128 0x49
+ 1945 00dd 13       		.uleb128 0x13
+ 1946 00de 11       		.uleb128 0x11
+ 1947 00df 01       		.uleb128 0x1
+ 1948 00e0 12       		.uleb128 0x12
+ 1949 00e1 06       		.uleb128 0x6
+ 1950 00e2 40       		.uleb128 0x40
+ 1951 00e3 18       		.uleb128 0x18
+ 1952 00e4 9742     		.uleb128 0x2117
+ 1953 00e6 19       		.uleb128 0x19
+ 1954 00e7 01       		.uleb128 0x1
+ 1955 00e8 13       		.uleb128 0x13
+ 1956 00e9 00       		.byte	0
+ 1957 00ea 00       		.byte	0
+ 1958 00eb 10       		.uleb128 0x10
+ 1959 00ec 05       		.uleb128 0x5
+ 1960 00ed 00       		.byte	0
+ 1961 00ee 03       		.uleb128 0x3
+ 1962 00ef 0E       		.uleb128 0xe
+ 1963 00f0 3A       		.uleb128 0x3a
+ 1964 00f1 0B       		.uleb128 0xb
+ 1965 00f2 3B       		.uleb128 0x3b
+ 1966 00f3 05       		.uleb128 0x5
+ 1967 00f4 49       		.uleb128 0x49
+ 1968 00f5 13       		.uleb128 0x13
+ 1969 00f6 02       		.uleb128 0x2
+ 1970 00f7 17       		.uleb128 0x17
+ 1971 00f8 00       		.byte	0
+ 1972 00f9 00       		.byte	0
+ 1973 00fa 11       		.uleb128 0x11
+ 1974 00fb 34       		.uleb128 0x34
+ 1975 00fc 00       		.byte	0
+ 1976 00fd 03       		.uleb128 0x3
+ 1977 00fe 0E       		.uleb128 0xe
+ 1978 00ff 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 49
+
+
+ 1979 0100 0B       		.uleb128 0xb
+ 1980 0101 3B       		.uleb128 0x3b
+ 1981 0102 05       		.uleb128 0x5
+ 1982 0103 49       		.uleb128 0x49
+ 1983 0104 13       		.uleb128 0x13
+ 1984 0105 02       		.uleb128 0x2
+ 1985 0106 17       		.uleb128 0x17
+ 1986 0107 00       		.byte	0
+ 1987 0108 00       		.byte	0
+ 1988 0109 12       		.uleb128 0x12
+ 1989 010a 0F       		.uleb128 0xf
+ 1990 010b 00       		.byte	0
+ 1991 010c 0B       		.uleb128 0xb
+ 1992 010d 0B       		.uleb128 0xb
+ 1993 010e 49       		.uleb128 0x49
+ 1994 010f 13       		.uleb128 0x13
+ 1995 0110 00       		.byte	0
+ 1996 0111 00       		.byte	0
+ 1997 0112 13       		.uleb128 0x13
+ 1998 0113 26       		.uleb128 0x26
+ 1999 0114 00       		.byte	0
+ 2000 0115 49       		.uleb128 0x49
+ 2001 0116 13       		.uleb128 0x13
+ 2002 0117 00       		.byte	0
+ 2003 0118 00       		.byte	0
+ 2004 0119 14       		.uleb128 0x14
+ 2005 011a 01       		.uleb128 0x1
+ 2006 011b 01       		.byte	0x1
+ 2007 011c 49       		.uleb128 0x49
+ 2008 011d 13       		.uleb128 0x13
+ 2009 011e 01       		.uleb128 0x1
+ 2010 011f 13       		.uleb128 0x13
+ 2011 0120 00       		.byte	0
+ 2012 0121 00       		.byte	0
+ 2013 0122 15       		.uleb128 0x15
+ 2014 0123 21       		.uleb128 0x21
+ 2015 0124 00       		.byte	0
+ 2016 0125 49       		.uleb128 0x49
+ 2017 0126 13       		.uleb128 0x13
+ 2018 0127 2F       		.uleb128 0x2f
+ 2019 0128 0B       		.uleb128 0xb
+ 2020 0129 00       		.byte	0
+ 2021 012a 00       		.byte	0
+ 2022 012b 16       		.uleb128 0x16
+ 2023 012c 34       		.uleb128 0x34
+ 2024 012d 00       		.byte	0
+ 2025 012e 03       		.uleb128 0x3
+ 2026 012f 0E       		.uleb128 0xe
+ 2027 0130 3A       		.uleb128 0x3a
+ 2028 0131 0B       		.uleb128 0xb
+ 2029 0132 3B       		.uleb128 0x3b
+ 2030 0133 0B       		.uleb128 0xb
+ 2031 0134 49       		.uleb128 0x49
+ 2032 0135 13       		.uleb128 0x13
+ 2033 0136 3F       		.uleb128 0x3f
+ 2034 0137 19       		.uleb128 0x19
+ 2035 0138 3C       		.uleb128 0x3c
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 50
+
+
+ 2036 0139 19       		.uleb128 0x19
+ 2037 013a 00       		.byte	0
+ 2038 013b 00       		.byte	0
+ 2039 013c 17       		.uleb128 0x17
+ 2040 013d 2E       		.uleb128 0x2e
+ 2041 013e 00       		.byte	0
+ 2042 013f 3F       		.uleb128 0x3f
+ 2043 0140 19       		.uleb128 0x19
+ 2044 0141 3C       		.uleb128 0x3c
+ 2045 0142 19       		.uleb128 0x19
+ 2046 0143 6E       		.uleb128 0x6e
+ 2047 0144 0E       		.uleb128 0xe
+ 2048 0145 03       		.uleb128 0x3
+ 2049 0146 0E       		.uleb128 0xe
+ 2050 0147 3A       		.uleb128 0x3a
+ 2051 0148 0B       		.uleb128 0xb
+ 2052 0149 3B       		.uleb128 0x3b
+ 2053 014a 0B       		.uleb128 0xb
+ 2054 014b 00       		.byte	0
+ 2055 014c 00       		.byte	0
+ 2056 014d 00       		.byte	0
+ 2057              		.section	.debug_loc,"",%progbits
+ 2058              	.Ldebug_loc0:
+ 2059              	.LLST0:
+ 2060 0000 00000000 		.4byte	.LVL4
+ 2061 0004 0D000000 		.4byte	.LVL5-1
+ 2062 0008 0100     		.2byte	0x1
+ 2063 000a 50       		.byte	0x50
+ 2064 000b 0D000000 		.4byte	.LVL5-1
+ 2065 000f 2A000000 		.4byte	.LVL9
+ 2066 0013 0200     		.2byte	0x2
+ 2067 0015 91       		.byte	0x91
+ 2068 0016 6F       		.sleb128 -17
+ 2069 0017 2A000000 		.4byte	.LVL9
+ 2070 001b 31000000 		.4byte	.LVL10-1
+ 2071 001f 0200     		.2byte	0x2
+ 2072 0021 72       		.byte	0x72
+ 2073 0022 00       		.sleb128 0
+ 2074 0023 31000000 		.4byte	.LVL10-1
+ 2075 0027 C6000000 		.4byte	.LVL28
+ 2076 002b 0200     		.2byte	0x2
+ 2077 002d 91       		.byte	0x91
+ 2078 002e 6F       		.sleb128 -17
+ 2079 002f C6000000 		.4byte	.LVL28
+ 2080 0033 D0000000 		.4byte	.LFE3
+ 2081 0037 0200     		.2byte	0x2
+ 2082 0039 7D       		.byte	0x7d
+ 2083 003a 6F       		.sleb128 -17
+ 2084 003b 00000000 		.4byte	0
+ 2085 003f 00000000 		.4byte	0
+ 2086              	.LLST1:
+ 2087 0043 00000000 		.4byte	.LVL4
+ 2088 0047 0D000000 		.4byte	.LVL5-1
+ 2089 004b 0100     		.2byte	0x1
+ 2090 004d 51       		.byte	0x51
+ 2091 004e 0D000000 		.4byte	.LVL5-1
+ 2092 0052 D0000000 		.4byte	.LFE3
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 51
+
+
+ 2093 0056 0400     		.2byte	0x4
+ 2094 0058 F3       		.byte	0xf3
+ 2095 0059 01       		.uleb128 0x1
+ 2096 005a 51       		.byte	0x51
+ 2097 005b 9F       		.byte	0x9f
+ 2098 005c 00000000 		.4byte	0
+ 2099 0060 00000000 		.4byte	0
+ 2100              	.LLST2:
+ 2101 0064 34000000 		.4byte	.LVL11
+ 2102 0068 62000000 		.4byte	.LVL12
+ 2103 006c 0100     		.2byte	0x1
+ 2104 006e 50       		.byte	0x50
+ 2105 006f 62000000 		.4byte	.LVL12
+ 2106 0073 96000000 		.4byte	.LVL14
+ 2107 0077 0100     		.2byte	0x1
+ 2108 0079 54       		.byte	0x54
+ 2109 007a 98000000 		.4byte	.LVL15
+ 2110 007e 9E000000 		.4byte	.LVL16
+ 2111 0082 0100     		.2byte	0x1
+ 2112 0084 50       		.byte	0x50
+ 2113 0085 9E000000 		.4byte	.LVL16
+ 2114 0089 A2000000 		.4byte	.LVL17
+ 2115 008d 0100     		.2byte	0x1
+ 2116 008f 54       		.byte	0x54
+ 2117 0090 A4000000 		.4byte	.LVL18
+ 2118 0094 A8000000 		.4byte	.LVL19
+ 2119 0098 0100     		.2byte	0x1
+ 2120 009a 54       		.byte	0x54
+ 2121 009b AA000000 		.4byte	.LVL20
+ 2122 009f AE000000 		.4byte	.LVL21
+ 2123 00a3 0100     		.2byte	0x1
+ 2124 00a5 54       		.byte	0x54
+ 2125 00a6 B0000000 		.4byte	.LVL22
+ 2126 00aa B4000000 		.4byte	.LVL23
+ 2127 00ae 0100     		.2byte	0x1
+ 2128 00b0 50       		.byte	0x50
+ 2129 00b1 B4000000 		.4byte	.LVL23
+ 2130 00b5 BA000000 		.4byte	.LVL25
+ 2131 00b9 0100     		.2byte	0x1
+ 2132 00bb 54       		.byte	0x54
+ 2133 00bc C0000000 		.4byte	.LVL27
+ 2134 00c0 C6000000 		.4byte	.LVL28
+ 2135 00c4 0100     		.2byte	0x1
+ 2136 00c6 54       		.byte	0x54
+ 2137 00c7 C6000000 		.4byte	.LVL28
+ 2138 00cb D0000000 		.4byte	.LFE3
+ 2139 00cf 0100     		.2byte	0x1
+ 2140 00d1 50       		.byte	0x50
+ 2141 00d2 00000000 		.4byte	0
+ 2142 00d6 00000000 		.4byte	0
+ 2143              	.LLST3:
+ 2144 00da 16000000 		.4byte	.LVL6
+ 2145 00de BA000000 		.4byte	.LVL25
+ 2146 00e2 0100     		.2byte	0x1
+ 2147 00e4 55       		.byte	0x55
+ 2148 00e5 BE000000 		.4byte	.LVL26
+ 2149 00e9 C0000000 		.4byte	.LVL27
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 52
+
+
+ 2150 00ed 0100     		.2byte	0x1
+ 2151 00ef 55       		.byte	0x55
+ 2152 00f0 00000000 		.4byte	0
+ 2153 00f4 00000000 		.4byte	0
+ 2154              	.LLST4:
+ 2155 00f8 1C000000 		.4byte	.LVL7
+ 2156 00fc 34000000 		.4byte	.LVL11
+ 2157 0100 0100     		.2byte	0x1
+ 2158 0102 54       		.byte	0x54
+ 2159 0103 BE000000 		.4byte	.LVL26
+ 2160 0107 C0000000 		.4byte	.LVL27
+ 2161 010b 0100     		.2byte	0x1
+ 2162 010d 54       		.byte	0x54
+ 2163 010e 00000000 		.4byte	0
+ 2164 0112 00000000 		.4byte	0
+ 2165              	.LLST5:
+ 2166 0116 00000000 		.4byte	.LVL29
+ 2167 011a 07000000 		.4byte	.LVL30-1
+ 2168 011e 0100     		.2byte	0x1
+ 2169 0120 50       		.byte	0x50
+ 2170 0121 07000000 		.4byte	.LVL30-1
+ 2171 0125 28000000 		.4byte	.LFE4
+ 2172 0129 0400     		.2byte	0x4
+ 2173 012b F3       		.byte	0xf3
+ 2174 012c 01       		.uleb128 0x1
+ 2175 012d 50       		.byte	0x50
+ 2176 012e 9F       		.byte	0x9f
+ 2177 012f 00000000 		.4byte	0
+ 2178 0133 00000000 		.4byte	0
+ 2179              	.LLST6:
+ 2180 0137 00000000 		.4byte	.LVL37
+ 2181 013b 07000000 		.4byte	.LVL38-1
+ 2182 013f 0100     		.2byte	0x1
+ 2183 0141 50       		.byte	0x50
+ 2184 0142 07000000 		.4byte	.LVL38-1
+ 2185 0146 64000000 		.4byte	.LFE6
+ 2186 014a 0400     		.2byte	0x4
+ 2187 014c F3       		.byte	0xf3
+ 2188 014d 01       		.uleb128 0x1
+ 2189 014e 50       		.byte	0x50
+ 2190 014f 9F       		.byte	0x9f
+ 2191 0150 00000000 		.4byte	0
+ 2192 0154 00000000 		.4byte	0
+ 2193              	.LLST7:
+ 2194 0158 4E000000 		.4byte	.LVL41
+ 2195 015c 54000000 		.4byte	.LVL43
+ 2196 0160 0100     		.2byte	0x1
+ 2197 0162 54       		.byte	0x54
+ 2198 0163 5A000000 		.4byte	.LVL44
+ 2199 0167 5E000000 		.4byte	.LVL45
+ 2200 016b 0100     		.2byte	0x1
+ 2201 016d 54       		.byte	0x54
+ 2202 016e 5E000000 		.4byte	.LVL45
+ 2203 0172 64000000 		.4byte	.LFE6
+ 2204 0176 0100     		.2byte	0x1
+ 2205 0178 50       		.byte	0x50
+ 2206 0179 00000000 		.4byte	0
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 53
+
+
+ 2207 017d 00000000 		.4byte	0
+ 2208              	.LLST8:
+ 2209 0181 00000000 		.4byte	.LVL46
+ 2210 0185 09000000 		.4byte	.LVL47-1
+ 2211 0189 0100     		.2byte	0x1
+ 2212 018b 50       		.byte	0x50
+ 2213 018c 09000000 		.4byte	.LVL47-1
+ 2214 0190 46000000 		.4byte	.LVL51
+ 2215 0194 0100     		.2byte	0x1
+ 2216 0196 54       		.byte	0x54
+ 2217 0197 46000000 		.4byte	.LVL51
+ 2218 019b 48000000 		.4byte	.LVL52
+ 2219 019f 0400     		.2byte	0x4
+ 2220 01a1 F3       		.byte	0xf3
+ 2221 01a2 01       		.uleb128 0x1
+ 2222 01a3 50       		.byte	0x50
+ 2223 01a4 9F       		.byte	0x9f
+ 2224 01a5 48000000 		.4byte	.LVL52
+ 2225 01a9 4C000000 		.4byte	.LVL53
+ 2226 01ad 0100     		.2byte	0x1
+ 2227 01af 54       		.byte	0x54
+ 2228 01b0 4C000000 		.4byte	.LVL53
+ 2229 01b4 4E000000 		.4byte	.LVL54
+ 2230 01b8 0400     		.2byte	0x4
+ 2231 01ba F3       		.byte	0xf3
+ 2232 01bb 01       		.uleb128 0x1
+ 2233 01bc 50       		.byte	0x50
+ 2234 01bd 9F       		.byte	0x9f
+ 2235 01be 4E000000 		.4byte	.LVL54
+ 2236 01c2 50000000 		.4byte	.LVL55
+ 2237 01c6 0100     		.2byte	0x1
+ 2238 01c8 54       		.byte	0x54
+ 2239 01c9 50000000 		.4byte	.LVL55
+ 2240 01cd 86000000 		.4byte	.LVL58
+ 2241 01d1 0400     		.2byte	0x4
+ 2242 01d3 F3       		.byte	0xf3
+ 2243 01d4 01       		.uleb128 0x1
+ 2244 01d5 50       		.byte	0x50
+ 2245 01d6 9F       		.byte	0x9f
+ 2246 01d7 86000000 		.4byte	.LVL58
+ 2247 01db 8A000000 		.4byte	.LVL59
+ 2248 01df 0100     		.2byte	0x1
+ 2249 01e1 54       		.byte	0x54
+ 2250 01e2 8A000000 		.4byte	.LVL59
+ 2251 01e6 A2000000 		.4byte	.LVL67
+ 2252 01ea 0400     		.2byte	0x4
+ 2253 01ec F3       		.byte	0xf3
+ 2254 01ed 01       		.uleb128 0x1
+ 2255 01ee 50       		.byte	0x50
+ 2256 01ef 9F       		.byte	0x9f
+ 2257 01f0 A2000000 		.4byte	.LVL67
+ 2258 01f4 A4000000 		.4byte	.LVL68
+ 2259 01f8 0100     		.2byte	0x1
+ 2260 01fa 54       		.byte	0x54
+ 2261 01fb A4000000 		.4byte	.LVL68
+ 2262 01ff A6000000 		.4byte	.LVL69
+ 2263 0203 0400     		.2byte	0x4
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 54
+
+
+ 2264 0205 F3       		.byte	0xf3
+ 2265 0206 01       		.uleb128 0x1
+ 2266 0207 50       		.byte	0x50
+ 2267 0208 9F       		.byte	0x9f
+ 2268 0209 A6000000 		.4byte	.LVL69
+ 2269 020d A8000000 		.4byte	.LVL70
+ 2270 0211 0100     		.2byte	0x1
+ 2271 0213 54       		.byte	0x54
+ 2272 0214 A8000000 		.4byte	.LVL70
+ 2273 0218 B4000000 		.4byte	.LFE7
+ 2274 021c 0400     		.2byte	0x4
+ 2275 021e F3       		.byte	0xf3
+ 2276 021f 01       		.uleb128 0x1
+ 2277 0220 50       		.byte	0x50
+ 2278 0221 9F       		.byte	0x9f
+ 2279 0222 00000000 		.4byte	0
+ 2280 0226 00000000 		.4byte	0
+ 2281              	.LLST9:
+ 2282 022a 00000000 		.4byte	.LVL46
+ 2283 022e 09000000 		.4byte	.LVL47-1
+ 2284 0232 0100     		.2byte	0x1
+ 2285 0234 51       		.byte	0x51
+ 2286 0235 09000000 		.4byte	.LVL47-1
+ 2287 0239 B4000000 		.4byte	.LFE7
+ 2288 023d 0400     		.2byte	0x4
+ 2289 023f F3       		.byte	0xf3
+ 2290 0240 01       		.uleb128 0x1
+ 2291 0241 51       		.byte	0x51
+ 2292 0242 9F       		.byte	0x9f
+ 2293 0243 00000000 		.4byte	0
+ 2294 0247 00000000 		.4byte	0
+ 2295              	.LLST10:
+ 2296 024b 18000000 		.4byte	.LVL49
+ 2297 024f 50000000 		.4byte	.LVL55
+ 2298 0253 0300     		.2byte	0x3
+ 2299 0255 09       		.byte	0x9
+ 2300 0256 FF       		.byte	0xff
+ 2301 0257 9F       		.byte	0x9f
+ 2302 0258 50000000 		.4byte	.LVL55
+ 2303 025c 84000000 		.4byte	.LVL57
+ 2304 0260 0100     		.2byte	0x1
+ 2305 0262 54       		.byte	0x54
+ 2306 0263 86000000 		.4byte	.LVL58
+ 2307 0267 8C000000 		.4byte	.LVL60
+ 2308 026b 0300     		.2byte	0x3
+ 2309 026d 09       		.byte	0x9
+ 2310 026e FF       		.byte	0xff
+ 2311 026f 9F       		.byte	0x9f
+ 2312 0270 8C000000 		.4byte	.LVL60
+ 2313 0274 90000000 		.4byte	.LVL61
+ 2314 0278 0100     		.2byte	0x1
+ 2315 027a 54       		.byte	0x54
+ 2316 027b 92000000 		.4byte	.LVL62
+ 2317 027f 96000000 		.4byte	.LVL63
+ 2318 0283 0100     		.2byte	0x1
+ 2319 0285 54       		.byte	0x54
+ 2320 0286 98000000 		.4byte	.LVL64
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 55
+
+
+ 2321 028a A2000000 		.4byte	.LVL67
+ 2322 028e 0100     		.2byte	0x1
+ 2323 0290 54       		.byte	0x54
+ 2324 0291 A8000000 		.4byte	.LVL70
+ 2325 0295 AC000000 		.4byte	.LVL71
+ 2326 0299 0100     		.2byte	0x1
+ 2327 029b 54       		.byte	0x54
+ 2328 029c AC000000 		.4byte	.LVL71
+ 2329 02a0 B4000000 		.4byte	.LFE7
+ 2330 02a4 0100     		.2byte	0x1
+ 2331 02a6 50       		.byte	0x50
+ 2332 02a7 00000000 		.4byte	0
+ 2333 02ab 00000000 		.4byte	0
+ 2334              	.LLST11:
+ 2335 02af 00000000 		.4byte	.LVL72
+ 2336 02b3 09000000 		.4byte	.LVL73-1
+ 2337 02b7 0100     		.2byte	0x1
+ 2338 02b9 50       		.byte	0x50
+ 2339 02ba 09000000 		.4byte	.LVL73-1
+ 2340 02be 7E000000 		.4byte	.LVL86
+ 2341 02c2 0100     		.2byte	0x1
+ 2342 02c4 55       		.byte	0x55
+ 2343 02c5 7E000000 		.4byte	.LVL86
+ 2344 02c9 88000000 		.4byte	.LFE8
+ 2345 02cd 0400     		.2byte	0x4
+ 2346 02cf F3       		.byte	0xf3
+ 2347 02d0 01       		.uleb128 0x1
+ 2348 02d1 50       		.byte	0x50
+ 2349 02d2 9F       		.byte	0x9f
+ 2350 02d3 00000000 		.4byte	0
+ 2351 02d7 00000000 		.4byte	0
+ 2352              	.LLST12:
+ 2353 02db 00000000 		.4byte	.LVL72
+ 2354 02df 09000000 		.4byte	.LVL73-1
+ 2355 02e3 0100     		.2byte	0x1
+ 2356 02e5 51       		.byte	0x51
+ 2357 02e6 09000000 		.4byte	.LVL73-1
+ 2358 02ea 88000000 		.4byte	.LFE8
+ 2359 02ee 0400     		.2byte	0x4
+ 2360 02f0 F3       		.byte	0xf3
+ 2361 02f1 01       		.uleb128 0x1
+ 2362 02f2 51       		.byte	0x51
+ 2363 02f3 9F       		.byte	0x9f
+ 2364 02f4 00000000 		.4byte	0
+ 2365 02f8 00000000 		.4byte	0
+ 2366              	.LLST13:
+ 2367 02fc 16000000 		.4byte	.LVL75
+ 2368 0300 4E000000 		.4byte	.LVL77
+ 2369 0304 0300     		.2byte	0x3
+ 2370 0306 09       		.byte	0x9
+ 2371 0307 FF       		.byte	0xff
+ 2372 0308 9F       		.byte	0x9f
+ 2373 0309 4E000000 		.4byte	.LVL77
+ 2374 030d 54000000 		.4byte	.LVL78
+ 2375 0311 0100     		.2byte	0x1
+ 2376 0313 53       		.byte	0x53
+ 2377 0314 6C000000 		.4byte	.LVL82
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 56
+
+
+ 2378 0318 72000000 		.4byte	.LVL83
+ 2379 031c 0300     		.2byte	0x3
+ 2380 031e 09       		.byte	0x9
+ 2381 031f FF       		.byte	0xff
+ 2382 0320 9F       		.byte	0x9f
+ 2383 0321 72000000 		.4byte	.LVL83
+ 2384 0325 78000000 		.4byte	.LVL84
+ 2385 0329 0100     		.2byte	0x1
+ 2386 032b 53       		.byte	0x53
+ 2387 032c 7C000000 		.4byte	.LVL85
+ 2388 0330 88000000 		.4byte	.LFE8
+ 2389 0334 0100     		.2byte	0x1
+ 2390 0336 50       		.byte	0x50
+ 2391 0337 00000000 		.4byte	0
+ 2392 033b 00000000 		.4byte	0
+ 2393              	.LLST14:
+ 2394 033f 00000000 		.4byte	.LVL87
+ 2395 0343 07000000 		.4byte	.LVL88-1
+ 2396 0347 0100     		.2byte	0x1
+ 2397 0349 50       		.byte	0x50
+ 2398 034a 07000000 		.4byte	.LVL88-1
+ 2399 034e 2E000000 		.4byte	.LFE9
+ 2400 0352 0400     		.2byte	0x4
+ 2401 0354 F3       		.byte	0xf3
+ 2402 0355 01       		.uleb128 0x1
+ 2403 0356 50       		.byte	0x50
+ 2404 0357 9F       		.byte	0x9f
+ 2405 0358 00000000 		.4byte	0
+ 2406 035c 00000000 		.4byte	0
+ 2407              	.LLST15:
+ 2408 0360 10000000 		.4byte	.LVL90
+ 2409 0364 22000000 		.4byte	.LVL92
+ 2410 0368 0300     		.2byte	0x3
+ 2411 036a 09       		.byte	0x9
+ 2412 036b FF       		.byte	0xff
+ 2413 036c 9F       		.byte	0x9f
+ 2414 036d 2A000000 		.4byte	.LVL93
+ 2415 0371 2C000000 		.4byte	.LVL94
+ 2416 0375 0300     		.2byte	0x3
+ 2417 0377 09       		.byte	0x9
+ 2418 0378 FF       		.byte	0xff
+ 2419 0379 9F       		.byte	0x9f
+ 2420 037a 2C000000 		.4byte	.LVL94
+ 2421 037e 2E000000 		.4byte	.LFE9
+ 2422 0382 0100     		.2byte	0x1
+ 2423 0384 50       		.byte	0x50
+ 2424 0385 00000000 		.4byte	0
+ 2425 0389 00000000 		.4byte	0
+ 2426              	.LLST16:
+ 2427 038d 30000000 		.4byte	.LVL96
+ 2428 0391 36000000 		.4byte	.LVL98
+ 2429 0395 0100     		.2byte	0x1
+ 2430 0397 54       		.byte	0x54
+ 2431 0398 38000000 		.4byte	.LVL99
+ 2432 039c 3C000000 		.4byte	.LVL100
+ 2433 03a0 0100     		.2byte	0x1
+ 2434 03a2 54       		.byte	0x54
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 57
+
+
+ 2435 03a3 3C000000 		.4byte	.LVL100
+ 2436 03a7 40000000 		.4byte	.LFE10
+ 2437 03ab 0100     		.2byte	0x1
+ 2438 03ad 50       		.byte	0x50
+ 2439 03ae 00000000 		.4byte	0
+ 2440 03b2 00000000 		.4byte	0
+ 2441              	.LLST17:
+ 2442 03b6 00000000 		.4byte	.LVL101
+ 2443 03ba 0F000000 		.4byte	.LVL102-1
+ 2444 03be 0100     		.2byte	0x1
+ 2445 03c0 50       		.byte	0x50
+ 2446 03c1 0F000000 		.4byte	.LVL102-1
+ 2447 03c5 28000000 		.4byte	.LVL105
+ 2448 03c9 0200     		.2byte	0x2
+ 2449 03cb 91       		.byte	0x91
+ 2450 03cc 6F       		.sleb128 -17
+ 2451 03cd 28000000 		.4byte	.LVL105
+ 2452 03d1 2F000000 		.4byte	.LVL106-1
+ 2453 03d5 0200     		.2byte	0x2
+ 2454 03d7 72       		.byte	0x72
+ 2455 03d8 00       		.sleb128 0
+ 2456 03d9 2F000000 		.4byte	.LVL106-1
+ 2457 03dd C0000000 		.4byte	.LVL120
+ 2458 03e1 0200     		.2byte	0x2
+ 2459 03e3 91       		.byte	0x91
+ 2460 03e4 6F       		.sleb128 -17
+ 2461 03e5 C0000000 		.4byte	.LVL120
+ 2462 03e9 C8000000 		.4byte	.LFE11
+ 2463 03ed 0200     		.2byte	0x2
+ 2464 03ef 7D       		.byte	0x7d
+ 2465 03f0 6F       		.sleb128 -17
+ 2466 03f1 00000000 		.4byte	0
+ 2467 03f5 00000000 		.4byte	0
+ 2468              	.LLST18:
+ 2469 03f9 00000000 		.4byte	.LVL101
+ 2470 03fd 0F000000 		.4byte	.LVL102-1
+ 2471 0401 0100     		.2byte	0x1
+ 2472 0403 51       		.byte	0x51
+ 2473 0404 0F000000 		.4byte	.LVL102-1
+ 2474 0408 C8000000 		.4byte	.LFE11
+ 2475 040c 0400     		.2byte	0x4
+ 2476 040e F3       		.byte	0xf3
+ 2477 040f 01       		.uleb128 0x1
+ 2478 0410 51       		.byte	0x51
+ 2479 0411 9F       		.byte	0x9f
+ 2480 0412 00000000 		.4byte	0
+ 2481 0416 00000000 		.4byte	0
+ 2482              	.LLST19:
+ 2483 041a 00000000 		.4byte	.LVL101
+ 2484 041e 0F000000 		.4byte	.LVL102-1
+ 2485 0422 0100     		.2byte	0x1
+ 2486 0424 52       		.byte	0x52
+ 2487 0425 0F000000 		.4byte	.LVL102-1
+ 2488 0429 C8000000 		.4byte	.LFE11
+ 2489 042d 0400     		.2byte	0x4
+ 2490 042f F3       		.byte	0xf3
+ 2491 0430 01       		.uleb128 0x1
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 58
+
+
+ 2492 0431 52       		.byte	0x52
+ 2493 0432 9F       		.byte	0x9f
+ 2494 0433 00000000 		.4byte	0
+ 2495 0437 00000000 		.4byte	0
+ 2496              	.LLST20:
+ 2497 043b 22000000 		.4byte	.LVL104
+ 2498 043f 5E000000 		.4byte	.LVL107
+ 2499 0443 0300     		.2byte	0x3
+ 2500 0445 09       		.byte	0x9
+ 2501 0446 FF       		.byte	0xff
+ 2502 0447 9F       		.byte	0x9f
+ 2503 0448 5E000000 		.4byte	.LVL107
+ 2504 044c 92000000 		.4byte	.LVL109
+ 2505 0450 0100     		.2byte	0x1
+ 2506 0452 54       		.byte	0x54
+ 2507 0453 94000000 		.4byte	.LVL110
+ 2508 0457 9A000000 		.4byte	.LVL111
+ 2509 045b 0300     		.2byte	0x3
+ 2510 045d 09       		.byte	0x9
+ 2511 045e FF       		.byte	0xff
+ 2512 045f 9F       		.byte	0x9f
+ 2513 0460 9A000000 		.4byte	.LVL111
+ 2514 0464 9E000000 		.4byte	.LVL112
+ 2515 0468 0100     		.2byte	0x1
+ 2516 046a 54       		.byte	0x54
+ 2517 046b A0000000 		.4byte	.LVL113
+ 2518 046f A4000000 		.4byte	.LVL114
+ 2519 0473 0100     		.2byte	0x1
+ 2520 0475 54       		.byte	0x54
+ 2521 0476 A6000000 		.4byte	.LVL115
+ 2522 047a B0000000 		.4byte	.LVL118
+ 2523 047e 0100     		.2byte	0x1
+ 2524 0480 54       		.byte	0x54
+ 2525 0481 BA000000 		.4byte	.LVL119
+ 2526 0485 C0000000 		.4byte	.LVL120
+ 2527 0489 0100     		.2byte	0x1
+ 2528 048b 54       		.byte	0x54
+ 2529 048c C0000000 		.4byte	.LVL120
+ 2530 0490 C8000000 		.4byte	.LFE11
+ 2531 0494 0100     		.2byte	0x1
+ 2532 0496 50       		.byte	0x50
+ 2533 0497 00000000 		.4byte	0
+ 2534 049b 00000000 		.4byte	0
+ 2535              		.section	.debug_aranges,"",%progbits
+ 2536 0000 74000000 		.4byte	0x74
+ 2537 0004 0200     		.2byte	0x2
+ 2538 0006 00000000 		.4byte	.Ldebug_info0
+ 2539 000a 04       		.byte	0x4
+ 2540 000b 00       		.byte	0
+ 2541 000c 0000     		.2byte	0
+ 2542 000e 0000     		.2byte	0
+ 2543 0010 00000000 		.4byte	.LFB0
+ 2544 0014 0C000000 		.4byte	.LFE0-.LFB0
+ 2545 0018 00000000 		.4byte	.LFB1
+ 2546 001c 08000000 		.4byte	.LFE1-.LFB1
+ 2547 0020 00000000 		.4byte	.LFB2
+ 2548 0024 08000000 		.4byte	.LFE2-.LFB2
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 59
+
+
+ 2549 0028 00000000 		.4byte	.LFB3
+ 2550 002c D0000000 		.4byte	.LFE3-.LFB3
+ 2551 0030 00000000 		.4byte	.LFB4
+ 2552 0034 28000000 		.4byte	.LFE4-.LFB4
+ 2553 0038 00000000 		.4byte	.LFB5
+ 2554 003c 0A000000 		.4byte	.LFE5-.LFB5
+ 2555 0040 00000000 		.4byte	.LFB6
+ 2556 0044 64000000 		.4byte	.LFE6-.LFB6
+ 2557 0048 00000000 		.4byte	.LFB7
+ 2558 004c B4000000 		.4byte	.LFE7-.LFB7
+ 2559 0050 00000000 		.4byte	.LFB8
+ 2560 0054 88000000 		.4byte	.LFE8-.LFB8
+ 2561 0058 00000000 		.4byte	.LFB9
+ 2562 005c 2E000000 		.4byte	.LFE9-.LFB9
+ 2563 0060 00000000 		.4byte	.LFB10
+ 2564 0064 40000000 		.4byte	.LFE10-.LFB10
+ 2565 0068 00000000 		.4byte	.LFB11
+ 2566 006c C8000000 		.4byte	.LFE11-.LFB11
+ 2567 0070 00000000 		.4byte	0
+ 2568 0074 00000000 		.4byte	0
+ 2569              		.section	.debug_ranges,"",%progbits
+ 2570              	.Ldebug_ranges0:
+ 2571 0000 00000000 		.4byte	.LFB0
+ 2572 0004 0C000000 		.4byte	.LFE0
+ 2573 0008 00000000 		.4byte	.LFB1
+ 2574 000c 08000000 		.4byte	.LFE1
+ 2575 0010 00000000 		.4byte	.LFB2
+ 2576 0014 08000000 		.4byte	.LFE2
+ 2577 0018 00000000 		.4byte	.LFB3
+ 2578 001c D0000000 		.4byte	.LFE3
+ 2579 0020 00000000 		.4byte	.LFB4
+ 2580 0024 28000000 		.4byte	.LFE4
+ 2581 0028 00000000 		.4byte	.LFB5
+ 2582 002c 0A000000 		.4byte	.LFE5
+ 2583 0030 00000000 		.4byte	.LFB6
+ 2584 0034 64000000 		.4byte	.LFE6
+ 2585 0038 00000000 		.4byte	.LFB7
+ 2586 003c B4000000 		.4byte	.LFE7
+ 2587 0040 00000000 		.4byte	.LFB8
+ 2588 0044 88000000 		.4byte	.LFE8
+ 2589 0048 00000000 		.4byte	.LFB9
+ 2590 004c 2E000000 		.4byte	.LFE9
+ 2591 0050 00000000 		.4byte	.LFB10
+ 2592 0054 40000000 		.4byte	.LFE10
+ 2593 0058 00000000 		.4byte	.LFB11
+ 2594 005c C8000000 		.4byte	.LFE11
+ 2595 0060 00000000 		.4byte	0
+ 2596 0064 00000000 		.4byte	0
+ 2597              		.section	.debug_line,"",%progbits
+ 2598              	.Ldebug_line0:
+ 2599 0000 60020000 		.section	.debug_str,"MS",%progbits,1
+ 2599      02006600 
+ 2599      00000201 
+ 2599      FB0E0D00 
+ 2599      01010101 
+ 2600              	.LASF14:
+ 2601 0000 63797374 		.ascii	"cystatus\000"
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 60
+
+
+ 2601      61747573 
+ 2601      00
+ 2602              	.LASF15:
+ 2603 0009 72656738 		.ascii	"reg8\000"
+ 2603      00
+ 2604              	.LASF53:
+ 2605 000e 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2605      43313120 
+ 2605      352E342E 
+ 2605      31203230 
+ 2605      31363036 
+ 2606 0041 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2606      20726576 
+ 2606      6973696F 
+ 2606      6E203233 
+ 2606      37373135 
+ 2607 0074 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2607      66756E63 
+ 2607      74696F6E 
+ 2607      2D736563 
+ 2607      74696F6E 
+ 2608              	.LASF41:
+ 2609 009c 43794545 		.ascii	"CyEEPROM_Stop\000"
+ 2609      50524F4D 
+ 2609      5F53746F 
+ 2609      7000
+ 2610              	.LASF42:
+ 2611 00aa 43795370 		.ascii	"CySpcStart\000"
+ 2611      63537461 
+ 2611      727400
+ 2612              	.LASF54:
+ 2613 00b5 47656E65 		.ascii	"Generated_Source\\PSoC5\\EEPROM.c\000"
+ 2613      72617465 
+ 2613      645F536F 
+ 2613      75726365 
+ 2613      5C50536F 
+ 2614              	.LASF45:
+ 2615 00d5 43795370 		.ascii	"CySpcWriteRow\000"
+ 2615      63577269 
+ 2615      7465526F 
+ 2615      7700
+ 2616              	.LASF11:
+ 2617 00e3 666C6F61 		.ascii	"float\000"
+ 2617      7400
+ 2618              	.LASF18:
+ 2619 00e9 45455052 		.ascii	"EEPROM_Enable\000"
+ 2619      4F4D5F45 
+ 2619      6E61626C 
+ 2619      6500
+ 2620              	.LASF44:
+ 2621 00f7 43795370 		.ascii	"CySpcLoadMultiByte\000"
+ 2621      634C6F61 
+ 2621      644D756C 
+ 2621      74694279 
+ 2621      746500
+ 2622              	.LASF3:
+ 2623 010a 73686F72 		.ascii	"short unsigned int\000"
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 61
+
+
+ 2623      7420756E 
+ 2623      7369676E 
+ 2623      65642069 
+ 2623      6E7400
+ 2624              	.LASF23:
+ 2625 011d 73746174 		.ascii	"status\000"
+ 2625      757300
+ 2626              	.LASF25:
+ 2627 0124 62797465 		.ascii	"byteNumber\000"
+ 2627      4E756D62 
+ 2627      657200
+ 2628              	.LASF7:
+ 2629 012f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2629      206C6F6E 
+ 2629      6720756E 
+ 2629      7369676E 
+ 2629      65642069 
+ 2630              	.LASF19:
+ 2631 0146 45455052 		.ascii	"EEPROM_Start\000"
+ 2631      4F4D5F53 
+ 2631      74617274 
+ 2631      00
+ 2632              	.LASF46:
+ 2633 0153 43795370 		.ascii	"CySpcUnlock\000"
+ 2633      63556E6C 
+ 2633      6F636B00 
+ 2634              	.LASF35:
+ 2635 015f 45455052 		.ascii	"EEPROM_StartWrite\000"
+ 2635      4F4D5F53 
+ 2635      74617274 
+ 2635      57726974 
+ 2635      6500
+ 2636              	.LASF34:
+ 2637 0171 726F7744 		.ascii	"rowData\000"
+ 2637      61746100 
+ 2638              	.LASF40:
+ 2639 0179 43794545 		.ascii	"CyEEPROM_Start\000"
+ 2639      50524F4D 
+ 2639      5F537461 
+ 2639      727400
+ 2640              	.LASF29:
+ 2641 0188 696E7465 		.ascii	"interruptState\000"
+ 2641      72727570 
+ 2641      74537461 
+ 2641      746500
+ 2642              	.LASF5:
+ 2643 0197 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2643      20756E73 
+ 2643      69676E65 
+ 2643      6420696E 
+ 2643      7400
+ 2644              	.LASF9:
+ 2645 01a9 75696E74 		.ascii	"uint8\000"
+ 2645      3800
+ 2646              	.LASF56:
+ 2647 01af 64696554 		.ascii	"dieTemperature\000"
+ 2647      656D7065 
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 62
+
+
+ 2647      72617475 
+ 2647      726500
+ 2648              	.LASF21:
+ 2649 01be 64617461 		.ascii	"dataByte\000"
+ 2649      42797465 
+ 2649      00
+ 2650              	.LASF1:
+ 2651 01c7 756E7369 		.ascii	"unsigned char\000"
+ 2651      676E6564 
+ 2651      20636861 
+ 2651      7200
+ 2652              	.LASF27:
+ 2653 01d5 45455052 		.ascii	"EEPROM_ReadByte\000"
+ 2653      4F4D5F52 
+ 2653      65616442 
+ 2653      79746500 
+ 2654              	.LASF12:
+ 2655 01e5 646F7562 		.ascii	"double\000"
+ 2655      6C6500
+ 2656              	.LASF38:
+ 2657 01ec 45455052 		.ascii	"EEPROM_ByteWritePos\000"
+ 2657      4F4D5F42 
+ 2657      79746557 
+ 2657      72697465 
+ 2657      506F7300 
+ 2658              	.LASF49:
+ 2659 0200 43794545 		.ascii	"CyEEPROM_ReadRelease\000"
+ 2659      50524F4D 
+ 2659      5F526561 
+ 2659      6452656C 
+ 2659      65617365 
+ 2660              	.LASF10:
+ 2661 0215 75696E74 		.ascii	"uint16\000"
+ 2661      313600
+ 2662              	.LASF43:
+ 2663 021c 43795370 		.ascii	"CySpcLock\000"
+ 2663      634C6F63 
+ 2663      6B00
+ 2664              	.LASF47:
+ 2665 0226 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 2665      74657243 
+ 2665      72697469 
+ 2665      63616C53 
+ 2665      65637469 
+ 2666              	.LASF8:
+ 2667 023d 756E7369 		.ascii	"unsigned int\000"
+ 2667      676E6564 
+ 2667      20696E74 
+ 2667      00
+ 2668              	.LASF22:
+ 2669 024a 61646472 		.ascii	"address\000"
+ 2669      65737300 
+ 2670              	.LASF50:
+ 2671 0252 43794578 		.ascii	"CyExitCriticalSection\000"
+ 2671      69744372 
+ 2671      69746963 
+ 2671      616C5365 
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 63
+
+
+ 2671      6374696F 
+ 2672              	.LASF36:
+ 2673 0268 45455052 		.ascii	"EEPROM_StartErase\000"
+ 2673      4F4D5F53 
+ 2673      74617274 
+ 2673      45726173 
+ 2673      6500
+ 2674              	.LASF26:
+ 2675 027a 45455052 		.ascii	"EEPROM_WriteByte\000"
+ 2675      4F4D5F57 
+ 2675      72697465 
+ 2675      42797465 
+ 2675      00
+ 2676              	.LASF30:
+ 2677 028b 45455052 		.ascii	"EEPROM_UpdateTemperature\000"
+ 2677      4F4D5F55 
+ 2677      70646174 
+ 2677      6554656D 
+ 2677      70657261 
+ 2678              	.LASF48:
+ 2679 02a4 43794545 		.ascii	"CyEEPROM_ReadReserve\000"
+ 2679      50524F4D 
+ 2679      5F526561 
+ 2679      64526573 
+ 2679      65727665 
+ 2680              	.LASF52:
+ 2681 02b9 43795370 		.ascii	"CySpcLoadRow\000"
+ 2681      634C6F61 
+ 2681      64526F77 
+ 2681      00
+ 2682              	.LASF17:
+ 2683 02c6 73697A65 		.ascii	"sizetype\000"
+ 2683      74797065 
+ 2683      00
+ 2684              	.LASF39:
+ 2685 02cf 43795365 		.ascii	"CySetTemp\000"
+ 2685      7454656D 
+ 2685      7000
+ 2686              	.LASF51:
+ 2687 02d9 43795370 		.ascii	"CySpcEraseSector\000"
+ 2687      63457261 
+ 2687      73655365 
+ 2687      63746F72 
+ 2687      00
+ 2688              	.LASF6:
+ 2689 02ea 6C6F6E67 		.ascii	"long long int\000"
+ 2689      206C6F6E 
+ 2689      6720696E 
+ 2689      7400
+ 2690              	.LASF37:
+ 2691 02f8 45455052 		.ascii	"EEPROM_Query\000"
+ 2691      4F4D5F51 
+ 2691      75657279 
+ 2691      00
+ 2692              	.LASF20:
+ 2693 0305 45455052 		.ascii	"EEPROM_Stop\000"
+ 2693      4F4D5F53 
+ARM GAS  C:\Users\Shaunak\AppData\Local\Temp\ccyISjfe.s 			page 64
+
+
+ 2693      746F7000 
+ 2694              	.LASF2:
+ 2695 0311 73686F72 		.ascii	"short int\000"
+ 2695      7420696E 
+ 2695      7400
+ 2696              	.LASF55:
+ 2697 031b 453A5C74 		.ascii	"E:\\temp\\Modbus_RTU_vP5_0\\Modbus_RTU_vP5_0.cydsn\000"
+ 2697      656D705C 
+ 2697      4D6F6462 
+ 2697      75735F52 
+ 2697      54555F76 
+ 2698              	.LASF32:
+ 2699 034b 73656374 		.ascii	"sectorNumber\000"
+ 2699      6F724E75 
+ 2699      6D626572 
+ 2699      00
+ 2700              	.LASF33:
+ 2701 0358 45455052 		.ascii	"EEPROM_Write\000"
+ 2701      4F4D5F57 
+ 2701      72697465 
+ 2701      00
+ 2702              	.LASF4:
+ 2703 0365 6C6F6E67 		.ascii	"long int\000"
+ 2703      20696E74 
+ 2703      00
+ 2704              	.LASF13:
+ 2705 036e 63686172 		.ascii	"char\000"
+ 2705      00
+ 2706              	.LASF24:
+ 2707 0373 726F774E 		.ascii	"rowNumber\000"
+ 2707      756D6265 
+ 2707      7200
+ 2708              	.LASF16:
+ 2709 037d 6C6F6E67 		.ascii	"long double\000"
+ 2709      20646F75 
+ 2709      626C6500 
+ 2710              	.LASF0:
+ 2711 0389 7369676E 		.ascii	"signed char\000"
+ 2711      65642063 
+ 2711      68617200 
+ 2712              	.LASF31:
+ 2713 0395 45455052 		.ascii	"EEPROM_EraseSector\000"
+ 2713      4F4D5F45 
+ 2713      72617365 
+ 2713      53656374 
+ 2713      6F7200
+ 2714              	.LASF28:
+ 2715 03a8 72657442 		.ascii	"retByte\000"
+ 2715      79746500 
+ 2716              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

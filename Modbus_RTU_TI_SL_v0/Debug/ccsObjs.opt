@@ -1,0 +1,1 @@
+"./uartstdio.obj" "./startup_ccs.obj" "./modbus_rtu.obj" "./main.obj" -l"libc.a" -l"E:\temp\Modbus_RTU_TI_SL\driverlib-cm4f\Debug\driverlib-cm4f.lib" "../Modbus_RTU_TI_SL_v0.cmd" 
