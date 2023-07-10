@@ -1,4 +1,4 @@
-# embverse
+# EMBVERSE LLP
 EmbVerse provides Research and Development Services in the domains of Home Automation, Industrial Automation and Auomotive Systems.
 Visit www.embverse.com for more details.
 EmbVerse also works on open-source knowledge sharing. This Github repository is created to share its firmware of open-source projects.
