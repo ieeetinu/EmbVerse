@@ -143,24 +143,38 @@ void query_response_read_coil(uint8_t *modbus_received_data, uint8_t number_of_b
             else
             {
                 //STATUS_LED_TOGGLE;
-                uint8_t modulo_coil_count = (uint8_t)coil_count % 8;
+                uint8_t modulo_coil_count = (uint8_t)coil_count % 8; 
                 uint8_t modulo_start_address = (uint8_t)(coil_start_address % 8);
+				uint8_t coil_index = coil_count / 8;
                 uint8_t byte_index = (uint8_t)(coil_start_address / 8);
                 modbus_response_read_coil[0] = *(modbus_received_data + 0);
                 modbus_response_read_coil[1] = *(modbus_received_data + 1);
                 uint8_t u = 0;
-                for(u = 0; u < (coil_count / 8); u++)
-                {
-                    modbus_response_read_coil[u + 3] = ((modbus_coil_value[byte_index] << modulo_start_address)) | (modbus_coil_value[byte_index + 1] >> (8 - modulo_start_address));
-                    byte_index++;
-                }
-                if(modulo_coil_count != 0)
+				if(modulo_start_address == 0 && modulo_coil_count == 0)
+				{
+					for(u = 0; u < coil_index; u++)
+					{
+						modbus_response_read_coil[u + 3] = modbus_coil_value[u + byte_index];
+					}	
+				}
+				else if(modulo_start_address == 0 && modulo_coil_count < 8)
+				{
+					for(u = 0; u < coil_index; u++)
+					{
+						modbus_response_read_coil[u + 3] = modbus_coil_value[u + byte_index];// & modulo_coil_count_array[byte_index]);
+					}	
+				}
+				else if(modulo_start_address != 0)
+			    {
+					for(u = 0; u < coil_index; u++)
+					{
+						modbus_response_read_coil[u + 3] = (modbus_coil_value[u + byte_index] << modulo_start_address) | (modbus_coil_value[u + byte_index + 1] >> (8 - modulo_start_address));
+					}	
+			    }
+				if(modulo_coil_count != 0 )
                 {
                     modbus_response_data_length = 5 + (((coil_count - modulo_coil_count + 8) / 8));
-                    if(u == 0)
-                        modbus_response_read_coil[u + 3] = (((modbus_coil_value[byte_index] << modulo_start_address)) | ((modbus_coil_value[byte_index + 1]) >> (8 - modulo_start_address))) & modulo_coil_count_array[modulo_coil_count];
-                    else
-                        modbus_response_read_coil[u + 3] = (((modbus_coil_value[byte_index] << modulo_start_address)) | ((modbus_coil_value[byte_index + 1]) >> (8 - modulo_start_address))) & modulo_coil_count_array[modulo_coil_count];   
+                    modbus_response_read_coil[u + 3] = reverse_data(((modbus_coil_value[u + byte_index] << modulo_start_address)) | ((modbus_coil_value[u + byte_index + 1]) >> (8 - modulo_start_address))) & modulo_coil_count_array[modulo_coil_count];   
                     modbus_response_read_coil[2] = (uint8_t)((coil_count + 8 - modulo_coil_count)/ 8);
                 }
                 else
@@ -330,30 +344,28 @@ void query_response_force_multiple_coils(uint8_t *modbus_received_data, uint8_t 
         else
         {
             //STATUS_LED_TOGGLE;
-            uint8_t modulo_quantity_of_coils = quantity_of_coils % 8;
-            uint8_t modulo_coil_start_address = coil_start_address % 8;
-            uint8_t coil_address_index = (uint8_t)(coil_start_address / 8);
+            uint8_t modulo_quantity_of_coils = quantity_of_coils % 8; 
+            uint8_t modulo_coil_start_address = coil_start_address % 8; 
+            uint8_t coil_address_index = (uint8_t)(coil_start_address / 8); 
             modbus_response_force_multiple_coils[0] = *(modbus_received_data + 0);
             modbus_response_force_multiple_coils[1] = *(modbus_received_data + 1);
             uint8_t coil_bit_padding_with_one[8] = {0x80, 0xC0, 0xE0, 0xF0, 0xF8, 0xFC, 0xFE, 0xFF};
             uint8_t coil_bit_padding_with_zero[8] = {0x7F, 0x3F, 0x1F, 0x0F, 0x07, 0x03, 0x01, 0x00};
-            uint8_t u = 0;
+			uint8_t u = 0;
             if(modulo_coil_start_address == 0 && modulo_quantity_of_coils == 0)
             {
                 for(u = 0; u < (*(modbus_received_data + 6)); u++)
                 {
-                    modbus_response_coil_temp[coil_address_index] = reverse_data(*(modbus_received_data + 7 + u));
-                    coil_address_index++;
+                    modbus_response_coil_temp[u + coil_address_index] = reverse_data(*(modbus_received_data + 7 + u));
                 }
             }
             else if(modulo_coil_start_address == 0 && modulo_quantity_of_coils != 0)
             {
                 for(u = 0; u < (*(modbus_received_data + 6) - 1); u++)
                 {
-                    modbus_response_coil_temp[coil_address_index] = reverse_data(*(modbus_received_data + 7 + u));
-                    coil_address_index++;
+                    modbus_response_coil_temp[u + coil_address_index] = reverse_data(*(modbus_received_data + 7 + u));
                 }
-                modbus_response_coil_temp[coil_address_index] = (modbus_response_coil_temp[coil_address_index] & coil_bit_padding_with_zero[modulo_quantity_of_coils - 1]) | ((reverse_data(*(modbus_received_data + 7 + u)) /*<< (8 - modulo_quantity_of_coils)*/) & coil_bit_padding_with_one[modulo_quantity_of_coils - 1]);
+                modbus_response_coil_temp[u + coil_address_index] = (modbus_response_coil_temp[coil_address_index] & coil_bit_padding_with_zero[modulo_quantity_of_coils - 1]) | ((reverse_data(*(modbus_received_data + 7 + u)) /*<< (8 - modulo_quantity_of_coils)*/) & coil_bit_padding_with_one[modulo_quantity_of_coils - 1]);
             }
             else if(modulo_coil_start_address != 0 && modulo_quantity_of_coils != 0)
             {
@@ -420,6 +432,7 @@ void query_response_force_multiple_coils(uint8_t *modbus_received_data, uint8_t 
                             & coil_bit_padding_with_one[modulo_coil_start_address - 1]) 
                             | (reverse_data(*(modbus_received_data + 7 + u)) >> (modulo_coil_start_address) 
                             & coil_bit_padding_with_zero[modulo_coil_start_address - 1]);
+							modbus_response_coil_temp[coil_address_index] = reverse_data(modbus_response_coil_temp[coil_address_index]);
                             coil_address_index++;
                         }
                         else if((u == *(modbus_received_data + 6)) && u >= 1)
@@ -435,7 +448,7 @@ void query_response_force_multiple_coils(uint8_t *modbus_received_data, uint8_t 
                             (modbus_response_coil_temp[coil_address_index] & 0x00) 
                             | ((reverse_data(*(modbus_received_data + 7 + u - 1)) << (8 - modulo_coil_start_address))
                             | ((reverse_data(*(modbus_received_data + 7 + u)) >> (modulo_coil_start_address))));
-                            coil_address_index++;
+							coil_address_index++;
                         }
                     }    
                 }
