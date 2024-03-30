@@ -12,7 +12,6 @@ The firmware Titles of the projects shared are as per following :
 **2. Hybrid_Servo_Control**
 
    Project Blog URL : 
-   
 Visit https://www.embverse.com/work and refer       project #6
    
 **3. Modbus_RTU_TI_SL_v0**
