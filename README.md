@@ -7,8 +7,7 @@ The firmware Titles of the projects shared are as per following :
 
 **1. Automotive Light Control Simulation**
 
-   Project Blog URL : 
- https://www.embverse.com/blogs/tinkercad-simulation-of-automotive-light-control
+   Project Blog URL :  https://www.embverse.com/blogs/tinkercad-simulation-of-automotive-light-control
    
 **2. Hybrid_Servo_Control**
 
