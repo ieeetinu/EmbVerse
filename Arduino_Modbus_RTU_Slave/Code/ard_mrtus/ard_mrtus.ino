@@ -1,7 +1,8 @@
 /*==============================================================================
 * Project : Implementation of Modbus RTU Function Subset on Arduino
 * Author : EmbVerse, LLP (www.embverse.com)
-* Date : March 29, 2024
+* Date : March 30, 2024
+* Version : 0.0.1
 * Description : The project implements 8 Modbus RTU Functions with a dedicated 
 * C library that can be used in general. The 8 Modbus Functions are as below :
 * 1. 0x01 : Read Coils
@@ -184,7 +185,7 @@ void update_eeprom(uint8_t parameter)
 *********************************************************************************************/
 void Timer0_initialize(uint32_t time_period_us)
 {
-    //set timer0 interrupt at 2kHz
+    //set timer0 interrupt at 1 ms
     TCCR0A = 0;// set entire TCCR0A register to 0
     TCCR0B = 0;// same for TCCR0B
     TCNT0  = 0;//initialize counter value to 0
@@ -195,7 +196,7 @@ void Timer0_initialize(uint32_t time_period_us)
     // Set CS01 and CS00 bits for 64 prescaler
     TCCR0B |= (1 << CS01) | (1 << CS00);   
     // enable timer compare interrupt
-    TIMSK0 |= (1 << OCIE0A);//set timer0 interrupt at 2kHz
+    TIMSK0 |= (1 << OCIE0A); //Enable 1ms Timer0 interrupt
 }  
 
 /********************************************************************************************************************
@@ -247,7 +248,7 @@ ISR(TIMER0_COMPA_vect)
     {
         timer_count = 0;
         fsm =  MODBUS_Rx_DATA_RECEIVED;
-        TIMSK0 &= (0 << OCIE0A); // Disable Timer0
+        TIMSK0 &= (0 << OCIE0A); // Disable Timer0 interrupt
         STATUS_LED_TOGGLE; // Indicative LED Toggling on Data Frame Reception 
     }
 }
@@ -267,7 +268,7 @@ void setup()
     read_eeprom(); // Reads the EEPROM and stores values in variables  
     USART_Init(103); // Initializing Serial UART
     Timer0_initialize(1000);
-    TIMSK0 &= (0 << OCIE0A);// Disable Timer0
+    TIMSK0 &= (0 << OCIE0A);// Disable Timer0 interrupt
     sei(); // Enable Interrupts
 }
 
@@ -358,7 +359,7 @@ ISR(USART0_RX_vect) // Uncomment For Arduino Mega
 {  
     char incoming_Char = UDR0;
     timer_count = 0;
-    TIMSK0 |= (1 << OCIE0A); // Enable Timer0
+    TIMSK0 |= (1 << OCIE0A); // Enable 1ms Timer0 interrupt
     switch(fsm)
     {
         case MODBUS_IDLE:
@@ -368,7 +369,7 @@ ISR(USART0_RX_vect) // Uncomment For Arduino Mega
             {
                 fsm = MODBUS_Rx_DATA_COLLECTION;
                 timer_count = 0;
-                TIMSK0 |= (1 << OCIE0A); // Enable Timer0
+                TIMSK0 |= (1 << OCIE0A); // Enable 1ms Timer0 interrupt
                 break;
             }
             else
@@ -381,7 +382,7 @@ ISR(USART0_RX_vect) // Uncomment For Arduino Mega
             ch_count++;
             uart_data_rx[ch_count] = incoming_Char;        
             timer_count = 0;
-            TIMSK0 |= (1 << OCIE0A); // Enable Timer0
+            TIMSK0 |= (1 << OCIE0A); // Enable 1ms Timer0 interrupt
             break;
         }
     }
