@@ -152,49 +152,48 @@ void query_response_read_coil(uint8_t *modbus_received_data, uint8_t number_of_b
                 modbus_response_read_coil[0] = *(modbus_received_data + 0);
                 modbus_response_read_coil[1] = *(modbus_received_data + 1);
                 uint8_t u = 0;
-			    uint8_t coil_bit_padding_with_one[8] = {0x80, 0xC0, 0xE0, 0xF0, 0xF8, 0xFC, 0xFE, 0xFF};
-				uint8_t coil_bit_padding_with_zero[8] = {0x7F, 0x3F, 0x1F, 0x0F, 0x07, 0x03, 0x01, 0x00};
-				if(modulo_start_address == 0 && modulo_coil_count == 0)
-				{
-					for(u = 0; u < coil_index; u++)
-					{
-						modbus_response_read_coil[u + 3] = modbus_coil_value[u + byte_index];
-					}	
-					 modbus_response_read_coil[2] = (uint8_t)((coil_count + 8 - modulo_coil_count)/ 8) - 1;
-                     modbus_response_data_length = 5 + (((coil_count - modulo_coil_count + 8) / 8)) - 1;
-				}
-				else if(modulo_start_address == 0 && modulo_coil_count != 0)
-				{
-					for(u = 0; u < coil_index; u++)
-					{
-						modbus_response_read_coil[u + 3] = modbus_coil_value[u + byte_index];
-					}
-					modbus_response_read_coil[u + 3] = modbus_coil_value[u + byte_index] & coil_bit_padding_with_one[modulo_coil_count - 1];
-					modbus_response_data_length = 5 + (((coil_count - modulo_coil_count + 8) / 8));
-                    modbus_response_read_coil[2] = (uint8_t)((coil_count + 8 - modulo_coil_count)/ 8);
-				}
-				else if(modulo_start_address != 0 && modulo_coil_count != 0)
-			    {
-					
-					for(u = 0; u < coil_index; u++)
-					{
-						modbus_response_read_coil[u + 3] = (modbus_coil_value[u + byte_index] << modulo_start_address) 
-					                                       | (modbus_coil_value[u + byte_index + 1] >> (8 - modulo_start_address));
-					}
-					modbus_response_read_coil[u + 3] = modbus_coil_value[u + byte_index] & coil_bit_padding_with_one[modulo_coil_count - 1];
-					modbus_response_data_length = 5 + (((coil_count - modulo_coil_count + 8) / 8));
-                    modbus_response_read_coil[2] = (uint8_t)((coil_count + 8 - modulo_coil_count)/ 8);
-			    }
-				else if(modulo_start_address != 0 && modulo_coil_count == 0)
-				{
-					for(u = 0; u < coil_index; u++)
-					{
-						modbus_response_read_coil[u + 3] = (modbus_coil_value[u + byte_index] << (modulo_start_address))
-		         			                               | (modbus_coil_value[u + byte_index + 1] >> (8 - modulo_start_address));
-					}																											   
-				    modbus_response_read_coil[2] = (uint8_t)((coil_count + 8 - modulo_coil_count)/ 8) - 1;
+                uint8_t coil_bit_padding_with_one[8] = {0x80, 0xC0, 0xE0, 0xF0, 0xF8, 0xFC, 0xFE, 0xFF};
+                uint8_t coil_bit_padding_with_zero[8] = {0x7F, 0x3F, 0x1F, 0x0F, 0x07, 0x03, 0x01, 0x00};
+                if(modulo_start_address == 0 && modulo_coil_count == 0)
+                {
+                    for(u = 0; u < coil_index; u++)
+                    {
+                        modbus_response_read_coil[u + 3] = modbus_coil_value[u + byte_index];
+                    }	
+                    modbus_response_read_coil[2] = (uint8_t)((coil_count + 8 - modulo_coil_count)/ 8) - 1;
                     modbus_response_data_length = 5 + (((coil_count - modulo_coil_count + 8) / 8)) - 1;
-				}
+                }
+                else if(modulo_start_address == 0 && modulo_coil_count != 0)
+                {
+                    for(u = 0; u < coil_index; u++)
+                    {
+                        modbus_response_read_coil[u + 3] = modbus_coil_value[u + byte_index];
+                    }
+                    modbus_response_read_coil[u + 3] = modbus_coil_value[u + byte_index] & coil_bit_padding_with_one[modulo_coil_count - 1];
+                    modbus_response_data_length = 5 + (((coil_count - modulo_coil_count + 8) / 8));
+                    modbus_response_read_coil[2] = (uint8_t)((coil_count + 8 - modulo_coil_count)/ 8);
+                }
+                else if(modulo_start_address != 0 && modulo_coil_count != 0)
+                {
+                    for(u = 0; u < coil_index; u++)
+                    {
+                        modbus_response_read_coil[u + 3] = (modbus_coil_value[u + byte_index] << modulo_start_address) 
+                                                           | (modbus_coil_value[u + byte_index + 1] >> (8 - modulo_start_address));
+                    }
+                    modbus_response_read_coil[u + 3] = modbus_coil_value[u + byte_index] & coil_bit_padding_with_one[modulo_coil_count - 1];
+                    modbus_response_data_length = 5 + (((coil_count - modulo_coil_count + 8) / 8));
+                    modbus_response_read_coil[2] = (uint8_t)((coil_count + 8 - modulo_coil_count)/ 8);
+                }
+                else if(modulo_start_address != 0 && modulo_coil_count == 0)
+                {
+                    for(u = 0; u < coil_index; u++)
+                    {
+                        modbus_response_read_coil[u + 3] = (modbus_coil_value[u + byte_index] << (modulo_start_address))
+                                                           | (modbus_coil_value[u + byte_index + 1] >> (8 - modulo_start_address));
+                    }																											   
+                    modbus_response_read_coil[2] = (uint8_t)((coil_count + 8 - modulo_coil_count)/ 8) - 1;
+                    modbus_response_data_length = 5 + (((coil_count - modulo_coil_count + 8) / 8)) - 1;
+                }
                 crc16 = CRC16(&modbus_response_read_coil[0], modbus_response_data_length - 2);
                 modbus_response_read_coil[modbus_response_data_length - 2] = (uint8_t)(crc16 >> 8);
                 modbus_response_read_coil[modbus_response_data_length - 1] = (uint8_t)(crc16 & 0x00FF);
