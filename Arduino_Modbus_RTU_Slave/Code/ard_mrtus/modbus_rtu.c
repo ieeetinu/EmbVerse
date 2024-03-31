@@ -364,7 +364,7 @@ void query_response_force_multiple_coils(uint8_t *modbus_received_data, uint8_t 
             modbus_response_force_multiple_coils[1] = *(modbus_received_data + 1);
             uint8_t coil_bit_padding_with_one[8] = {0x80, 0xC0, 0xE0, 0xF0, 0xF8, 0xFC, 0xFE, 0xFF};
             uint8_t coil_bit_padding_with_zero[8] = {0x7F, 0x3F, 0x1F, 0x0F, 0x07, 0x03, 0x01, 0x00};
-			uint8_t u = 0;
+            uint8_t u = 0;
             if(modulo_coil_start_address == 0 && modulo_quantity_of_coils == 0)
             {
                 for(u = 0; u < (*(modbus_received_data + 6)); u++)
@@ -379,36 +379,35 @@ void query_response_force_multiple_coils(uint8_t *modbus_received_data, uint8_t 
                     modbus_response_coil_temp[u + coil_address_index] = reverse_data(*(modbus_received_data + 7 + u));
                 }
                 modbus_response_coil_temp[u + coil_address_index] = (modbus_response_coil_temp[u + coil_address_index] & coil_bit_padding_with_zero[modulo_quantity_of_coils - 1]) 
-			                                                        | (((reverse_data(*(modbus_received_data + 7 + u))) /*<< (8 - modulo_quantity_of_coils)*/) & coil_bit_padding_with_one[modulo_quantity_of_coils - 1]);
+                                                                    | (((reverse_data(*(modbus_received_data + 7 + u)))) & coil_bit_padding_with_one[modulo_quantity_of_coils - 1]);
             }
             else if(modulo_coil_start_address != 0 && modulo_quantity_of_coils != 0)
             {
-			
-				for(u = 0; u < byte_count; u++)	
-				{
-					if(u == 0)
-					{
-						modbus_response_coil_temp[u + coil_address_index] = 
-						(modbus_response_coil_temp[u + coil_address_index] 
-						& coil_bit_padding_with_one[modulo_coil_start_address - 1]) 
-						| (reverse_data(*(modbus_received_data + 7 + u)) >> (modulo_coil_start_address) 
-						& coil_bit_padding_with_zero[modulo_coil_start_address - 1]); 
-					}
-					else if((u == (byte_count - 1)) && u >= 1)
-					{
-						modbus_response_coil_temp[u + coil_address_index] = 
-						(((reverse_data(*(modbus_received_data + 7 + u))) >> modulo_coil_start_address) & coil_bit_padding_with_one[(modulo_quantity_of_coils % 8) - 1])
-						| ((reverse_data(*(modbus_received_data + 7 + u - 1))) << (8 - modulo_coil_start_address))
-						| (modbus_coil_value[u + coil_address_index] & coil_bit_padding_with_zero[(modulo_quantity_of_coils % 8) - 1]);                        
-					}
-					else
-					{
-						modbus_response_coil_temp[u + coil_address_index] = //0xAA
-						(modbus_response_coil_temp[u + coil_address_index] & 0x00) 
-						| ((reverse_data(*(modbus_received_data + 7 + u - 1))) << (modulo_coil_start_address))
-						| ((reverse_data(*(modbus_received_data + 7 + u))) >> (8 - modulo_coil_start_address));
-					}
-				}    
+                for(u = 0; u < byte_count; u++)	
+                {
+                    if(u == 0)
+                    {
+                        modbus_response_coil_temp[u + coil_address_index] = 
+                        (modbus_response_coil_temp[u + coil_address_index] 
+                        & coil_bit_padding_with_one[modulo_coil_start_address - 1]) 
+                        | (reverse_data(*(modbus_received_data + 7 + u)) >> (modulo_coil_start_address) 
+                        & coil_bit_padding_with_zero[modulo_coil_start_address - 1]); 
+                    }
+                    else if((u == (byte_count - 1)) && u >= 1)
+                    {
+                        modbus_response_coil_temp[u + coil_address_index] = 
+                        (((reverse_data(*(modbus_received_data + 7 + u))) >> modulo_coil_start_address) & coil_bit_padding_with_one[(modulo_quantity_of_coils % 8) - 1])
+                        | ((reverse_data(*(modbus_received_data + 7 + u - 1))) << (8 - modulo_coil_start_address))
+                        | (modbus_coil_value[u + coil_address_index] & coil_bit_padding_with_zero[(modulo_quantity_of_coils % 8) - 1]);                        
+                    }
+                    else
+                    {
+                        modbus_response_coil_temp[u + coil_address_index] = //0xAA
+                        (modbus_response_coil_temp[u + coil_address_index] & 0x00) 
+                        | ((reverse_data(*(modbus_received_data + 7 + u - 1))) << (modulo_coil_start_address))
+                        | ((reverse_data(*(modbus_received_data + 7 + u))) >> (8 - modulo_coil_start_address));
+                    }
+                }    
             }    
             else if(modulo_coil_start_address != 0 && modulo_quantity_of_coils == 0)
             {
