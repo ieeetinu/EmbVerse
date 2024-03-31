@@ -2,6 +2,8 @@
  * File : modbus_rtu.h
  * Author : EmbVerse (www.embverse.com)
  * Date : August 25, 2021
+ * Modified on : March 30, 2024
+ * Version : 0.0.3
  * ========================================
 */
 #ifndef __MODBUS_RTU_H__
