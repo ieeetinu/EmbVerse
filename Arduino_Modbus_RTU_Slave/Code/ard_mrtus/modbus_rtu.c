@@ -333,7 +333,7 @@ void query_response_force_multiple_coils(uint8_t *modbus_received_data, uint8_t 
     {
         uint16_t quantity_of_coils = ((uint16_t)(*(modbus_received_data + 4)) << 8) | (uint16_t)(*(modbus_received_data + 5));
         uint16_t coil_start_address = ((uint16_t)(*(modbus_received_data + 2)) << 8) | (uint16_t)(*(modbus_received_data + 3));
-		uint16_t byte_count = *(modbus_received_data + 6);
+        uint16_t byte_count = *(modbus_received_data + 6);
         if(coil_start_address >= NUMBER_OF_COILS)
         {
             modbus_response_data_length = 5;
